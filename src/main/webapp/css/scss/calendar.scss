@@ -1,0 +1,189 @@
+.calendar {
+  margin: $calendar-margin;
+  width: $calendar-width;
+  min-width: $calendar-width;
+  height: $calendar-height;
+
+  // These are the days of the week top row.
+  .daily-header {
+    display: flex;
+
+    > div {
+      background-color: $calendar-daily-header-background-color;
+      color: $calendar-daily-header-text-color;
+      padding: $calendar-daily-header-padding;
+      margin: $calendar-daily-header-margin;
+      flex: $calendar-day-flex;
+    }
+  }
+
+  .week {
+    display: flex;
+
+    .day {
+      cursor: pointer;
+      position: relative;
+      background-color: $calendar-day-background-color;
+      color: $calendar-day-text-color;
+      min-height: $calendar-day-min-height;
+      margin: $calendar-day-margin;
+      padding: $calendar-day-padding;
+      flex: $calendar-day-flex;
+
+      &:focus {
+        outline: $focus-outline-state;
+      }
+
+      &.weekend {
+        background-color: $calendar-weekend-background-color;
+      }
+
+      &.today {
+        background-color: #FFF9E5;
+        color: darken($calendar-day-text-color, 10%);
+      }
+
+      &:hover {
+        background-color: $calendar-day-hover-background-color;
+        color: $calendar-day-hover-text-color;
+      }
+
+      &.holiday {
+        // background-color: $calendar-holiday-background-color;
+
+        > span {
+          z-index: 1;
+          position: absolute;
+          top: $calendar-holiday-span-position-top;
+          right: $calendar-holiday-span-position-right;
+          left: $calendar-holiday-span-position-left;
+          font-size: $calendar-holiday-span-font-size;
+          color: $calendar-holiday-span-text-color;
+          background-color: $calendar-holiday-span-background-color;
+          border-radius: $calendar-holiday-span-border-radius;
+          padding: $calendar-holiday-span-padding;
+        }
+
+        .data {
+          &:first-of-type {
+            margin: 30px 0 0 0;
+          }
+        }
+      }
+
+      .data {
+        position: relative;
+        background-color: $calendar-day-data-background-color;
+        border-radius: $calendar-day-data-border-radius;
+        margin: $calendar-day-data-margin;
+        padding: $calendar-day-data-padding;
+        text-align: $calendar-day-data-text-align;
+        color: $calendar-day-data-text-color;
+        font-size: $font-size-small;
+        text-decoration: none;
+
+        &:focus {
+          outline: $focus-outline-state;
+        }
+
+        &:hover {
+          background-color: $calendar-day-data-hover-background-color;
+        }
+
+        &.non-regular {
+          background-color: darken(#dcdcd3, 5%);
+        }
+
+        &.monetary {
+          background-color: #8D9E85;
+          color: darken($dark-slate, 5%);
+
+          b {
+            color: darken($dark-slate, 5%);
+          }
+
+          svg {
+            &#remove-icon {
+              path {
+                fill: lighten($dark-slate, 5%);
+              }
+            }
+          }
+        }
+
+        &.incomplete-time {
+          border: $calendar-day-data-incomplete-border;
+          background-color: $calendar-day-data-incomplete-background;
+
+          b {
+            color: $calendar-day-data-incomplete-b-color;
+          }
+        }
+
+        span {
+          display: block;
+          margin: 0 0 5px 0;
+
+          &:last-of-type {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: .3px;
+          }
+        }
+
+        b { color: $dark-slate; }
+
+        a {
+          display: block;
+          text-decoration: none;
+          text-align: $calendar-day-data-a-text-align;
+          color: $calendar-day-data-a-text-color;
+          font-size: $calendar-day-data-a-font-size;
+
+          &.delete-time-confirm {
+            cursor: pointer;
+
+            &:hover {
+              svg {
+                path {
+                  fill: $calendar-day-data-delete-active-svg-fill;
+                }
+              }
+            }
+            &:focus {
+              svg {
+                outline: $focus-outline-state;
+
+                path {
+                  fill: $calendar-day-data-delete-active-svg-fill;
+                }
+              }
+            }
+          }
+
+          svg {
+            &#remove-icon {
+              position: absolute;
+              display: block;
+              top: $calendar-day-data-delete-svg-position-top;
+              right: $calendar-day-data-delete-svg-position-right;
+              width: $calendar-day-data-delete-svg-width-height;
+              height: $calendar-day-data-delete-svg-width-height;
+
+              path {
+                fill: $calendar-day-data-delete-svg-fill;
+              }
+
+              &:hover,
+              &:focus {
+                path {
+                  fill: $calendar-day-data-delete-active-svg-fill;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

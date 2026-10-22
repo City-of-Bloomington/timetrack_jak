@@ -1,0 +1,36 @@
+---
+timetrack_webapp_name:  "timetrack"
+timetrack_install_path: "/srv/webapps/{{ timetrack_webapp_name }}"
+timetrack_backup_path:  "/srv/backups/{{ timetrack_webapp_name }}"
+timetrack_home:         "/srv/data/{{ timetrack_webapp_name }}"
+
+timetrack_domain: "{{ ansible_host }}"
+timetrack_base_uri: "/{{ timetrack_webapp_name }}"
+timetrack_base_url: "https://{{ ansible_host }}{{ timetrack_base_uri }}"
+
+timetrack_cas:
+  url:    "https://{{ ansible_host }}/cas"
+
+timetrack_ldap:
+  url:      "ldaps://localhost:636/OU=people"
+  user: "{{ timetrack_webapp_name }}"
+  pass: "{{ vault_timetrack_ldap.pass }}"
+
+timetrack_db:
+  default:
+    host: "localhost"
+    name: "{{ timetrack_webapp_name }}"
+    user: "{{ timetrack_webapp_name }}"
+    pass: "{{ vault_timetrack_db.default.pass }}"
+  hr:
+    host: "localhost"
+    name: "HRDatabase"
+    user: "{{ timetrack_webapp_name }}"
+    pass: "{{ vault_timetrack_db.hr.pass }}"
+
+mysql_conf:
+  - { option: "default_storage_engine",  value: "InnoDB" }
+  - { option: "character_set_server",    value: "utf8"   }
+  - { option: "innodb_file_per_table",   value: "1"      }
+  - { option: "lower_case_table_names",  value: "1"      }
+...

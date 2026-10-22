@@ -1,0 +1,104 @@
+button,
+.button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: $btn-background-color;
+  background-repeat: no-repeat;
+  background-position: $btn-background-position;
+  background-size: $btn-background-size;
+  vertical-align: middle;
+  margin: 0;
+  padding: $btn-padding;
+  border: $btn-border;
+  border-radius: $border-radius;
+  text-decoration: none;
+  color: $btn-text-color;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &[disabled] {
+    // pointer-events: none;
+    cursor: not-allowed;
+    background-color: darken($alabaster, 10%) !important;
+    color: $dark-slate !important;
+
+    &:hover {
+      color: $dark-slate !important;
+      border: $btn-border !important;
+    }
+  }
+
+  &[type=submit] {
+    background-color: $fern;
+    color: white;
+  }
+
+  a {
+    color: $dark-slate;
+  }
+
+  &.has-icon {
+    padding-left: $btn-has-icon-padding;
+    background-size: $btn-has-icon-background-size;
+  }
+
+  &.hide-text {
+    span {
+      @include visuallyHidden;
+    }
+
+    &.has-icon {
+     background-position: center;
+    }
+  }
+}
+
+.button-group {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+
+  button,
+  .button {
+    border-radius: 0;
+
+    &:first-child {
+      -webkit-border-top-left-radius: $border-radius;
+      -webkit-border-bottom-left-radius: $border-radius;
+      -moz-border-radius-topleft: $border-radius;
+      -moz-border-radius-bottomleft: $border-radius;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &:last-child {
+      -webkit-border-top-right-radius: $border-radius;
+      -webkit-border-bottom-right-radius: $border-radius;
+      -moz-border-radius-topright: $border-radius;
+      -moz-border-radius-bottomright: $border-radius;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+
+    &:last-of-type,
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+    z-index: 1;
+    }
+  }
+}

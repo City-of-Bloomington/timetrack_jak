@@ -1,0 +1,46 @@
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.f-float-left {
+  margin-right: auto;
+}
+
+.f-float-right {
+  margin-left: auto;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.width-one-half {
+  width: 50%;
+}
+
+$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (top, right, bottom, left);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}

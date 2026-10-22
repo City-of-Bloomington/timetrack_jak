@@ -1,0 +1,19 @@
+.tabs {
+  display: $tabs-display;
+  flex-wrap: $tabs-flex-wrap;
+  margin: $tabs-margin;
+
+  a {
+    text-decoration: $tabs-a-text-decoration;
+    text-align: $tabs-a-text-align;
+    color: $tabs-a-color;
+    background: $tabs-a-background;
+    padding: $tabs-a-padding;
+    margin: $tabs-a-margin;
+
+    &:hover,
+    &.active {
+      background: $tabs-active-hover-background;
+    }
+  }
+}

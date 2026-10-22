@@ -1,0 +1,294 @@
+/*!
+  * Time Track styles v1.0 (https://timetrack.bloomington.in.gov)
+  * @copyright Copyright (C) 2014-2018 City of Bloomington, Indiana. All rights reserved.
+  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
+  * @author Adam Butcher <butcherad@bloomington.in.gov>
+*/
+/*! Note: this is a cherry-picked tweak of FN1, specifically for Time Track */
+
+/* Import Vars */
+@import '../scss/colors';
+@import '../scss/vars-mixins';
+
+/* Global */
+.timetrack {
+  font-family: $font-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * { box-sizing: border-box; }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  main {
+    overflow: auto;
+    background: $gainsboro;
+    display: block;
+    // padding: 20px 0 0 0;
+  }
+
+  hr {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-weight: $font-weight-700;
+    font-size: $font-size-medium;
+    line-height: $font-size-medium;
+    color: $dark-slate;
+  }
+
+  h2 {
+    font-weight: $font-weight-700;
+    font-size: $font-size-regular;
+    line-height: $font-size-regular;
+    color: $dark-slate;
+  }
+
+  p {
+    color: $dark-slate;
+  }
+
+  a {
+    color: $cob-blue;
+  }
+
+  code {
+    background: $dark-slate;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+
+  .container {
+    @include clearfix;
+    width: 100%;
+    max-width: $viewport-large;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-with-padding {
+    @include clearfix;
+    width: 100%;
+    margin: 0 auto;
+    width: calc(100% - 8px);
+    min-width: calc(100% - 8px);
+    padding: 0 0 4px 0;
+  }
+
+  .flex-row {
+    display: flex;
+  }
+
+  .calendar-header-controls {
+    padding: 10px 4px;
+    color: $dark-slate;
+
+    form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    a {
+      color: $dark-slate;
+    }
+
+    select {
+      margin: 0 20px 0 0;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+
+    .month-year {
+      margin: 0 auto;
+    }
+
+    .button {
+      background-color: $alabaster;
+
+      &:hover {
+        border-color: $cob-blue;
+        color: $cob-blue;
+
+        &.chevron-left {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' fill='%231e59ae'%3E%3Cpath d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'/%3E%3C/svg%3E%0A");
+        }
+
+        &.chevron-right {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' fill='%231e59ae'%3E%3Cpath d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    .job-select {
+      label {
+        text-align: right;
+      }
+    }
+
+
+    .pay-period {
+      .button-group {
+        margin: 10px 0 0 0;
+      }
+    }
+
+    button {
+      @include visuallyHidden;
+    }
+  }
+
+  .calendar-summary-controls {
+    display: flex;
+    color: $dark-slate;
+
+    a {
+      color: $dark-slate;
+    }
+
+    .button {
+      background-color: $alabaster;
+
+      &[type=submit] {
+        margin: 0 0 0 20px;
+        background-color: $fern;
+        color: white;
+
+        &:hover,
+        &:focus {
+          background-color: darken($fern, 5%);
+          color: white;
+          border: $btn-border;
+        }
+      }
+
+      &:hover {
+        border-color: $cob-blue;
+        color: $cob-blue;
+      }
+
+      &.plus {
+        @mixin icon-color($color) {
+          background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23{$color}'><path d='M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z'/></svg>");
+        }
+        @include icon-color($dark-slate);
+
+        &:hover,
+        &:focus {
+          @include icon-color($cob-blue);
+        }
+      }
+    }
+  }
+
+  .submitted-on {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 20px;
+    padding: 0 0 0 30px;
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 7px;
+      left: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 173.59082 127.51709'%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='calendar-check'%3E%3Cpolygon id='check' points='173.591 17.85 156.087 0 61.925 92.333 17.678 48.086 0 65.764 61.752 127.517 173.591 17.85' fill='%234caf50'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 23px;
+    }
+  }
+
+  .homepage {
+    overflow: auto;
+
+    .alert {
+      width: calc(100% - 10px);
+      margin: 5px auto 0 auto;
+
+      &:nth-child(n+2) {
+        margin: 5px auto;
+      }
+    }
+
+    .time-details {
+      @include clearfix;
+      width: calc(100% - 8px);
+      margin: 0 auto;
+      padding: 0 0 40px 0;
+
+      h1 {
+        display: inline-block;
+      }
+    }
+
+    .viewing-as {
+      background-color: $header-proxy-background-color;
+      border: none;
+      text-align: center;
+      font-weight: 700;
+      color: $dark-slate;
+      padding: 5px 0;
+    }
+
+    .calendar-notice {
+      background: lighten($luxor-gold, 10%);
+      border-bottom: 1px solid $luxor-gold;
+      color: white;
+      padding: 10px;
+    }
+  }
+
+  // Multiple Jobs Coloring
+  // attribute: `data-job-id`
+  .calendar.view-only.mult-jobs,
+  .view-only table.pay-period-summary-total,
+  .view-only .monetary-hours-summary-total {
+    $jobsCount: 15000;
+
+    @for $i from 1 through $jobsCount {
+      [data-job-id="#{$i}"] {
+        background-color: hsl($i * 45, 50%, 90%) !important;
+      }
+    }
+  }
+}
+
+/* Import Components */
+@import '../scss/icons';
+@import '../scss/helpers';
+@import '../scss/normalize';
+@import '../scss/alerts';
+@import '../scss/buttons';
+@import '../scss/header';
+@import '../scss/dropdown';
+@import '../scss/tabs';
+@import '../scss/tables';
+@import '../scss/forms';
+@import '../scss/calendar';
+@import '../scss/internal-pages';
+@import '../scss/time-block';
+@import '../scss/time-clock';
+@import '../scss/modals';
+@import '../scss/logout';
+@import '../scss/customs';

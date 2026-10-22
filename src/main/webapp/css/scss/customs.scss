@@ -1,0 +1,44 @@
+// jQuery UI Dialog Modal
+// additional modal styles are in: modals.scss
+.ui-widget-content {
+  border: $ui-widget-content-border;
+  background: $ui-widget-content-background;
+  padding: $ui-widget-content-padding;
+}
+
+.ui-widget-overlay {
+  opacity: $ui-widget-overlay-opacity;
+  background: $ui-widget-overlay-background;
+}
+
+.ui-dialog {
+  .ui-dialog-titlebar {
+    background-color: $ui-dialog-titlebar-background-color;
+    color: $ui-dialog-titlebar-color;
+    padding: $ui-dialog-titlebar-padding;
+    margin: $ui-dialog-titlebar-margin;
+    border: $ui-dialog-titlebar-border;
+    border-radius: $ui-dialog-titlebar-border-radius;
+
+    .ui-dialog-title {
+      margin: $ui-dialog-title-margin;
+      width: $ui-dialog-title-width;
+    }
+  }
+
+  .ui-dialog-titlebar-close {
+    display: $ui-dialog-titlebar-close-display;
+  }
+
+  .ui-dialog-content {
+    padding: $ui-dialog-content-padding;
+  }
+}
+
+// jQuery Auto Complete
+.ui-autocomplete {
+  background-color: $ui-autocomplete-background-color;
+  border-left: $ui-autocomplete-border;
+  border-bottom: $ui-autocomplete-border;
+  border-right: $ui-autocomplete-border;
+}

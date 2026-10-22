@@ -1,0 +1,71 @@
+---
+- hosts: "timetrack"
+  become: "yes"
+  roles:
+    - "City-of-Bloomington.mysql"
+    - "City-of-Bloomington.tomcat"
+  tasks:
+    - name: "Create database"
+      mysql_db:
+        config_file: "{{ mysql_defaults_extra_file }}"
+        name: "{{ timetrack_db.default.name }}"
+        state: "present"
+      no_log: "True"
+
+    - name: "Create database user"
+      mysql_user:
+        name:     "{{ timetrack_db.default.user }}"
+        password: "{{ timetrack_db.default.pass }}"
+        priv:     "{{ timetrack_db.default.name }}.*:ALL"
+        state: "present"
+        config_file: "{{ mysql_defaults_extra_file }}"
+      no_log: "True"
+
+    - name: "Update apache configuration"
+      template:
+        src: "apache.conf"
+        dest: "/etc/apache2/sites-enabled/conf.d/timetrack.conf"
+      notify: "apache_restart"
+
+    - name: "Create timetrack directories"
+      file:
+        path: "{{ item }}"
+        state: "directory"
+        owner: "tomcat8"
+        group: "staff"
+        mode: "u=rwx,g=rwxs"
+      with_items:
+        - "{{ timetrack_backup_path  }}"
+        - "{{ timetrack_home         }}/conf"
+        - "/var/log/cron"
+
+    - name: "Configure Quartz"
+      template:
+        src: "quartz.properties"
+        dest: "{{ timetrack_home }}/conf"
+      notify: "tomcat_restart"
+
+    - name: "Configure Log4J"
+      template:
+        src: "log4j.properties"
+        dest: "{{ timetrack_home }}/conf"
+      notify: "tomcat_restart"
+
+    - name: "Configure Log4J 2"
+      template:
+        src: "log4j2.xml"
+        dest: "{{ timetrack_home }}/conf"
+      notify: "tomcat_restart"
+
+    - name: "Install context"
+      template:
+        src: "context.xml"
+        dest: "/etc/tomcat8/Catalina/localhost/{{ timetrack_webapp_name }}.xml"
+      notify: "tomcat_restart"
+
+    - name: "Install Webapp"
+      copy:
+        src: "../target/timetrack.war"
+        dest: "{{ timetrack_install_path }}.war"
+      notify: "tomcat_restart"
+...

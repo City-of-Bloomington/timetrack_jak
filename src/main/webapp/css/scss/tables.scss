@@ -1,0 +1,206 @@
+table {
+  background: $table-background;
+  border-collapse: $table-border-collapse;
+  color: $table-color;
+  margin: $table-margin;
+
+  a {
+    color: $table-a-color;
+  }
+
+  tr {
+    border-top: $table-tr-border-top;
+
+    &:nth-of-type(1) {
+      border-top: $table-tr-first-type-border-top;
+    }
+
+    &.totals-row {
+      background: $table-tr-totals-row-background;
+      border: $table-tr-totals-row-border;
+
+      td {
+        border: $table-tr-totals-td-border;
+        border-right: $table-tr-totals-td-border !important;
+
+        &:last-of-type {
+          strong {
+            font-size: $table-tr-totals-td-last-type-strong;
+          }
+        }
+      }
+    }
+  }
+
+  th,
+  td {
+    padding: $table-th-td-padding;
+  }
+
+  th {
+    font-weight: $table-th-font-weight;
+    background-color: $table-th-background-color;
+    color: $table-th-color;
+    border-right: $table-th-border-right;
+    text-align: $table-th-text-align;
+
+    &:nth-of-type(1),
+    &:last-of-type {
+      border-right: $table-th-first-last-type-border-right;
+    }
+  }
+
+  td {
+    border-right: $table-td-border-right;
+
+    &:nth-of-type(1),
+    &:last-of-type {
+      border-right: $table-td-first-last-type-border-right;
+    }
+  }
+
+  // Tables Group One
+  &.pay-period-summary-total,
+  &.code-hours-summary-total,
+  &.accruals-summary {
+    th,
+    td {
+      &:nth-of-type(1) {
+        text-align: $tables-group-one-th-td-first-type-text-align;
+      }
+
+      &:nth-of-type(n+2) {
+        text-align: $tables-group-one-th-td-after-first-text-align;
+      }
+    }
+  }
+
+  // Tables Group Two
+  &.code-hours-summary-total {
+    width: $tables-group-two-width;
+
+    &.week-one {
+      margin-right: $tables-group-two-week-one-margin-right;
+    }
+
+    &.week-two {
+      margin-left: $tables-group-two-week-two-margin-left;
+    }
+  }
+
+  // Tables Group Three
+  &.pay-period-notes,
+  &.action-history,
+  &.time-issues,
+  &.hour-codes,
+  &.departments,
+  &.employees,
+  &.groups {
+    th,
+    td {
+      &:nth-of-type(1),
+      &:nth-of-type(n+3) {
+        text-align: $tables-group-three-th-td-first-and-after-second-text-align;
+      }
+
+      &:nth-of-type(2) {
+        text-align: $tables-group-three-th-td-second-type-text-align;
+      }
+    }
+  }
+
+  &.timewarp {
+    thead {
+      tr {
+        th {
+          &:last-of-type {
+            text-align: right;
+          }
+        }
+      }
+    }
+    // thead,
+    // tbody {
+    //   tr {
+    //     th,
+    //     td {
+    //       &:nth-of-type(1),
+    //       &:last-of-type {
+    //         border-right: 1px solid silver;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
+  &.email-logs {
+    margin: 20px 0 0 0;
+    table-layout: fixed;
+    width: 100%;
+
+    thead,
+    tbody {
+      tr {
+        th,
+        td {
+          &:nth-of-type(1),
+          &:last-of-type {
+            border-right: 1px solid silver;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          word-break: break-word;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+  &.monetary-hours-summary-total {
+    width: 100%;
+
+    thead{
+      tr {
+        th {
+          &:nth-of-type(n+2) {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          &:nth-of-type(n+2) {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+.monetary-hours-tables {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  h1 {
+    display: block;
+    width: 100%;
+  }
+
+  .width-one-half {
+    width: calc(50% - 20px);
+
+    &:nth-of-type(2) {
+      margin-left: auto;
+    }
+  }
+}

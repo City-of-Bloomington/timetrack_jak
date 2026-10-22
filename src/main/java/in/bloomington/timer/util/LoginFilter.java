@@ -1,0 +1,104 @@
+package in.bloomington.timer.util;
+/**
+ * @copyright Copyright (C) 2014-2016 City of Bloomington, Indiana. All rights reserved.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
+ * @author W. Sibo <sibow@bloomington.in.gov>
+ */
+import java.io.IOException;
+import java.util.Enumeration;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class LoginFilter implements Filter {
+    static Logger logger = LogManager.getLogger(LoginFilter.class);
+    // public static String POLICY = "frame-src 'self'; sandbox allow-forms allow-scripts allow-popups allow-same-origin allow-top-navigation allow-popups-to-escape-sandbox; img-src 'self' data:; object-src 'none';frame-ancestors 'self'";
+
+    public static String POLICY = "frame-src 'none'; img-src 'self' data:; object-src 'none';frame-ancestors 'self';";    
+    private ServletContext ctx = null;
+    public void init(FilterConfig config) throws ServletException {
+	ctx = config.getServletContext();
+    }
+    
+    public void doFilter(ServletRequest request,
+			 ServletResponse response,
+			 FilterChain chain) throws IOException,
+						   ServletException {
+	
+	HttpServletRequest req = (HttpServletRequest) request;
+	HttpServletResponse res = (HttpServletResponse) response;
+	res.addHeader("Content-Security-Policy", LoginFilter.POLICY);	
+	res.addHeader("X-Frame-Options", "DENY");
+	String uri = req.getRequestURI();		
+	StringBuffer url = req.getRequestURL();
+	HttpSession session = req.getSession();
+	if(session == null || session.getAttribute("user") == null){
+	    // these are our exludes
+	    if(uri.matches(".*(timeClock|PickJob|mobileClock|callback).*") ||
+	       uri.matches(".*(Service|Login|css|jpg|png|gif|js)$")){
+		chain.doFilter(request, response);
+		
+	    }
+	    else{
+		/**
+		Enumeration<String> headerNames = req.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+		    String headerName = headerNames.nextElement();
+		    System.err.println("Header Name:" + headerName);
+		    String headerValue = req.getHeader(headerName);
+		    System.err.println(headerValue);
+		}
+		*/
+		String referer_host = req.getHeader("referer");
+		String host_forward = req.getHeader("X-Forwarded-Host");
+		String qstr = req.getQueryString();
+		String originalURL = null;
+		if(url != null){
+		    if(url.indexOf("leave_request") > -1){
+			originalURL = "https://"+host_forward;
+			originalURL += "/timetrack/leave_request.action";
+			if(qstr != null)
+			    originalURL +="?"+qstr;
+		    }
+		    else if(url.indexOf("leave_review") > -1){
+			originalURL = "https://"+host_forward;
+			originalURL += "/timetrack/leave_review.action";
+			if(qstr != null)
+			    originalURL +="?"+qstr;
+		    }
+		}
+		if(originalURL != null){
+		    req.getSession().setAttribute("originalURL", originalURL);
+		}
+		// everything else we need login
+		res.sendRedirect("login");
+	    }
+	}
+	else{
+	    String originalURL = (String) session.getAttribute("originalURL");
+	    if (originalURL != null && !originalURL.isEmpty()) {
+		session.removeAttribute("originalURL"); 		
+		res.sendRedirect(originalURL);
+	    }
+	    else {
+		// process the rest of the chain
+		chain.doFilter(request, response);
+	    }
+	}
+    }
+
+    public void destroy() {
+	//
+    }
+
+}

@@ -1,0 +1,17 @@
+// additional overwrite modal styles are in: customs.scss
+.modal {
+  &.remove {
+    p {
+      margin: $modal-remove-p-margin;
+      padding: $modal-remove-p-padding;
+
+      &.details {
+        font-weight: $modal-remove-p-details-font-weight;
+      }
+
+      &:nth-of-type(n+2) {
+        padding: $modal-remove-p-after-first-padding;
+      }
+    }
+  }
+}

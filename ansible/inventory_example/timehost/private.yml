@@ -1,0 +1,14 @@
+---
+# You should encrypt this file with ansible-vault
+
+vault_ansible_sudo_pass: "password"
+
+vault_timetrack_db:
+  default:
+    pass: "password"
+  hr:
+    pass: "password"
+
+vault_timetrack_ldap:
+  pass: "password"
+...

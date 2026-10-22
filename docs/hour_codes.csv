@@ -1,0 +1,674 @@
+BR,Exempt,all,all
+BR,Police Sworn,all,all
+BR,Police Sworn Mgt,all,all
+BR,Union,all,all
+BR,Part Time Exempt,all,all
+BR,Non-Exempt,all,all
+BR,Police Sworn Det,all,all
+BR,Part Time Non-Exempt,all,all
+BWP,Union,all,all
+BWP,Part Time Exempt,all,all
+BWP,Exempt,all,all
+BWP,Part Time Non-Exempt,all,all
+BWP,Non-Exempt,all,all
+BWP1.5,Union,all,all
+CA,Fire Sworn 5x8,all,all
+CA,Police Sworn,all,all
+CA,Police Sworn Mgt,all,all
+CA,Fire Sworn,all,all
+CA,Police Sworn Det,all,all
+CE1.0,Union,all,all
+CE1.0 STORM 6.25,Exempt,all,all
+CE1.0 STORM 6.25,Non-Exempt,all,all
+CE1.0 STORM 6.25,Police Sworn,all,all
+CE1.5,Union,all,all
+CE1.5 STORM 6.25,Exempt,all,all
+CE1.5 STORM 6.25,Non-Exempt,all,all
+CE1.5 STORM 6.25,Union,all,all
+CE2.0,Union,all,all
+CIL,Police Sworn Det,all,all
+CIL,Police Sworn,all,all
+CIL,Police Sworn Mgt,all,all
+CO,Union,all,all
+COMMUTE,Exempt,all,all
+COMMUTE,Non-Exempt,all,all
+COMMUTE,Union,all,all
+COMMUTE,Part Time Exempt,all,all
+COMMUTE,Police Sworn,all,all
+COMMUTE,Police Sworn Det,all,all
+COMMUTE,Police Sworn Mgt,all,all
+COMMUTE,Fire Sworn,all,all
+COMMUTE,Fire Sworn 5x8,all,all
+COMMUTE,Part Time Non-Exempt,all,all
+COMMUTE,Temp W/Ben,all,all
+COMMUTE_EXR,Exempt,all,all
+COMMUTE_EXR,Non-Exempt,all,all
+COMMUTE_EXR,Union,all,all
+COMMUTE_EXR,Part Time Exempt,all,all
+COMMUTE_EXR,Police Sworn,all,all
+COMMUTE_EXR,Police Sworn Det,all,all
+COMMUTE_EXR,Police Sworn Mgt,all,all
+COMMUTE_EXR,Fire Sworn,all,all
+COMMUTE_EXR,Fire Sworn 5x8,all,all
+COMMUTE_EXR,Part Time Non-Exempt,all,all
+COMMUTE_EXR,Temp W/Ben,all,all
+COSH,Union,all,all
+CU,Fire Sworn 5x8,all,all
+CU,Part Time Exempt,all,all
+CU,Exempt,all,all
+CU,Police Sworn,all,all
+CU,Police Sworn Mgt,all,all
+CU,Non-Exempt,all,all
+CU,Part Time Non-Exempt,all,all
+CU,Police Sworn Det,all,all
+CU,Union,all,all
+CU,Fire Sworn,all,all
+EL_FMLA-Child,Non-Exempt,all,all
+EL_FMLA-Child,Union,all,all
+EL_FMLA-Child,Part Time Non-Exempt,all,all
+EL_FMLA-Child,Temp W/Ben,all,all
+EL_FMLA-Child,Exempt,all,all
+EL_FMLA-Child,Part Time Exempt,all,all
+EL_FMLA-Child,Temp,all,all
+EL_FMLA-Other,Non-Exempt,all,all
+EL_FMLA-Other,Part Time Exempt,all,all
+EL_FMLA-Other,Temp,all,all
+EL_FMLA-Other,Fire Sworn,all,all
+EL_FMLA-Other,Fire Sworn 5x8,all,all
+EL_FMLA-Other,Exempt,all,all
+EL_FMLA-Other,Union,all,all
+EL_FMLA-Other,Part Time Non-Exempt,all,all
+EL_FMLA-Other,Temp W/Ben,all,all
+EL_FMLA-Self,Non-Exempt,all,all
+EL_FMLA-Self,Part Time Exempt,all,all
+EL_FMLA-Self,Temp,all,all
+EL_FMLA-Self,Exempt,all,all
+EL_FMLA-Self,Union,all,all
+EL_FMLA-Self,Part Time Non-Exempt,all,all
+EL_FMLA-Self,Temp W/Ben,all,all
+EL_FMLA-Self,Fire Sworn,all,all
+EL_FMLA-Self,Fire Sworn 5x8,all,all
+EL_Other,Non-Exempt,all,all
+EL_Other,Union,all,all
+EL_Other,Part Time Non-Exempt,all,all
+EL_Other,Temp W/Ben,all,all
+EL_Other,Exempt,all,all
+EL_Other,Part Time Exempt,all,all
+EL_Other,Temp,all,all
+EL_Other,Fire Sworn,all,all
+EL_Other,Fire Sworn 5x8,all,all
+EL_PS-Self,Police Sworn,all,all
+EL_PS-Self,Fire Sworn 5x8,all,all
+EL_PS-Self,Police Sworn Mgt,all,all
+EL_Self,Non-Exempt,all,all
+EL_Self,Part Time Exempt,all,all
+EL_Self,Temp,all,all
+EL_Self,Police Sworn,all,all
+EL_Self,Fire Sworn,all,all
+EL_Self,Fire Sworn 5x8,all,all
+EL_Self,Exempt,all,all
+EL_Self,Union,all,all
+EL_Self,Part Time Non-Exempt,all,all
+EL_Self,Temp W/Ben,all,all
+EL_Self,Police Sworn Mgt,all,all
+EL_VAX,Exempt,all,all
+EL_VAX,Fire Sworn 5x8,all,all
+EL_VAX,Part Time Exempt,all,all
+EL_VAX,Police Sworn,all,all
+EL_VAX,Police Sworn Mgt,all,all
+EL_VAX,Temp W/Ben,all,all
+EL_VAX,Fire Sworn,all,all
+EL_VAX,Non-Exempt,all,all
+EL_VAX,Part Time Non-Exempt,all,all
+EL_VAX,Police Sworn Det,all,all
+EL_VAX,Temp,all,all
+EL_VAX,Union,all,all
+Fire BRV,Fire Sworn,all,all
+FIRE FLSA,Fire Sworn,all,all
+FIRE LONG,Fire Sworn,all,all
+FMCU,Police Sworn,all,all
+FMCU,Police Sworn Mgt,all,all
+FMCU,Union,all,all
+FMCU,Part Time Exempt,all,all
+FMCU,Exempt,all,all
+FMCU,Police Sworn Det,all,all
+FMCU,Non-Exempt,all,all
+FMCU,Part Time Non-Exempt,all,all
+FMLAFS,Fire Sworn,all,all
+FMLAH,Exempt,all,all
+FMLAH,Union,all,all
+FMLAH,Non-Exempt,all,all
+FMLAU,Exempt,all,all
+FMLAU,Fire Sworn,all,all
+FMLAU,Part Time Non-Exempt,all,all
+FMLAU,Non-Exempt,all,all
+FMLAU,Union,all,all
+FMLAU,Part Time Exempt,all,all
+FMLAV,Fire Sworn,all,all
+FMLAWC,Non-Exempt,all,all
+FMLAWC,Part Time Non-Exempt,all,all
+FMLAWC,Fire Sworn,all,all
+FMLAWC,Police Sworn,all,all
+FMLAWC,Police Sworn Mgt,all,all
+FMLAWC,Exempt,all,all
+FMLAWC,Part Time Exempt,all,all
+FMLAWC,Temp W/Ben,all,all
+FMLAWC,Fire Sworn 5x8,all,all
+FMLAWC,Police Sworn Det,all,all
+FMLAWC,Union,all,all
+FMPTO,Exempt,all,all
+FMPTO,Union,all,all
+FMPTO,Part Time Exempt,all,all
+FMPTO,Part Time Non-Exempt,all,all
+FMPTO,Non-Exempt,all,all
+FMSCK,Exempt,all,all
+FMSCK,Non-Exempt,all,all
+FMSCK,Union,all,all
+FMSCK,Part Time Exempt,all,all
+FMSCK,Part Time Non-Exempt,all,all
+FRP,Fire Sworn,all,all
+H1.0,Part Time Exempt,all,all
+H1.0,Exempt,all,all
+H1.0,Union,all,all
+H1.0,Part Time Non-Exempt,all,all
+H1.0,Non-Exempt,all,all
+HCE1.0,Union,all,all
+HCE2.0,Union,all,all
+HCU,Exempt,all,all
+HCU,Part Time Non-Exempt,all,all
+HCU,Non-Exempt,all,all
+HCU,Union,all,all
+HCU,Part Time Exempt,all,all
+JD,Fire Sworn 5x8,all,all
+JD,Part Time Exempt,all,all
+JD,Police Sworn Det,all,all
+JD,Non-Exempt,all,all
+JD,Fire Sworn,all,all
+JD,Part Time Non-Exempt,all,all
+JD,Police Sworn,all,all
+JD,Police Sworn Mgt,all,all
+JD,Exempt,all,all
+JD,Union,all,all
+MP,Police Sworn,all,all
+MP,Police Sworn Mgt,all,all
+MP,Non-Exempt,all,all
+MP,Police Sworn Det,all,all
+MU,Non-Exempt,all,all
+MU,Police Sworn Det,all,all
+MU,Police Sworn,all,all
+MU,Police Sworn Mgt,all,all
+OJI,Fire Sworn,all,all
+OJI,Non-Exempt,all,all
+OJI,Part Time Exempt,all,all
+OJI,Police Sworn,all,all
+OJI,Police Sworn Det,all,all
+OJI,Fire Sworn 5x8,all,all
+OJI,Exempt,all,all
+OJI,Union,all,all
+OJI,Part Time Non-Exempt,all,all
+OJI,Police Sworn Mgt,all,all
+ONCALL,Union,all,all
+OT1.0 STORM 6.25,Exempt,all,all
+OT1.0 STORM 6.25,Police Sworn Det,all,all
+OT1.0 STORM 6.25,Police Sworn,all,all
+OT1.0 STORM 6.25,Police Sworn Mgt,all,all
+OT1.5,Union,all,all
+OT1.5,Temp,all,PW - Fleet Staff (union)
+OT1.5 STORM 6.25,Exempt,all,all
+OT1.5 STORM 6.25,Fire Sworn 5x8,all,all
+OT1.5 STORM 6.25,Union,all,all
+OT1.5 STORM 6.25,Police Sworn Det,all,all
+OT1.5 STORM 6.25,Fire Sworn,all,all
+OT1.5 STORM 6.25,Non-Exempt,all,all
+OT1.5 STORM 6.25,Police Sworn,all,all
+OT1.5 STORM 6.25,Police Sworn Mgt,all,all
+OT2.0,Union,all,all
+OT2.0 STORM 625,Union,all,all
+OT2.0 STORM 625,Non-Exempt,all,all
+OTt1.0,Police Sworn Det,all,all
+PFMLU,Exempt,all,all
+PFMLU,Fire Sworn 5x8,all,all
+PFMLU,Part Time Exempt,all,all
+PFMLU,Police Sworn,all,all
+PFMLU,Police Sworn Mgt,all,all
+PFMLU,Union,all,all
+PFMLU,Fire Sworn,all,all
+PFMLU,Non-Exempt,all,all
+PFMLU,Part Time Non-Exempt,all,all
+PFMLU,Police Sworn Det,all,all
+PFMLU,Temp W/Ben,all,all
+PTO,Part Time Non-Exempt,all,all
+PTO,Exempt,all,all
+PTO,Union,all,all
+PTO,Part Time Exempt,all,all
+PTO,Non-Exempt,all,all
+PTOUN,Part Time Exempt,all,all
+PTOUN,Exempt,all,all
+PTOUN,Part Time Non-Exempt,all,all
+PTOUN,Union,all,all
+PTOUN,Non-Exempt,all,all
+Reg,Non-Exempt,all,all
+Reg,Union,all,all
+Reg,Police Sworn Det,all,all
+Reg,Part Time Non-Exempt,all,all
+Reg,Part Time Exempt,all,all
+Reg,Police Sworn,all,all
+Reg,Police Sworn Mgt,all,all
+Reg,Exempt,all,all
+Reg,Part Time,all,all
+RETROPAY,Fire Sworn 5x8,all,all
+SBU,Exempt,all,all
+SBU,Union,all,all
+SBU,Non-Exempt,all,all
+SBUUN,Part Time Exempt,all,all
+SBUUN,Temp W/Ben,all,all
+SBUUN,Exempt,all,all
+SBUUN,Non-Exempt,all,all
+SBUUN,Part Time Non-Exempt,all,all
+SBUUN,Union,all,all
+STORM 6.25.24,Fire Sworn,all,all
+STORM 6.25.24,Non-Exempt,all,all
+STORM 6.25.24,Police Sworn,all,all
+STORM 6.25.24,Police Sworn Mgt,all,all
+STORM 6.25.24,Exempt,all,all
+STORM 6.25.24,Fire Sworn 5x8,all,all
+STORM 6.25.24,Union,all,all
+STORM 6.25.24,Police Sworn Det,all,all
+TEMP,Temp W/Ben,all,all
+TEMP,Seasonal,all,all
+TEMP,Temp,all,all
+TEMP STORM 6.25,Temp,all,all
+TEMP STORM 6.25,Temp W/Ben,all,all
+TWB,Fire Sworn,all,all
+UA,Fire Sworn,all,all
+UA,Police Sworn Det,all,all
+UA,Exempt,all,all
+UA,Temp,all,all
+UA,Part Time Exempt,all,all
+UA,Fire Sworn 5x8,all,all
+UA,Police Sworn,all,all
+UA,Police Sworn Mgt,all,all
+UA,Non-Exempt,all,all
+UA,Union,all,all
+UA,Part Time Non-Exempt,all,all
+UB,Union,all,all
+UB1.5,Union,all,all
+UU,Fire Sworn 5x8,all,all
+UU,Fire Sworn,all,all
+UU,Union,all,all
+UU-T,Union,all,all
+WC,Police Sworn,all,all
+WC,Police Sworn Mgt,all,all
+WC,Non-Exempt,all,all
+WC,Exempt,all,all
+WC,Police Sworn Det,all,all
+WC,Union,all,all
+WCA,Exempt,all,all
+WCA,Fire Sworn 5x8,all,all
+WCA,Part Time Exempt,all,all
+WCA,Temp,all,all
+WCA,Police Sworn Det,all,all
+WCA,Union,all,all
+WCA,Fire Sworn,all,all
+WCA,Non-Exempt,all,all
+WCA,Part Time Non-Exempt,all,all
+WCA,Police Sworn,all,all
+WCA,Police Sworn Mgt,all,all
+HCE1.0,Exempt,Community and Family Resources,CFRD - Staff
+UU,Exempt,Controller,all
+REG_Fiber,Non-Exempt,Engineering,all
+REG_Fiber,Part Time Exempt,Engineering,all
+REG_Fiber,Exempt,Engineering,all
+REG_Fiber,Union,Engineering,all
+REG_Fiber,Part Time Non-Exempt,Engineering,all
+REG_MP_ADMIN,Non-Exempt,Engineering,all
+REG_MP_ADMIN,Exempt,Engineering,all
+REG_MP_DATA,Non-Exempt,Engineering,all
+REG_MP_DATA,Exempt,Engineering,all
+REG_MP_LONG,Non-Exempt,Engineering,all
+REG_MP_LONG,Exempt,Engineering,all
+REG_MP_OTHER,Non-Exempt,Engineering,all
+REG_MP_OTHER,Exempt,Engineering,all
+REG_MP_SHORT,Non-Exempt,Engineering,all
+REG_MP_SHORT,Exempt,Engineering,all
+REG_MP_TRANSPORT,Non-Exempt,Engineering,all
+REG_MP_TRANSPORT,Exempt,Engineering,all
+TEMP_Fiber,Temp,Engineering,all
+Acting Pay,Exempt,Fire,all
+Acting Pay,Non-Exempt,Fire,all
+Acting Pay,Fire Sworn,Fire,all
+BCSI,Exempt,Fire,Fire - Logistics
+BCSI,Fire Sworn,Fire,Fire - Logistics
+BR,Fire Sworn 5x8,Fire,all
+BR,Fire Sworn,Fire,all
+BR,Exempt,Fire,all
+BWP,Fire Sworn 5x8,Fire,all
+BWP,Fire Sworn,Fire,all
+CE1.0,Fire Sworn,Fire,Fire - Battalion Chiefs
+CE1.0,Fire Sworn 5x8,Fire,Fire - Battalion Chiefs
+Fire BRV,Fire Sworn 5x8,Fire,all
+Fire BRVADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+FIRE HLDVR,Fire Sworn,Fire,all
+FMLAFS,Exempt,Fire,all
+FMLAFS,Fire Sworn 5x8,Fire,all
+FMLAFS,Non-Exempt,Fire,all
+FMLAFSADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+FMLAU,Fire Sworn 5x8,Fire,all
+FMLAV,Non-Exempt,Fire,all
+FMLAV,Fire Sworn 5x8,Fire,all
+FMLAV,Exempt,Fire,all
+FMLAVADMIN,Fire Sworn 5x8,Fire,all
+H1.0,Fire Sworn 5x8,Fire,all
+H1.0,Fire Sworn,Fire,all
+H1.0,Fire Sworn,Fire,Fire - MIH Program
+H1.0,Fire Sworn,Fire,Fire - Prevention
+HCU,Fire Sworn 5x8,Fire,all
+HF,Fire Sworn,Fire,all
+HF,Exempt,Fire,all
+HF,Non-Exempt,Fire,all
+HF,Fire Sworn 5x8,Fire,Fire - Battalion Chiefs
+KELLYU,Fire Sworn 5x8,Fire,all
+KELLYU,Fire Sworn,Fire,Fire - Black Shift Group
+KELLYU,Fire Sworn,Fire,Fire - Gold Shift Group
+KELLYU,Fire Sworn,Fire,Fire - Logistics
+KELLYU,Fire Sworn,Fire,Fire - Red Shift Group
+KELLYU,Fire Sworn,Fire,Fire - Training
+KUADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+MAN UNS DUTY,Fire Sworn,Fire,Fire - Black Shift Group
+MAN UNS DUTY,Fire Sworn,Fire,Fire - Gold Shift Group
+MAN UNS DUTY,Fire Sworn,Fire,Fire - Red Shift Group
+MP,Fire Sworn,Fire,all
+MP,Fire Sworn 5x8,Fire,all
+MU,Fire Sworn,Fire,all
+MU,Exempt,Fire,all
+ONCALL FIRE,Non-Exempt,Fire,all
+ONCALL FIRE,Fire Sworn 5x8,Fire,all
+ONCALL FIRE,Exempt,Fire,all
+OT1.5 FIRE ADMIN,Exempt,Fire,all
+OT1.5 FIRE ADMIN,Non-Exempt,Fire,Fire - Admin
+OT1.5 FIRE ADMIN,Non-Exempt,Fire,Fire - Community Engagement
+OT1.5 FIRE ADMIN,Non-Exempt,Fire,Fire - MIH Program
+OT1.5 FIRE ADMIN,Non-Exempt,Fire,Fire - MIH Supervisors
+OT1.5 FIRE ADMIN,Non-Exempt,Fire,Fire - Prevention
+OT1.5 FIRE ADMIN,Fire Sworn 5x8,Fire,Fire - Training
+PENSEC,Fire Sworn,Fire,all
+PENSEC,Exempt,Fire,all
+PENSEC,Fire Sworn 5x8,Fire,all
+PTO,Fire Sworn 5x8,Fire,all
+PTO,Fire Sworn 5x8,Fire,all
+REG FIRE,Fire Sworn,Fire,all
+REG FIRE,Fire Sworn 5x8,Fire,Fire - Battalion Chiefs
+REG FIRE,Fire Sworn 5x8,Fire,Fire - Community Engagement
+REG FIRE,Fire Sworn 5x8,Fire,Fire - Deputy Chief
+REG FIRE BC,Fire Sworn,Fire,Fire - Battalion Chiefs
+REG UNSCH FIRE,Fire Sworn 5x8,Fire,all
+REG UNSCH FIRE,Fire Sworn,Fire,all
+SBU,Fire Sworn 5x8,Fire,all
+SBUF,Fire Sworn,Fire,all
+SBUF,Exempt,Fire,all
+SBUF,Fire Sworn 5x8,Fire,all
+SF,Non-Exempt,Fire,all
+SF,Fire Sworn,Fire,all
+SF,Exempt,Fire,all
+SF-WC,Fire Sworn,Fire,all
+SF-WC,Exempt,Fire,all
+SF-WC-ADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+SFADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+TWB,Non-Exempt,Fire,all
+TWB,Exempt,Fire,all
+UBADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+UBF,Fire Sworn 5x8,Fire,all
+UBF,Exempt,Fire,all
+UBF,Fire Sworn,Fire,all
+UBF,Non-Exempt,Fire,all
+UU,Non-Exempt,Fire,all
+UU,Exempt,Fire,all
+UU,Fire Sworn 5x8,Fire,all
+VU,Fire Sworn 5x8,Fire,all
+VU,Exempt,Fire,Fire - Admin
+VU,Fire Sworn,Fire,Fire - Black Shift Group
+VU,Fire Sworn,Fire,Fire - Gold Shift Group
+VU,Fire Sworn,Fire,Fire - Logistics
+VU,Fire Sworn,Fire,Fire - Red Shift Group
+VU,Fire Sworn,Fire,Fire - Training
+VUADMIN,Fire Sworn,Fire,Fire - Battalion Chiefs
+ARP_REG,Exempt,HAND,all
+ARP_REG,Non-Exempt,HAND,all
+CDBG_COVID,Non-Exempt,HAND,all
+CDBG_COVID,Temp,HAND,all
+CDBG_COVID,Exempt,HAND,all
+CDBG_COVID,Union,HAND,all
+CD_REG,Exempt,HAND,all
+CD_REG,Non-Exempt,HAND,all
+HAND-LIT,Non-Exempt,HAND,all
+HAND-LIT,Exempt,HAND,all
+HC_REG,Exempt,HAND,all
+HC_REG,Non-Exempt,HAND,all
+HOME_REG,Non-Exempt,HAND,all
+HOME_REG,Exempt,HAND,all
+HOUSE_REG,Non-Exempt,HAND,all
+HOUSE_REG,Exempt,HAND,all
+HPC_REG,Exempt,HAND,all
+HPC_REG,Non-Exempt,HAND,all
+NEIBOR_REG,Exempt,HAND,all
+NEIBOR_REG,Non-Exempt,HAND,all
+RENT_REG,Exempt,HAND,all
+RENT_REG,Part Time Non-Exempt,HAND,all
+RENT_REG,Non-Exempt,HAND,all
+TEMP_CD,Temp,HAND,all
+TEMP_CD_COVID,Temp,HAND,all
+TEMP_HC,Temp,HAND,all
+TEMP_HOUSE,Temp,HAND,all
+TEMP_HPC,Temp,HAND,all
+TEMP_NEIBOR,Temp,HAND,all
+TEMP_RENT,Temp,HAND,all
+TEMP_TITL6,Temp,HAND,all
+TITL6_REG,Exempt,HAND,all
+TITL6_REG,Non-Exempt,HAND,all
+UNSAFE_REG,Exempt,HAND,all
+UNSAFE_REG,Non-Exempt,HAND,all
+Car,Exempt,Parks,all
+Car,Union,Parks,all
+Reg DNR,Exempt,Parks,all
+Reg DNR,Union,Parks,all
+Reg DNR,Non-Exempt,Parks,all
+WC,Temp,Parks,Parks - Operations 2 (Adam Street)
+REG_MP_ADMIN,Non-Exempt,Planning and Transportation,all
+REG_MP_ADMIN,Exempt,Planning and Transportation,all
+REG_MP_DATA,Non-Exempt,Planning and Transportation,all
+REG_MP_DATA,Exempt,Planning and Transportation,all
+REG_MP_LONG,Non-Exempt,Planning and Transportation,all
+REG_MP_LONG,Exempt,Planning and Transportation,all
+REG_MP_OTHER,Non-Exempt,Planning and Transportation,all
+REG_MP_OTHER,Exempt,Planning and Transportation,all
+REG_MP_SHORT,Non-Exempt,Planning and Transportation,all
+REG_MP_SHORT,Exempt,Planning and Transportation,all
+REG_MP_TRANSPORT,Non-Exempt,Planning and Transportation,all
+REG_MP_TRANSPORT,Exempt,Planning and Transportation,all
+ADLVPAY-BPD,Police Sworn Det,Police,all
+ADLVPAY-BPD,Police Sworn,Police,all
+ADLVPAY-BPD,Police Sworn Mgt,Police,all
+BLBB-8.0,Police Sworn Mgt,Police,all
+BLBB-8.0,Police Sworn,Police,all
+BLBB-8.0,Police Sworn Det,Police,all
+BLBB-8.5,Police Sworn Mgt,Police,all
+BLBB-8.5,Police Sworn,Police,all
+BLFMLA,Police Sworn Det,Police,all
+BLFMLA,Police Sworn,Police,all
+BLFMLA,Police Sworn Mgt,Police,all
+BLU,Police Sworn,Police,all
+BLU,Police Sworn Mgt,Police,all
+BLU 5X8,Police Sworn Det,Police,all
+BLU 5X8,Police Sworn Mgt,Police,all
+CE1.0 STORM 6.25,Police Sworn Det,Police,all
+CE1.0 STORM 6.25,Police Sworn Mgt,Police,all
+CEt1.0,Police Sworn,Police,all
+CEt1.0,Police Sworn Det,Police,all
+CEt1.0,Police Sworn Mgt,Police,all
+CEt1.0,Exempt,Police,all
+CEt1.0,Part Time Non-Exempt,Police,all
+CEt1.0,Non-Exempt,Police,all
+CEt1.0,Part Time Exempt,Police,all
+CEt1.5,Police Sworn,Police,all
+CEt1.5,Police Sworn Det,Police,all
+CEt1.5,Police Sworn Mgt,Police,all
+CEt1.5,Non-Exempt,Police,all
+CEt1.5,Part Time Non-Exempt,Police,all
+FMLA SP,Police Sworn Det,Police,all
+FMLA SP,Police Sworn,Police,all
+FMLA SP,Police Sworn Mgt,Police,all
+FMLAU,Police Sworn,Police,all
+H1.0 (Dispatch),Non-Exempt,Police,Police - Dispatch
+HCBB-CEDC,Non-Exempt,Police,Police - Dispatch
+HCBB-CEDC,Non-Exempt,Police,Police - Dispatch Supervisors
+HCE1.0,Exempt,Police,all
+HCE1.0,Non-Exempt,Police,all
+HCE1.5,Non-Exempt,Police,all
+MP,Exempt,Police,Police - Dispatch
+MU,Exempt,Police,Police - Dispatch
+ONCALL DISP,Non-Exempt,Police,Police - Dispatch
+ONCALL DISP,Part Time Non-Exempt,Police,Police - Dispatch
+ONCALL DISP,Exempt,Police,Police - Dispatch Admin
+ONCALL DISP,Exempt,Police,Police - Dispatch Supervisors
+ONCALL DISP,Non-Exempt,Police,Police - Dispatch Supervisors
+OT1.5 - PEO,Non-Exempt,Police,PW - Parking Staff
+OTDOC,Police Sworn Det,Police,all
+OTDOC,Police Sworn Mgt,Police,all
+OTSPt,Police Sworn Det,Police,all
+OTSPt,Police Sworn,Police,all
+OTSPt,Police Sworn Mgt,Police,all
+OTt1.0,Police Sworn,Police,all
+OTt1.0,Police Sworn Mgt,Police,all
+OTt1.5,Police Sworn,Police,all
+OTt1.5,Police Sworn Mgt,Police,all
+OTt1.5,Non-Exempt,Police,all
+OTt1.5,Part Time Non-Exempt,Police,all
+OTt1.5,Police Sworn Det,Police,all
+PROF HRS,Police Sworn Mgt,Police,Police - Admin
+PROF HRS,Police Sworn,Police,Police - Admin
+REF BONUS,Police Sworn,Police,all
+Reg,Non-Exempt,Police,Police - DRO
+Reg HP,Non-Exempt,Police,Police - Admin
+Reg HP,Non-Exempt,Police,Police - Dispatch
+Reg HP,Non-Exempt,Police,Police - Dispatch Supervisors
+Reg HP,Non-Exempt,Police,Police - Records
+Reg HP,Non-Exempt,Police,Police - SSS
+Reg HP,Non-Exempt,Police,Police - Super Admin
+SP,Police Sworn,Police,all
+SP,Police Sworn Mgt,Police,all
+SP,Police Sworn Det,Police,all
+UBP,Police Sworn,Police,all
+UBP,Police Sworn Det,Police,all
+BWP1.5 SNOW,Union,Public Works,PW - Street - Staff (Union)
+Car,Exempt,Public Works,all
+Car,Union,Public Works,all
+CE1.0,Part Time Non-Exempt,Public Works,all
+CE1.0,Non-Exempt,Public Works,PW - Parking Staff
+CE1.0,Exempt,Public Works,PW - Parking Staff
+CE1.5,Non-Exempt,Public Works,PW - Animal Shelter - Staff Managers
+CE1.5,Non-Exempt,Public Works,PW - Parking Staff
+CES1.5,Union,Public Works,PW - Street - Staff (Union)
+CES2.0,Union,Public Works,PW - Street - Staff (Union)
+COS,Union,Public Works,PW - Street - Staff (Union)
+COSHS,Union,Public Works,PW - Street - Staff (Union)
+COT,Exempt,Public Works,PW - Division Heads
+COT,Exempt,Public Works,PW - Street - Admin
+COT,Non-Exempt,Public Works,PW - Street - Admin
+CRP CU,Exempt,Public Works,PW - Division Heads
+CRP CU,Non-Exempt,Public Works,PW - Street - Admin
+CRP CU,Exempt,Public Works,PW - Street - Admin
+CRP CU,Union,Public Works,PW - Street - Staff (Union)
+CRP Holiday,Exempt,Public Works,PW - Division Heads
+CRP Holiday,Non-Exempt,Public Works,PW - Street - Admin
+CRP Holiday,Exempt,Public Works,PW - Street - Admin
+CRP Holiday,Union,Public Works,PW - Street - Staff (Union)
+CRP OT1.5,Exempt,Public Works,PW - Division Heads
+CRP OT1.5,Non-Exempt,Public Works,PW - Street - Admin
+CRP OT1.5,Exempt,Public Works,PW - Street - Admin
+CRP OT1.5,Union,Public Works,PW - Street - Staff (Union)
+CRP OT2.0,Exempt,Public Works,PW - Division Heads
+CRP OT2.0,Non-Exempt,Public Works,PW - Street - Admin
+CRP OT2.0,Exempt,Public Works,PW - Street - Admin
+CRP OT2.0,Union,Public Works,PW - Street - Staff (Union)
+CRP PTO,Exempt,Public Works,PW - Division Heads
+CRP PTO,Non-Exempt,Public Works,PW - Street - Admin
+CRP PTO,Exempt,Public Works,PW - Street - Admin
+CRP PTO,Union,Public Works,PW - Street - Staff (Union)
+CRP Reg,Exempt,Public Works,PW - Division Heads
+CRP Reg,Non-Exempt,Public Works,PW - Street - Admin
+CRP Reg,Exempt,Public Works,PW - Street - Admin
+CRP Reg,Union,Public Works,PW - Street - Staff (Union)
+CRP SBU,Exempt,Public Works,PW - Division Heads
+CRP SBU,Non-Exempt,Public Works,PW - Street - Admin
+CRP SBU,Exempt,Public Works,PW - Street - Admin
+CRP SBU,Union,Public Works,PW - Street - Staff (Union)
+CUS,Union,Public Works,PW - Street - Staff (Union)
+HCE1.0,Non-Exempt,Public Works,PW - Animal Shelter - Staff (non-union)
+HCE1.0,Non-Exempt,Public Works,PW - Animal Shelter - Staff Managers
+HCE1.0,Exempt,Public Works,PW - Division Heads
+HCE1.0,Non-Exempt,Public Works,PW - Parking Garage Staff
+HCE1.0,Non-Exempt,Public Works,PW - Parking Staff
+HCE1.0,Exempt,Public Works,PW - Parking Staff
+HCE1.0,Exempt,Public Works,PW - Parking Staff Managers
+HCE1.0,Non-Exempt,Public Works,PW - Parking Staff Managers
+HCE1.0,Non-Exempt,Public Works,PW - Sanitation - Admin
+HCE1.5,Non-Exempt,Public Works,PW - Animal Shelter - Staff Managers
+HCE1.5,Non-Exempt,Public Works,PW - Parking Staff
+HCE1.5,Non-Exempt,Public Works,PW - Sanitation - Admin
+HCE1.5,Union,Public Works,PW - Street - Staff (Union)
+MP,Union,Public Works,PW - Street - Staff (Union)
+MU,Union,Public Works,PW - Street - Staff (Union)
+MVH,Exempt,Public Works,all
+MVH,Union,Public Works,all
+MVH - HP,Union,Public Works,all
+MVH - OT,Union,Public Works,all
+MVH - PTO,Union,Public Works,all
+MVH - SBU,Union,Public Works,all
+MVH -CU,Union,Public Works,all
+ONCALL,Non-Exempt,Public Works,PW - Parking Garage Staff
+ONCALL,Temp,Public Works,PW - Parking Garage Staff
+OT1.0,Part Time Non-Exempt,Public Works,PW - Animal Shelter - Staff (non-union)
+OT1.0,Non-Exempt,Public Works,PW - Animal Shelter - Staff (non-union)
+OT1.0,Exempt,Public Works,PW - Street - Admin
+OT1.5,Part Time Non-Exempt,Public Works,PW - Animal Shelter - Staff (non-union)
+OT1.5,Non-Exempt,Public Works,PW - Animal Shelter - Staff (non-union)
+OT1.5,Non-Exempt,Public Works,PW - Animal Shelter - Staff Managers
+OT1.5,Non-Exempt,Public Works,PW - Sanitation - Admin
+OTS1.5,Union,Public Works,PW - Street - Staff (Union)
+OTS2.0,Union,Public Works,PW - Street - Staff (Union)
+REG SNOW,Union,Public Works,PW - Street - Staff (Union)
+REG_ASSET,Exempt,Public Works,PW - Division Heads
+REG_ASSET,Non-Exempt,Public Works,PW - Staff 2
+REG_ASSET,Exempt,Public Works,PW - Staff 2
+REG_ASSET,Exempt,Public Works,PW - Street - Admin
+REG_ASSET,Non-Exempt,Public Works,PW - Street - Admin
+USCC,Union,Public Works,PW - Street - Staff (Union)
+USCC COMP,Union,Public Works,PW - Street - Staff (Union)
+USCC HOLIDAY,Union,Public Works,PW - Street - Staff (Union)
+USCC PTO,Union,Public Works,PW - Street - Staff (Union)
+USCC SICK,Union,Public Works,PW - Street - Staff (Union)
+USCCOT1.5,Union,Public Works,PW - Street - Staff (Union)
+USCCOT2.0,Union,Public Works,PW - Street - Staff (Union)
+UU,Non-Exempt,Public Works,PW - Animal Shelter - Staff Managers
+UU,Non-Exempt,Public Works,PW - Parking Garage Staff
+UU-T,Exempt,Public Works,PW - Division Heads 2
+UU-T,Non-Exempt,Public Works,PW - Parking Staff
+UU-T,Non-Exempt,Public Works,PW - Parking Staff Managers
+UU-T,Exempt,Public Works,PW - Parking Staff Managers
+WC,Temp,Public Works,PW - Sanitation - Staff
+Car,Non-Exempt,Utilities,all
+Car,Exempt,Utilities,all
+Car,Union,Utilities,all
+CE1.0,Exempt,Utilities,all
+CE1.5,Non-Exempt,Utilities,all
+CE1.5,Part Time Non-Exempt,Utilities,Utilities - Environmental Water Quality
+HCE1.0,Non-Exempt,Utilities,Utilities - Communications
+HCE1.5,Non-Exempt,Utilities,all
+ONCALL,Non-Exempt,Utilities,Utilities - Engineering Inspectors & Techs
+ONCALL,Non-Exempt,Utilities,Utilities - Stormwater Maintenance
+ONCALL,Non-Exempt,Utilities,Utilities - T&D Assistant Superintendents
+ONCALL,Exempt,Utilities,Utilities - T&D Assistant Superintendents
+OT1.0,Exempt,Utilities,all
+OT1.5,Non-Exempt,Utilities,all
+OT1.5,Part Time Non-Exempt,Utilities,Utilities - Environmental Water Quality
+OT2.0,Non-Exempt,Utilities,all

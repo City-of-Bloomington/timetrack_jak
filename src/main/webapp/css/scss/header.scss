@@ -1,0 +1,67 @@
+header {
+  background-color: $header-background-color;
+  border-top: $header-border-top;
+  padding:$header-padding;
+
+  &.proxy {
+    background-color: $header-proxy-background-color;
+    border-bottom: $header-proxy-border-bottom;
+  }
+
+  a {
+    color: $header-a-text-color;
+  }
+
+  .container { display: flex; }
+
+  .brand {
+    a { text-decoration: none; }
+
+    svg,
+    img {
+      float: $header-brand-img-float;
+      width: $header-brand-img-width;
+      height: $header-brand-img-height;
+      margin: $header-brand-img-margin;
+    }
+
+    h1,
+    h2 {
+      vertical-align: top;
+      margin: $header-brand-heading-margin;
+      padding: $header-brand-heading-padding;
+      color: $header-brand-heading-text-color;
+      font-weight: $header-brand-heading-font-weight;
+    }
+
+    h1 { font-size: $header-brand-h1-font-size; }
+    h2 { font-size: $header-brand-h2-font-size; }
+
+    .site-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+  }
+
+  .dropdown-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto; // this brings the element right
+  }
+}
+
+@media all and (-ms-high-contrast:none) {
+  /* IE11 */
+  *::-ms-backdrop, .site-title {
+    margin-top: 20px;
+    display: block !important;
+  }
+
+  *::-ms-backdrop, header .brand svg {
+    max-width: 64px !important;
+    max-height: 64px !important;
+  }
+}

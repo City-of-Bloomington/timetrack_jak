@@ -18,7 +18,7 @@
           </div>
 
           <div class="button-group">
-            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='previousPayPeriod.id' />"
+            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='previousPayPeriod_id' />"
                tabindex="3"
                class="button hide-text has-icon chevron-left"
                alt="Previous Pay Period"
@@ -26,7 +26,7 @@
                <span>Backwards</span>
             </a>
 
-            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='currentPayPeriod.id' />"
+            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='currentPayPeriod_id' />"
                tabindex="3"
                class="button today"
                alt="Current Pay Period"
@@ -34,7 +34,7 @@
                <span>Current Pay Period</span>
             </a>
 
-            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='nextPayPeriod.id' />"
+            <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='nextPayPeriod_id' />"
                tabindex="3"
                class="button hide-text has-icon chevron-right"
                alt="Forward Pay Period"
@@ -45,27 +45,26 @@
         </div>
 
         <h1 class="month-year">
-          <s:property value="payPeriod.monthNames" /> <s:property value="payPeriod.startYear" />
+          <s:property value="monthNames" /> <s:property value="startYear" />
         </h1>
 
         <div class="job-select">
-          <label for="job_id"><b>Job:</b></label><br>
-					<s:if test="hasJobTypes()">
-						<s:select
-							tabindex="4"
-							name="job_id"
-							value="%{job_id}"
-							list="jobTypes"
-							listKey="id"
-							listValue="name"
-							onchange="this.form.submit()" />
-					</s:if>
+            <label for="job_id"><b>Job:</b></label><br>
+	    <s:if test="hasJobTypes()">
+		<s:select
+		    tabindex="4"
+			      name="job_id"
+			      value="%{job_id}"
+			      list="jobTypes"
+			      listKey="id"
+			      listValue="name"
+			      onchange="this.form.submit()" />
+	    </s:if>
         </div>
       </s:if>
-
       <s:else>
         <div class="button-group">
-          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='previousPayPeriod.id' />"
+          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='previousPayPeriod_id' />"
              tabindex="3"
              class="button hide-text has-icon chevron-left"
              alt="Previous Pay Period"
@@ -73,7 +72,7 @@
              <span>Backwards</span>
           </a>
 
-          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='currentPayPeriod.id' />"
+          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='currentPayPeriod_id' />"
              tabindex="3"
              class="button today"
              alt="Current Pay Period"
@@ -81,7 +80,7 @@
              <span>Current Pay Period</span>
           </a>
 
-          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='nextPayPeriod.id' />"
+          <a href="<s:property value='#application.url' />timeDetails.action?pay_period_id=<s:property value='nextPayPeriod_id' />"
              tabindex="3"
              class="button hide-text has-icon chevron-right"
              alt="Forward Pay Period"
@@ -91,7 +90,7 @@
         </div>
 
         <h1 class="month-year">
-          <s:property value="payPeriod.monthNames" /> <s:property value="payPeriod.startYear" />
+          <s:property value="monthNames" /> <s:property value="startYear" />
         </h1>
 
         <div>

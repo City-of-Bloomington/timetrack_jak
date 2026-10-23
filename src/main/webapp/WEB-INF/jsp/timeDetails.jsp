@@ -22,9 +22,9 @@ function loginTimer() {
 	    <s:set var="messages" value="%{messages}" />
 	    <%@ include file="messages.jsp" %>
 	</s:if>
-	<s:if test="document.hasDailyBlocks()">
-	    <s:set var="dailyBlocks" value="document.dailyBlocks" />
-	    <s:set var="dayBlocksMap" value="document.dayBlocksMap" />
+	<s:if test="hasDailyBlocks()">
+	    <s:set var="dailyBlocks" value="dailyBlocks" />
+	    <s:set var="dayBlocksMap" value="dayBlocksMap" />
 	</s:if>
 	<s:if test="isNotEditable()">
 	    <div class="alert"><p><b>Note:</b> Time Details (View Only)</p></div>
@@ -51,7 +51,7 @@ function loginTimer() {
 		<a class="button pay-notes" data-doc-id="<s:property value='%{document.id}' />">Add Pay Period Note</a>
 		
 		<s:if test="hasLastWorkflow()" >
-		    <s:if test="document.lastWorkflow.canSubmit()">
+		    <s:if test="canSubmit()">
 			<s:if test="isUserCurrentEmployee() || canApprove() || canProcess()">
 			    <form action="<s:property value='#application.url' />timeAction" id="form_id" class="timesheet-submit" method="post" >
 				<input type="hidden" name="source" value="timeDetails" />
@@ -79,8 +79,8 @@ function loginTimer() {
 			</s:else>
 		</s:if>
 	    </div>
-	    <s:set var="week1DateRange" value="payPeriod.week1DateRange" />
-	    <s:set var="week2DateRange" value="payPeriod.week2DateRange" />
+	    <s:set var="week1DateRange" value="week1DateRange" />
+	    <s:set var="week2DateRange" value="week2DateRange" />
 	    
 	    <hr class="m-b-40" />
 	    <s:if test="hasMultipleJobs()">
@@ -100,22 +100,22 @@ function loginTimer() {
 		</s:else>
 	    </s:if>
 	    <s:else>
-		<s:set var="payPeriodTotal" value="document.payPeriodTotal" />
-		<s:set var="payPeriodAmount" value="document.payPeriodAmount" />
+		<s:set var="payPeriodTotal" value="payPeriodTotal" />
+		<s:set var="payPeriodAmount" value="payPeriodAmount" />
 		<s:set var="daily" value="document.daily" />
-		<s:set var="week1Total" value="document.week1Total" />
-		<s:set var="week2Total" value="document.week2Total" />
+		<s:set var="week1Total" value="week1Total" />
+		<s:set var="week2Total" value="week2Total" />
 		<s:if test="document.isUnionned()">
 		    <s:set var="unionned" value="'true'" />
-		    <s:set var="week1Flsa" value="document.week1_flsa" />
-		    <s:set var="week2Flsa" value="document.week2_flsa" />
+		    <s:set var="week1Flsa" value="week1_flsa" />
+		    <s:set var="week2Flsa" value="week2_flsa" />
 		</s:if>
 		<s:else>
 		    <s:set var="unionned" value="'false'" />
 		</s:else>
 	    </s:else>
-	    <s:if test="document.hasLeaveRequests()">
-		<s:set var="leave_requests" value="document.leaveRequests" />
+	    <s:if test="hasLeaveRequests()">
+		<s:set var="leave_requests" value="leaveRequests" />
 		<s:set var="leaves_title" value="'Approved Leave in this Pay Period'" />
 		<%@ include file="leaves_approved.jsp" %>
 	    </s:if>
@@ -126,8 +126,8 @@ function loginTimer() {
 		</s:if>
 	    </s:if>
 	    <s:else>
-		<s:if test="document.hasWarnings()">
-		    <s:set var="warnings" value="document.warnings" />
+		<s:if test="hasWarnings()">
+		    <s:set var="warnings" value="warnings" />
 		    <%@ include file="warnings.jsp" %>
 		</s:if>
 	    </s:else>
@@ -161,21 +161,21 @@ function loginTimer() {
 			</s:if>
 		    </s:if>
 		    <s:else> <!-- multiple jobs but show one only -->
-			<s:if test="document.hasTmwrpRun()">
-			    <s:if test="document.tmwrpRun.hasWeek1Rows()">
-				<s:set var="rows" value="document.tmwrpRun.week1Rows" />
+			<s:if test="hasTmwrpRun()">
+			    <s:if test="hasWeek1Rows()">
+				<s:set var="rows" value="week1Rows" />
 				<s:set var="weeklyTitle" value="'Week 1 (Earn Codes)'" />
 				<s:set var="whichWeek" value="'week-one'" />
 				<%@ include file="weeklyTmwrp.jsp" %>
 			    </s:if>
-			    <s:if test="document.tmwrpRun.hasWeek2Rows()">
-				<s:set var="rows" value="document.tmwrpRun.week2Rows" />
+			    <s:if test="hasWeek2Rows()">
+				<s:set var="rows" value="week2Rows" />
 				<s:set var="weeklyTitle" value="'Week 2 (Earn Codes)'" />
 				<s:set var="whichWeek" value="'week-one'" />
 				<%@ include file="weeklyTmwrp.jsp" %>
 			    </s:if>
-			    <s:if test="document.tmwrpRun.hasCycleRows()">
-				<s:set var="rows" value="document.tmwrpRun.cycleRows" />
+			    <s:if test="hasCycleRows()">
+				<s:set var="rows" value="cycleRows" />
 				<%@ include file="cycleRowsTmwrp.jsp" %>
 			    </s:if>			    
 			</s:if>
@@ -198,22 +198,22 @@ function loginTimer() {
 		    </s:else>
 		</s:if>
 		<s:else> <!-- one job only -->
-		    <s:if test="document.hasTmwrpRun()">
-			<s:if test="document.tmwrpRun.hasRows()"> </s:if>
-			<s:if test="document.tmwrpRun.hasWeek1Rows()">
-			    <s:set var="rows" value="document.tmwrpRun.week1Rows" />
+		    <s:if test="hasTmwrpRun()">
+			<s:if test="hasWeek1Rows()"> </s:if>
+			<s:if test="hasWeek1Rows()">
+			    <s:set var="rows" value="week1Rows" />
 			    <s:set var="weeklyTitle" value="'Week 1 (Earn Codes)'" />
 			    <s:set var="whichWeek" value="'week-one'" />
 			    <%@ include file="weeklyTmwrp.jsp" %>
 			</s:if>
-			<s:if test="document.tmwrpRun.hasWeek2Rows()">
-			    <s:set var="rows" value="document.tmwrpRun.week2Rows" />
+			<s:if test="hasWeek2Rows()">
+			    <s:set var="rows" value="week2Rows" />
 			    <s:set var="weeklyTitle" value="'Week 2 (Earn Codes)'" />
 			    <s:set var="whichWeek" value="'week-two'" />
 			    <%@ include file="weeklyTmwrp.jsp" %>
 			</s:if>
-			<s:if test="document.tmwrpRun.hasCycleRows()">
-			    <s:set var="rows" value="document.tmwrpRun.cycleRows" />
+			<s:if test="hasCycleRows()">
+			    <s:set var="rows" value="cycleRows" />
 			    <%@ include file="cycleRowsTmwrp.jsp" %>
 			</s:if>
 		    </s:if>
@@ -237,19 +237,19 @@ function loginTimer() {
 		    -->
 		</s:else>
 	    </div>
-	    <s:if test="document.isProcessed()">
+	    <s:if test="isProcessed()">
 		<ul>
 		    <s:if test="hasAccruals()">
 			<li>
-			    <strong>Available Accruals</strong> <s:property value="document.employeeAccrualsShort" />
+			    <strong>Available Accruals</strong> <s:property value="employeeAccrualsShort" />
 			</li>
 		    </s:if>
-		    <s:if test="document.hasJob()">
+		    <s:if test="hasJob()">
 			<li>
-			    <strong>Weekly Standard Work Hrs: </strong> <s:property value="document.job.weekly_regular_hours" />
+			    <strong>Weekly Standard Work Hrs: </strong> <s:property value="weekly_regular_hours" />
 			</li>
 			<li>
-			    <strong>Weekly Compt Time Earned After Hrs: </strong> <s:property value="document.job.comp_time_weekly_hours" />
+			    <strong>Weekly Compt Time Earned After Hrs: </strong> <s:property value="comp_time_weekly_hours" />
 			</li>
 		    </s:if>
 		</ul>
@@ -258,20 +258,24 @@ function loginTimer() {
 		<%@ include file="accrualSummary.jsp" %>
 	    </s:else>
 	    <%@ include file="timeIssues.jsp" %>
-	    <s:if test="document.hasUnscheduleds()">
+	    <s:if test="hasUnscheduleds()">
 		<s:set var="unscheduledTitle" value="'Unscheduled Times'" />				
-		<s:set var="unscheduleds" value="document.unscheduleds" />
+		<s:set var="unscheduleds" value="unscheduleds" />
 		<%@ include file="unscheduledTimes.jsp" %>				
 	    </s:if>			
 	    <s:if test="canCancelAction()">
 		<s:set var="canCancelAction" value="'true'" />
 	    </s:if>
-	    <%@ include file="timeActions.jsp" %>
-	    <%@ include file="blockNotes.jsp" %>
-	    <%@ include file="timeNotes.jsp" %>
+	    <s:if test="hasTimeActions">
+		<s:set var="timeActions" value="timeActions" />
+		<%@ include file="timeActions.jsp" %>		
+	    </s:if>
+	    <s:if test="hasTimeNotes()">
+		<%@ include file="timeNotes.jsp" %>
+	    </s:if>
 	    <br />
 		<h1>Time Log History</h1>
-		<a href="<s:property value='#application.url' />timeBlockLog.action?document_id=<s:property value='document.id' />">(view)</a>
+		<a href="<s:property value='#application.url' />timeBlockLog.action?document_id=<s:property value='document_id' />">(view)</a>
 	</div>
     </s:if>
 </div>

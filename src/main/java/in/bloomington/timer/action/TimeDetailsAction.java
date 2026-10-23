@@ -14,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.action.SessionAware;
 import org.apache.struts2.action.ServletContextAware;
 import org.apache.struts2.interceptor.parameter.StrutsParameter;
+import org.javatuples.Triplet;
 import in.bloomington.timer.list.*;
 import in.bloomington.timer.bean.*;
 import in.bloomington.timer.util.Helper;
@@ -547,6 +548,39 @@ public class TimeDetailsAction extends TopAction{
 	    annuance = al.getCurrentAnnuance();
 	}
     }
+    public String getWeek1DateRange(){
+	if(payPeriod == null)
+	    getPayPeriod();
+	return payPeriod.getWeek1DateRange();
+    }
+    public String getWeek2DateRange(){
+	if(payPeriod == null)
+	    getPayPeriod();
+	return payPeriod.getWeek2DateRange();
+    }
+    public String getNextPayPeriod_id(){
+	return getNextPayPeriod().getId();
+    }
+    public String getPreviousPayPeriod_id(){
+	return getPreviousPayPeriod().getId();
+    }
+    public String getMonthNames(){
+	getPayPeriod();
+	return payPeriod.getMonthNames();
+    }
+    public int getStartYear(){
+	getPayPeriod();
+	return payPeriod.getStartYear();	
+    }
+    public String getCurrentPayPeriod_id(){
+	return getCurrentPayPeriod().getId();
+    }    
+    public String getPayPeriodTotal(){
+	return document.getPayPeriodTotal();
+    }
+    public String getPayPeriodAmount(){
+	return document.getPayPeriodAmount();
+    }
     public boolean hasAnnuance(){
 	findCurrentAnnuance();
 	return annuance != null;
@@ -554,16 +588,19 @@ public class TimeDetailsAction extends TopAction{
     public boolean hasDailyBlocks(){
 	return document.hasDailyBlocks();
     }
-    @StrutsParameter(depth = 3)
+    @StrutsParameter(depth = 5)
     public Map<Integer, List<TimeBlock>> getDailyBlocks(){
 	return document.getDailyBlocks();
     }
-    @StrutsParameter(depth = 3)
+    @StrutsParameter(depth = 5)
     public Map<Integer, DayBlocks> getDayBlocksMap(){
 	return document.getDayBlocksMap();
     }
     public boolean hasLastWorkflow(){
 	return document.hasLastWorkflow();
+    }
+    public boolean hasAccruals(){
+	return document.hasAccruals();
     }
     public boolean canSubmit(){
 	return document.getLastWorkflow().canSubmit();
@@ -577,7 +614,85 @@ public class TimeDetailsAction extends TopAction{
     public String getWeek2Total(){
 	return document.getWeek2Total();
     }
-    
+    public String getWeek1_flsa(){
+	return document.getWeek1_flsa();
+    }
+    public String getWeek2_flsa(){
+	return document.getWeek2_flsa();
+    }
+    public boolean hasWarnings(){
+	return document.hasWarnings();
+    }
+    @StrutsParameter(depth=2)
+    public List<String> getWarnings(){
+	return document.getWarnings();
+    }
+    public boolean hasTimeActions(){
+	return document.hasTimeActions();
+    }
+    @StrutsParameter(depth=4)
+    public List<TimeAction> getTimeActions(){
+	return document.getTimeActions();
+    }
+    public boolean hasTimeNotes(){
+	return document.hasTimeNotes();
+    }
+    @StrutsParameter(depth=2)
+    public List<TimeNote> getTimeNotes(){
+	return document.getTimeNotes();
+    }    
+    public boolean hasTmwrpRun(){
+	return document.hasTmwrpRun();
+    }
+    public int getWeekly_regular_hours(){
+	getJob();
+	return job.getWeekly_regular_hours();
+    }
+    public int getComp_time_weekly_hours(){
+	getJob();
+	return job.getComp_time_weekly_hours();
+    }
+    public boolean hasUnscheduleds(){
+	return document.hasUnscheduleds();
+    }
+    @StrutsParameter(depth=2)    
+    public List<Triplet<String, String, String>> getUnscheduleds(){
+	return document.getUnscheduleds();
+    }
+    public String getEmployeeAccrualsShort(){
+	return document.getEmployeeAccrualsShort();
+    }
+    public boolean isProcessed(){
+	return document.isProcessed();
+    }
+    public boolean hasWeek1Rows(){
+	return document.getTmwrpRun().hasWeek1Rows();
+    }
+    public boolean hasWeek2Rows(){
+	return document.getTmwrpRun().hasWeek2Rows();
+    }
+    @StrutsParameter(depth=3)
+    public List<List<String>> getWeek1Rows(){
+	return document.getTmwrpRun().getWeek1Rows();
+    }
+    @StrutsParameter(depth=3)
+    public List<List<String>> getWeek2Rows(){
+	return document.getTmwrpRun().getWeek2Rows();
+    }
+    public boolean hasCycleRows(){
+	return document.getTmwrpRun().hasCycleRows();
+    }
+    @StrutsParameter(depth=3)
+    public List<List<String>> getCycleRows(){
+	return document.getTmwrpRun().getCycleRows();
+    }
+    public boolean hasLeaveRequests(){
+	return document.hasLeaveRequests();
+    }
+    @StrutsParameter(depth=3)
+    public List<LeaveRequest> getLeaveRequests(){
+	return document.getLeaveRequests();
+    }
     @StrutsParameter(depth=2)
     public Annuancement getAnnuance(){
 	return annuance;

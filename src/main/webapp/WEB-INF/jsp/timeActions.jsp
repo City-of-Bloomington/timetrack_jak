@@ -1,8 +1,5 @@
 
-<s:set var="timeActions" value="document.timeActions" />
-
-
-<s:if test="document.hasTimeActions()">
+<s:if test="hasTimeActions()">
     <table class="width-full action-history">
 	<caption style="text-align:left;font-weight:bold">
 	    Action History
@@ -23,7 +20,7 @@
 		    <th>Cancel Action</th>
 		</s:if>
 		</tr>
-		<s:iterator var="one" value="document.timeActions">
+		<s:iterator var="one" value="#timeActions">
 		<tr>
 		    <td><s:property value="actioner" /></td>
 		    <td>&nbsp;</td>

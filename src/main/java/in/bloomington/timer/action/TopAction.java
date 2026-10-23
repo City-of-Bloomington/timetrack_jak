@@ -357,6 +357,7 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     public boolean hasErrors(){
 	return errors != null && errors.size() > 0;
     }
+    @StrutsParameter(depth=2)         
     public List<String> getErrors(){
 	return errors;
     }
@@ -396,7 +397,8 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     }
     public boolean hasMessages(){
 	return messages != null && messages.size() > 0;
-    }		
+    }
+    @StrutsParameter(depth=2)         
     public List<String> getMessages(){
 	return messages;
     }

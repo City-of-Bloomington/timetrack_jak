@@ -67,6 +67,9 @@ public class TimeDetailsAction extends TopAction{
 	if(showAllJobs()){
 	    ret = "view";
 	}
+	System.err.println(" doc id "+document_id);
+	System.err.println(" dailyblocks "+getDailyBlocks().size());
+	System.err.println(" dayblocksMap "+getDayBlocksMap().size());	
 	return ret;
     }
     public String getTimeBlocksTitle(){
@@ -231,7 +234,7 @@ public class TimeDetailsAction extends TopAction{
 	}
 	return mjdoc;
     }
-    @StrutsParameter(depth=2)    
+    @StrutsParameter(depth=3)    
     public Document getDocument(){
 	if(document == null && !document_id.isEmpty()){
 	    Document one = new Document(document_id);
@@ -588,11 +591,11 @@ public class TimeDetailsAction extends TopAction{
     public boolean hasDailyBlocks(){
 	return document.hasDailyBlocks();
     }
-    @StrutsParameter(depth = 5)
+    @StrutsParameter(depth = 6)
     public Map<Integer, List<TimeBlock>> getDailyBlocks(){
 	return document.getDailyBlocks();
     }
-    @StrutsParameter(depth = 5)
+    @StrutsParameter(depth = 6)
     public Map<Integer, DayBlocks> getDayBlocksMap(){
 	return document.getDayBlocksMap();
     }

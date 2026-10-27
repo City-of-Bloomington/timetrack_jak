@@ -29,15 +29,11 @@ public class SearchEmployeeAction extends TopAction{
     List<Employee> employees = null;
     List<Type> departments = null;
     String department_id = "";
+    Employee emp = null; // search employee 
     public String execute(){
 	String ret = SUCCESS;
 	String back = "";
-	/** this will cause 404, instead it will go to login
-	back = canProceed("searchEmployees.action");
-	if(!back.isEmpty()){
-	    return back;
-	}
-	*/
+	System.err.println("action "+action);
 	if(!action.isEmpty()){
 	    back = emplst.find();
 	    if(back.isEmpty()){
@@ -75,13 +71,14 @@ public class SearchEmployeeAction extends TopAction{
 	getEmplst();
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public EmployeeList getEmplst(){ 
 	if(emplst == null){
 	    emplst = new EmployeeList();
 	}		
 	return emplst;
     }
-
+    @StrutsParameter(depth=3)    
     public void setEmplst(EmployeeList val){
 	if(val != null){
 	    emplst = val;
@@ -89,10 +86,12 @@ public class SearchEmployeeAction extends TopAction{
     }
     // needed for auto  complete and limit the user
     // to his/her department
-		
+    		
     public String getDepartment_id(){
 	return department_id;
     }
+
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null)
 	    department_id = val;
@@ -107,10 +106,11 @@ public class SearchEmployeeAction extends TopAction{
     public boolean hasEmployees(){
 	return employees != null && employees.size() > 0;
     }
-
+    @StrutsParameter(depth=3)
     public List<Employee> getEmployees(){
 	return employees;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

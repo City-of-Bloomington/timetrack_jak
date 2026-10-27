@@ -65,10 +65,12 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     ServletContext ctx;
     Map<String, Object> sessionMap;
 
+    @StrutsParameter(depth=1)    
     public void setAction(String val){
 	if(val != null)
 	    action = val;
     }
+    @StrutsParameter(depth=1)        
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())
 	    action = val;
@@ -76,6 +78,7 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     public String getAction(){
 	return action;
     }
+    @StrutsParameter(depth=1)    
     public void setId(String val){
 	if(val != null)
 	    id = val;
@@ -254,6 +257,7 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     String doPrepare(){
 	return doPrepare(null);
     }
+    @StrutsParameter(depth=1)    
     public void setEmployee_id(String val){
 	if(val != null && !val.isEmpty()){		
 	    employee_id = val;
@@ -262,6 +266,7 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
 	    }
 	}
     }
+    
     public String getEmployee_id(){
 	if(employee_id.isEmpty()){
 	    if(sessionMap != null && sessionMap.containsKey("employee_id")){
@@ -302,6 +307,12 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
 	    }
 	}
 	return employee;
+    }
+    public String getEmployee_name(){
+	getEmployee();
+	if(employee != null)
+	    return employee.getFull_name();
+	return "";
     }
     public boolean isAppInTestMode(){
 	return app_mode.equals("Test");
@@ -354,6 +365,7 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
 	if(messages.size() > 0)
 	    messages = new ArrayList<>();
     }
+    @StrutsParameter(depth=1)             
     public boolean hasErrors(){
 	return errors != null && errors.size() > 0;
     }

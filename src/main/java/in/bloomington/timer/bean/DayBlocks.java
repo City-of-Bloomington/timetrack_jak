@@ -7,6 +7,7 @@ package in.bloomington.timer.bean;
 import java.util.List;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+import org.apache.struts2.interceptor.parameter.StrutsParameter;
 import in.bloomington.timer.*;
 import in.bloomington.timer.util.*;
 import in.bloomington.timer.list.*;
@@ -42,6 +43,7 @@ public class DayBlocks{
 	    dayInt = tblock.getDayInt();
 	}
     }
+    @StrutsParameter(depth = 4)
     public List<TimeBlock> getBlocks(){
 	return blocks;
     }

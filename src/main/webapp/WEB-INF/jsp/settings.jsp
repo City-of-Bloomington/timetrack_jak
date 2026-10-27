@@ -9,7 +9,7 @@
 	    <%@ include file="errors.jsp" %>
 	</div>
     </s:if>
-    <s:if test="#session != null && #session.user.isAdmin()">
+    <s:if test="#session.isAdmin != null">
 	<div class="width-one-half float-left">
 	    <h2>Settings</h2>
 	    <ul>

@@ -63,6 +63,7 @@ public class EmployeeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getEmp();
 	if(action.equals("Save")){
 	    back = emp.validate();
 	    if(!back.isEmpty()){
@@ -95,16 +96,9 @@ public class EmployeeAction extends TopAction{
 	    getDepartmentEmployee();
 	}				
 	else{		
-	    getEmp();
 	    if(!emp_id.isEmpty()){
-		back = emp.doSelect();
-		if(!back.isEmpty()){
-		    addError(back);
-		}
-		else{
-		    // emp.findAddress();
-		    ret="view";
-		}
+		// emp.findAddress();
+		ret="view";
 	    }
 	    else{
 		if(canEdit()){
@@ -119,14 +113,19 @@ public class EmployeeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public Employee getEmp(){
 	if(emp == null){
 	    emp = new Employee();
-	    emp.setId(emp_id);
+	    if(!emp_id.isEmpty()){
+		emp.setId(emp_id);
+		emp.doSelect();
+	    }
 	}
 	return emp;
 						
     }
+    @StrutsParameter(depth=2)
     public Department getDept(){
 	if(dept == null){
 	    dept = new Department(dept_id);
@@ -136,6 +135,7 @@ public class EmployeeAction extends TopAction{
 	}
 	return dept;
     }
+    @StrutsParameter(depth=2)
     public DepartmentEmployee getDepartmentEmployee(){
 	if(departmentEmployee == null){
 	    departmentEmployee = new DepartmentEmployee();
@@ -143,16 +143,19 @@ public class EmployeeAction extends TopAction{
 	return departmentEmployee;
 						
     }
+    @StrutsParameter(depth=1)
     public void setEmp(Employee val){
 	if(val != null){
 	    emp = val;
 	}
     }
+    @StrutsParameter(depth=2)
     public void setDept(Department val){
 	if(val != null){
 	    dept = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null){
 	    emp_id = val;
@@ -164,6 +167,103 @@ public class EmployeeAction extends TopAction{
 	}
 	return emp_id;
     }
+    public String getUsername(){
+	getEmp();
+	return emp.getUsername();
+	
+    }
+    public String getFirst_name(){
+	getEmp();
+	if(emp != null)
+	    return emp.getFirst_name();
+	return "";
+    }
+    public String getLast_name(){
+	getEmp();
+	return emp.getLast_name();
+	
+    }    
+    public String getId_code(){
+	getEmp();
+	return emp.getId_code();
+    }
+    public String getEmployee_number(){
+	getEmp();
+	return emp.getEmployee_number();
+    }
+    public String getEmail(){
+	getEmp();
+	return emp.getEmail();
+    }
+    public String getAd_sid(){
+	getEmp();
+	return emp.getAd_sid();
+    }
+    public boolean hasDepartment(){
+	getEmp();
+	return emp.hasDepartment();
+    }
+    public String getAdded_date(){
+	getEmp();
+	return emp.getAdded_date();
+    }
+
+    public String getDepartmentEmployee_id(){
+	getEmp();
+	if(emp.hasDepartment()){
+	    return emp.getDepartmentEmployee().getId();
+	}
+	return "";
+	    
+    }
+    @StrutsParameter(depth=3)    
+    public List<DepartmentEmployee> getDepartmentEmployees(){
+	getEmp();
+	if(emp.hasDepartments()){
+	    return emp.getDepartmentEmployees();
+	}
+	return null;
+    }
+    @StrutsParameter(depth=3)        
+    public List<JobTask> getAllJobs2(){
+	getEmp();
+	return emp.getAllJobs2();
+    }
+    public boolean hasAllJobs2(){
+	getEmp();
+	return emp.hasAllJobs2();
+    }
+    @StrutsParameter(depth=3)        
+    public List<JobTask> getAllJobs(){
+	getEmp();
+	return emp.getAllJobs();
+    }
+    public boolean hasAllJobs(){
+	getEmp();
+	return emp.hasAllJobs();
+    }    
+    
+    
+    public String getRolesText(){
+	getEmp();
+	return emp.getRolesText();
+    }
+    
+    public String getDeptName(){
+	getEmp();
+	if(hasDepartment())
+	    return emp.getDepartment().getName();
+	return "";
+    }
+    public boolean hasDepartments(){
+	getEmp();
+	return emp.hasDepartments();
+    }
+    public boolean isInactive(){
+	getEmp();
+	return emp.isInactive();
+    }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null){
 	    dept_id = val;
@@ -175,6 +275,52 @@ public class EmployeeAction extends TopAction{
 	}
 	return dept_id;
     }
+    public boolean canPayrollProcess(){
+	getEmp();
+	return emp.canPayrollProcess();
+    }
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getProcessors(){
+	getEmp();
+	return emp.getProcessors();
+    }
+    public boolean canApprove(){
+	getEmp();
+	return emp.canApprove();
+    }
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getApprovers(){
+	getEmp();
+	return emp.getApprovers();
+    }
+    public boolean canReview(){
+	getEmp();
+	return emp.canReview();
+    }
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getReviewers(){
+	getEmp();
+	return emp.getReviewers();
+    }
+    public boolean canMaintain(){
+	getEmp();
+	return emp.canMaintain();
+    }
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getEnterors(){
+	getEmp();
+	return emp.getEnterors();
+    }    
+    public boolean canLeaveReview(){
+	getEmp();
+	return emp.canLeaveReview();
+    }
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getLeaveReviewers(){
+	getEmp();
+	return emp.getLeaveReviewers();
+    }
+    
     public void setWizard(boolean val){
 	if(val){
 	    wizard = true;
@@ -183,6 +329,7 @@ public class EmployeeAction extends TopAction{
     public boolean isWizard(){
 	return wizard;
     }
+    @StrutsParameter(depth=3)
     public void setDepartmentEmployee(DepartmentEmployee val){
 	if(val != null){
 	    departmentEmployee = val;
@@ -194,6 +341,7 @@ public class EmployeeAction extends TopAction{
     public String getEffective_date(){
 	return effective_date;
     }
+    @StrutsParameter(depth=1)
     public void setEffective_date(String val){
 	if(val != null)
 	    effective_date = val;
@@ -202,6 +350,7 @@ public class EmployeeAction extends TopAction{
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getEmployees(){
 	if(emp == null){
 	    EmployeeList tl = new EmployeeList();
@@ -216,6 +365,7 @@ public class EmployeeAction extends TopAction{
 	}
 	return employees;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");
@@ -230,6 +380,7 @@ public class EmployeeAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	if(groups == null && !dept_id.isEmpty()){
 	    GroupList gl = new GroupList();
@@ -262,9 +413,11 @@ public class EmployeeAction extends TopAction{
 	getGroups();
 	return groups != null && groups.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public String[] getRoles(){
 	return roles;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

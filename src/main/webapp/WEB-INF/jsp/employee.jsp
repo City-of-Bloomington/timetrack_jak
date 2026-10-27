@@ -19,9 +19,9 @@
 	</s:if>
 	<s:else>
 	    <h1>Employee <s:property value="emp.full_name" /></h1>
-	    <s:hidden name="emp.id" value="%{emp.id}" />
+	    <s:hidden name="emp.id" value="%{emp_id}" />
 	    <s:if test="!canAssignRoles()">
-		<s:hidden name="emp.rolesText" value="%{emp.rolesText}" />
+		<s:hidden name="emp.rolesText" value="%{rolesText}" />
 	    </s:if>
 	</s:else>
 	<s:if test="hasMessages()">
@@ -33,13 +33,13 @@
 	    <%@ include file="errors.jsp" %>
 	</s:if>		
 	  <div class="width-one-half">
-	      <s:if test="emp.id != ''">
+	      <s:if test="emp_id != ''">
 		  <div class="form-group">
 		      <label>ID</label>
-		      <s:property value="%{emp.id}" />
+		      <s:property value="%{emp_id}" />
 		  </div>
 	      </s:if>
-	      <s:if test="emp.id == ''">
+	      <s:if test="emp_id == ''">
 		  <div class="form-group">
 		      <label for="emp_name">Search by Full Name or ID Code</label>
 		      <s:textfield name="emp.full_name" value="" size="30" maxlength="70" id="emp_name" /><br /> Start typing employee last name or ID code then pick from the list
@@ -47,42 +47,42 @@
 	      </s:if>
 	      <div class="form-group">
 		  <label for="username_id">Username</label>
-		  <s:textfield name="emp.username" size="10" value="%{emp.username}" required="true" id="username_id" />
+		  <s:textfield name="emp.username" size="10" value="%{username}" required="true" id="username_id" />
 	      </div>
 	      
 	      <div class="form-group">
 		  <label for="first_name_id">First Name </label>
-		  <s:textfield name="emp.first_name" value="%{emp.first_name}" size="30" maxlength="70" required="true" id="first_name_id" />
+		  <s:textfield name="emp.first_name" value="%{first_name}" size="30" maxlength="70" required="true" id="first_name_id" />
 	      </div>
 	      
 	      <div class="form-group">
 		  <label for="last_name_id">Last Name </label>
-		  <s:textfield name="emp.last_name" value="%{emp.last_name}" size="30" maxlength="70" required="true" id="last_name_id" />
+		  <s:textfield name="emp.last_name" value="%{last_name}" size="30" maxlength="70" required="true" id="last_name_id" />
 	      </div>
 	      
 	      <div class="form-group">
 		  <label for="id_code_id">ID Code # </label>
-		  <s:textfield name="emp.id_code" value="%{emp.id_code}" size="10" maxlength="10" id="id_code_id" /><br />(The number on City ID)
+		  <s:textfield name="emp.id_code" value="%{id_code}" size="10" maxlength="10" id="id_code_id" /><br />(The number on City ID)
 	      </div>
 
 	      <div class="form-group">
 		  <label for="employee_number_id">Employee # </label>
-		  <s:textfield name="emp.employee_number" value="%{emp.employee_number}" size="15" maxlength="15" id="employee_number_id" /><br />(from New World)
+		  <s:textfield name="emp.employee_number" value="%{employee_number}" size="15" maxlength="15" id="employee_number_id" /><br />(from New World)
 	      </div>
 	      <div class="form-group">
 		  <label for="ad_sid_id">AD Sid </label>
 		  <s:if test="emp.hasNoAdSid()">
-		      <s:textfield name="emp.ad_sid" value="%{emp.ad_sid}" size="8" maxlength="8" id="ad_sid_id" /><br />(AD Object SID)
+		      <s:textfield name="emp.ad_sid" value="%{ad_sid}" size="8" maxlength="8" id="ad_sid_id" /><br />(AD Object SID)
 		  </s:if>
 		  <s:else>
-		      <s:textfield name="emp.ad_sid" value="%{emp.ad_sid}" size="8" maxlength="8" id="ad_sid_id" readonly="true" /><br />(AD Object SID)
+		      <s:textfield name="emp.ad_sid" value="%{ad_sid}" size="8" maxlength="8" id="ad_sid_id" readonly="true" /><br />(AD Object SID)
 		  </s:else>
 	      </div>
 	      <div class="form-group">
 		  <label for="email_id">Email</label>
-		  <s:textfield name="emp.email" size="70" value="%{emp.email}" id="email_id" />
+		  <s:textfield name="emp.email" size="70" value="%{email}" id="email_id" />
 	      </div>
-	      <s:if test="emp.id == ''">			
+	      <s:if test="emp_id == ''">			
 		  <div class="form-group">
 		      <label for="eff_date">Effective Date</label>
 		      <div class="date-range-picker">
@@ -110,71 +110,66 @@
 	      <s:else>
 		  <div class="form-group">
 		      <label>Added Date</label>
-		      <s:property value="emp.added_date" />
+		      <s:property value="added_date" />
 		  </div>				
 		  <div class="form-group">
 		      <label for="inactive"> Inactive ?</label>
-		      <s:checkbox name="emp.inactive" value="%{emp.inactive}" id="inactive" /> Yes (check to disable)
+		      <s:checkbox name="emp.inactive" value="%{inactive}" id="inactive" /> Yes (check to disable)
 		  </div>
 		  <div class="button-group">
 		      <s:submit name="action" type="button" value="Save Changes" class="button"/>					
-		      <s:if test="!emp.hasDepartments()">
-			  <a href="<s:property value='#application.url' />departmentEmployee.action?emp_id=<s:property value='emp.id' />" class="button">Add Employee to Department</a>
+		      <s:if test="!hasDepartments()">
+			  <a href="<s:property value='#application.url' />departmentEmployee.action?emp_id=<s:property value='emp_id' />" class="button">Add Employee to Department</a>
 		      </s:if>
 		      <s:else>
-			  <a href="<s:property value='#application.url' />departmentEmployee.action?emp_id=<s:property value='emp.id' />" class="button">Add to Another Department</a>						
-			  <a href="<s:property value='#application.url' />deptEmpChange.action?id=<s:property value='emp.departmentEmployee.id' />" class="button">Change Department</a>
+			  <a href="<s:property value='#application.url' />departmentEmployee.action?emp_id=<s:property value='emp_id' />" class="button">Add to Another Department</a>						
+			  <a href="<s:property value='#application.url' />deptEmpChange.action?id=<s:property value='departmentEmployee_id' />" class="button">Change Department</a>
 		      </s:else>
-		      <s:if test="emp.hasNoJob()">
-			  <a href="<s:property value='#application.url' />jobTask.action?add_employee_id=<s:property value='emp.id' />&effective_date=<s:property value='emp.effective_date' />" class="button"> Add A Job</a>
+		      <s:if test="hasNoJob()">
+			  <a href="<s:property value='#application.url' />jobTask.action?add_employee_id=<s:property value='emp_id' />&effective_date=<s:property value='effective_date' />" class="button"> Add A Job</a>
 		      </s:if>			  
 		      <s:else>
-			  <a href="<s:property value='#application.url' />jobTask.action?add_employee_id=<s:property value='emp.id' />" class="button"> Add Another Job</a>
-			  <a href="<s:property value='#application.url' />terminate.action?emp_id=<s:property value='emp.id' />" class="button"> Terminate </a>	
+			  <a href="<s:property value='#application.url' />jobTask.action?add_employee_id=<s:property value='emp_id' />" class="button"> Add Another Job</a>
+			  <a href="<s:property value='#application.url' />terminate.action?emp_id=<s:property value='emp_id' />" class="button"> Terminate </a>	
 		      </s:else>
 		  </div>
 	      </s:else>
 	  </div>
     </s:form>
-    <s:if test="emp.id != ''">
-	<s:if test="emp.hasDepartments()">
-	    <s:set var="departmentEmployees" value="%{emp.departmentEmployees}" />
+    <s:if test="emp_id != ''">
+	<s:if test="hasDepartments()">
+	    <s:set var="departmentEmployees" value="%{departmentEmployees}" />
 	    <s:set var="departmentEmployeesTitle" value="'Employee Department'" />
 	    <%@ include file="departmentEmployees.jsp" %>
 	</s:if>`
-	<s:if test="emp.hasGroupEmployees()">
-	    <s:set var="groupEmployees" value="%{emp.groupEmployees}" />
-	    <s:set var="groupEmployeesTitle" value="'Employee Group'" />
-	    <%@ include file="groupEmployees.jsp" %>
-	</s:if>
-	<s:if test="emp.hasAllJobs()">
-	    <s:set var="jobTasks" value="%{emp.allJobs}" />
+	<s:if test="hasAllJobs()">
+	    <s:set var="jobTasks" value="%{allJobs}" />
 	    <s:set var="jobTasksTitle" value="'Employee Jobs'" />
 	    <%@ include file="jobTasks.jsp" %>
 	</s:if>
-	<s:if test="emp.canPayrollProcess()">
-	    <s:set var="groupManagers" value="%{emp.processors}" />
+	<s:if test="canPayrollProcess()">
+	    <s:set var="groupManagers" value="%{processors}" />
 	    <s:set var="groupManagersTitle" value="'Payroll Approver of Groups'" />
 	    <%@ include file="groupManagers.jsp" %>
 	</s:if>			
-	<s:if test="emp.canApprove()">
-	    <s:set var="groupManagers" value="%{emp.approvers}" />
+	<s:if test="canApprove()">
+	    <s:set var="groupManagers" value="%{approvers}" />
 	    <s:set var="groupManagersTitle" value="'Approver of Groups '" />
 	    <%@ include file="groupManagers.jsp" %>
 	</s:if>
 
-	<s:if test="emp.canReview()">
-	    <s:set var="groupManagers" value="%{emp.reviewers}" />
+	<s:if test="canReview()">
+	    <s:set var="groupManagers" value="%{reviewers}" />
 	    <s:set var="groupManagersTitle" value="'Review of Groups'" />
 	    <%@ include file="groupManagers.jsp" %>
 	</s:if>
-	<s:if test="emp.canMaintain()">
-	    <s:set var="groupManagers" value="%{emp.enterors}" />
+	<s:if test="canMaintain()">
+	    <s:set var="groupManagers" value="%{enterors}" />
 	    <s:set var="groupManagersTitle" value="'Maintain of Groups'" />
 	    <%@ include file="groupManagers.jsp" %>
 	</s:if>
-	<s:if test="emp.canLeaveReview()">
-	    <s:set var="groupManagers" value="%{emp.leaveReviewers}" />
+	<s:if test="canLeaveReview()">
+	    <s:set var="groupManagers" value="%{leaveReviewers}" />
 	    <s:set var="groupManagersTitle" value="'Leave Reviewer of Groups'"/>
 	    <%@ include file="groupManagers.jsp" %>
 	</s:if>

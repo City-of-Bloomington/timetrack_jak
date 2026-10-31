@@ -54,7 +54,7 @@ function loginTimer() {
 		    <s:if test="canSubmit()">
 			<s:if test="isUserCurrentEmployee() || canApprove() || canProcess()">
 			    <form action="<s:property value='#application.url' />timeAction" id="form_id" class="timesheet-submit" method="post" >
-				<input type="hidden" name="source" value="timeDetails" />
+				<input type="hidden" name="source" value="'timeDetails'" />
 				<s:hidden name="document_id" value="%{document_id}" />
 				<s:hidden name="workflow_id" value="%{next_workflow_id}" />
 				<s:submit
@@ -74,7 +74,7 @@ function loginTimer() {
 		    </s:if>
 		    <s:else>
 			<div class="submitted-on">
-			    <strong>Submitted on:&nbsp;<s:property value="document.submitTimeAction.action_time" />&nbsp;&nbsp;</strong>
+			    <strong>Submitted on:&nbsp;<s:property value="submitted_time" />&nbsp;&nbsp;</strong>
 			</div>
 			</s:else>
 		</s:if>
@@ -90,7 +90,7 @@ function loginTimer() {
 		<s:set var="week1Total" value="mjdoc.week1Total" />
 		<s:set var="week2Total" value="mjdoc.week2Total" />
 		
-		<s:if test="document.isUnionned()">
+		<s:if test="isUnionned()">
 		    <s:set var="unionned" value="'true'" />
 		    <s:set var="week1Flsa" value="mjdoc.week1_flsa" />
 		    <s:set var="week2Flsa" value="mjdoc.week2_flsa" />
@@ -102,10 +102,10 @@ function loginTimer() {
 	    <s:else>
 		<s:set var="payPeriodTotal" value="payPeriodTotal" />
 		<s:set var="payPeriodAmount" value="payPeriodAmount" />
-		<s:set var="daily" value="document.daily" />
+		<s:set var="daily" value="daily" />
 		<s:set var="week1Total" value="week1Total" />
 		<s:set var="week2Total" value="week2Total" />
-		<s:if test="document.isUnionned()">
+		<s:if test="isUnionned()">
 		    <s:set var="unionned" value="'true'" />
 		    <s:set var="week1Flsa" value="week1_flsa" />
 		    <s:set var="week2Flsa" value="week2_flsa" />
@@ -266,7 +266,7 @@ function loginTimer() {
 	    <s:if test="canCancelAction()">
 		<s:set var="canCancelAction" value="'true'" />
 	    </s:if>
-	    <s:if test="hasTimeActions">
+	    <s:if test="hasTimeActions()">
 		<s:set var="timeActions" value="timeActions" />
 		<%@ include file="timeActions.jsp" %>		
 	    </s:if>

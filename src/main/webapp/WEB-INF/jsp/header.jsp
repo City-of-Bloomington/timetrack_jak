@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
- * @copyright Copyright (C) 2014-2018 City of Bloomington, Indiana. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
- * @author W. Sibo <sibow@bloomington.in.gov>
- *
-	-->
+     * @copyright Copyright (C) 2014-2018 City of Bloomington, Indiana. All rights reserved.
+     * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
+     * @author W. Sibo <sibow@bloomington.in.gov>
+     *
+-->
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>

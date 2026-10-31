@@ -1936,3 +1936,26 @@ insert into benefit_groups values(58,'uNON-U PTnx',null,null,null);
 ;; for Part Time add Reg, for Seasonal add Temp
 ;;
 
+;; upgrade to jakarta java and tomcat10 or higher
+;;
+;; 1-rename to qrtz tables to upper case
+;; 
+
+RENAME TABLE qrtz_blob_triggers to QRTZ_BLOB_TRIGGERS;
+RENAME TABLE qrtz_calendars to QRTZ_CALENDARS;
+RENAME TABLE qrtz_cron_triggers to QRTZ_CRON_TRIGGERS;
+RENAME TABLE qrtz_fired_triggers to QRTZ_FIRED_TRIGGERS;
+RENAME TABLE qrtz_job_details to QRTZ_JOB_DETAILS;
+RENAME TABLE qrtz_locks to QRTZ_LOCKS;
+ RENAME TABLE qrtz_paused_trigger_grps to QRTZ_PAUSED_TRIGGER_GRPS;
+ RENAME TABLE qrtz_scheduler_state to QRTZ_SCHEDULER_STATE;
+ RENAME TABLE qrtz_simple_triggers to QRTZ_SIMPLE_TRIGGERS;
+ RENAME TABLE qrtz_simprop_triggers to QRTZ_SIMPROP_TRIGGERS;
+ RENAME TABLE qrtz_triggers to QRTZ_TRIGGERS;
+
+or drop the table or remove foreign keys
+
+ ALTER TABLE QRTZ_BLOB_TRIGGERS DROP FOREIGN KEY qrtz_blob_triggers_ibfk_1;
+ ALTER TABLE QRTZ_CRON_TRIGGERS DROP FOREIGN KEY qrtz_cron_triggers_ibfk_1;
+ ALTER TABLE QRTZ_SIMPLE_TRIGGERS DROP FOREIGN KEY qrtz_simple_triggers_ibfk_1;
+ 

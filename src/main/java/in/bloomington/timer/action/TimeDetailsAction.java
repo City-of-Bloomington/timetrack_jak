@@ -14,6 +14,8 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.action.SessionAware;
 import org.apache.struts2.action.ServletContextAware;
 import org.apache.struts2.interceptor.parameter.StrutsParameter;
+import org.apache.struts2.util.Element;
+import org.apache.struts2.util.Key;
 import org.javatuples.Triplet;
 import in.bloomington.timer.list.*;
 import in.bloomington.timer.bean.*;
@@ -67,9 +69,6 @@ public class TimeDetailsAction extends TopAction{
 	if(showAllJobs()){
 	    ret = "view";
 	}
-	System.err.println(" doc id "+document_id);
-	System.err.println(" dailyblocks "+getDailyBlocks().size());
-	System.err.println(" dayblocksMap "+getDayBlocksMap().size());	
 	return ret;
     }
     public String getTimeBlocksTitle(){
@@ -177,19 +176,22 @@ public class TimeDetailsAction extends TopAction{
 	}
 	return document_id;
     }
-		
+    @StrutsParameter(depth=1)    		
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)    
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setJob_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    job_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
@@ -468,6 +470,15 @@ public class TimeDetailsAction extends TopAction{
     public boolean showAllJobs(){
 	return hasMultipleJobs() && job_id.equals("all");
     }
+    public boolean hasAllAccruals(){
+	return document.hasAllAccruals();
+    }
+    public boolean isPendingAccrualAllowed(){
+	return document.isPendingAccrualAllowed();
+    }
+    public Map<String, List<String>> getAllAccruals(){
+	return document.getAllAccruals();
+    }    
     public boolean hasJob(){
 	getJob();
 	return job != null;
@@ -571,6 +582,33 @@ public class TimeDetailsAction extends TopAction{
 	getPayPeriod();
 	return payPeriod.getMonthNames();
     }
+    public Map<JobType, Map<Integer, String>> getDaily(){
+	if(document == null){
+	    getDocument();
+	}
+	if(document != null){	
+	    return document.getDaily();
+	}
+	return null;
+    }	    
+    public boolean isUnionned(){
+	if(document == null){
+	    getDocument();
+	}
+	if(document != null){
+	    return document.isUnionned();
+	}
+	return false;
+    }
+    public String getSubmitted_time(){
+	if(document == null){
+	    getDocument();
+	}
+	if(document != null){
+	    return document.getSubmitTimeAction().getAction_time();
+	}
+	return "";
+    }
     public int getStartYear(){
 	getPayPeriod();
 	return payPeriod.getStartYear();	
@@ -591,16 +629,48 @@ public class TimeDetailsAction extends TopAction{
     public boolean hasDailyBlocks(){
 	return document.hasDailyBlocks();
     }
-    @StrutsParameter(depth = 6)
-    public Map<Integer, List<TimeBlock>> getDailyBlocks(){
-	return document.getDailyBlocks();
-    }
-    @StrutsParameter(depth = 6)
+    @Key(Integer.class)
+    @Element(value=in.bloomington.timer.bean.DayBlocks.class)
+    @StrutsParameter(depth=5)
+    //@org.apache.struts2.interceptor.validation.SkipValidation
     public Map<Integer, DayBlocks> getDayBlocksMap(){
 	return document.getDayBlocksMap();
     }
+    @Key(Integer.class)
+    @Element(value=in.bloomington.timer.bean.TimeBlock.class)
+    @StrutsParameter(depth=5)
+    //@org.apache.struts2.interceptor.validation.SkipValidation
+    public Map<Integer, List<TimeBlock>> getDailyBlocks(){
+	return document.getDailyBlocks();
+    }
+    @StrutsParameter(depth=4)
+    public List<DayBlocks> getDayBlocksList(){
+	List<DayBlocks> ll = new ArrayList<>();
+	Map<Integer, DayBlocks> dayBlocksMap = document.getDayBlocksMap();	
+	for(int i=0;i<14;i++){
+	    ll.add(dayBlocksMap.get(i));
+	}
+	return ll;
+    }    
     public boolean hasLastWorkflow(){
+	getDocument();
 	return document.hasLastWorkflow();
+    }
+    public boolean hasNextWorkflow(){
+	getDocument();
+	return document.getLastWorkflow().hasNextNode();
+    }    
+    public String getNextWorkflowName(){
+	if(hasLastWorkflow()){
+	    if(document.getLastWorkflow().hasNextNode()){
+		return document.getLastWorkflow().getNextNode().getName();
+	    }
+	}
+	return "";
+    }
+    public String getNextActionerNames(){
+	getDocument();
+	return document.getNextActionerNames();
     }
     public boolean hasAccruals(){
 	return document.hasAccruals();
@@ -631,9 +701,10 @@ public class TimeDetailsAction extends TopAction{
 	return document.getWarnings();
     }
     public boolean hasTimeActions(){
+	getDocument();
 	return document.hasTimeActions();
     }
-    @StrutsParameter(depth=4)
+    @StrutsParameter(depth=5)
     public List<TimeAction> getTimeActions(){
 	return document.getTimeActions();
     }

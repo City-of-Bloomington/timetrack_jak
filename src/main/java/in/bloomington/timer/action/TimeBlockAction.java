@@ -28,19 +28,22 @@ public class TimeBlockAction extends TopAction{
     DecimalFormat dFormat = new DecimalFormat("###.00");
     static Logger logger = LogManager.getLogger(TimeBlockAction.class);
     //
-    TimeBlock timeBlock = null;
+    TimeBlock timeBlock = new TimeBlock();
     String timeBlocksTitle = "Time Block Entry";
     String document_id = "", group_id="", department_id="";
-    String date = "";
+    String date = "", salary_group_id="";
     int order_index = 0;
     Employee employee = null;
     Document document = null;
+    JobTask job = null;
     PayPeriod payPeriod = null;
     TimewarpManager timewarpManager = null;
     List<EmployeeAccrual> employeeAccruals = null;
     List<HourCode> hourCodes = null;
     List<EarnCodeReason> earnReasons = null;
     List<HourCode> monetaryHourCodes = null;
+    // WS added
+    HourCode hourCode = null;
     // Department department = null;
     //
     public String execute(){
@@ -54,6 +57,7 @@ public class TimeBlockAction extends TopAction{
 	    System.err.println(" Time Action "+back);
 	    addError(back);
 	}
+	getTimeBlock();
 	if(action.equals("Save")){
 	    if(timeBlock.hasErrors()){
 		addError(timeBlock.getErrors());
@@ -133,7 +137,6 @@ public class TimeBlockAction extends TopAction{
 	    }
 	}
 	else if(action.equals("Delete")){
-	    getTimeBlock();
 	    back = timeBlock.doSelect();
 	    timewarpManager.setDocument_id(timeBlock.getDocument_id());
 	    //
@@ -159,7 +162,6 @@ public class TimeBlockAction extends TopAction{
 	    }
 	}
 	else{		
-	    getTimeBlock();
 	    if(!id.isEmpty()){
 		back = timeBlock.doSelect();
 		if(!back.isEmpty()){
@@ -175,25 +177,30 @@ public class TimeBlockAction extends TopAction{
     public TimeBlock getTimeBlock(){ 
 	if(timeBlock == null){
 	    timeBlock = new TimeBlock();
-	    timewarpManager = new TimewarpManager();
-	    if(!id.isEmpty())
-		timeBlock.setId(id);
-	    if(!document_id.isEmpty()){
-		timeBlock.setDocument_id(document_id);
-		timewarpManager.setDocument_id(document_id);
-	    }
-	    if(!date.isEmpty())
-		timeBlock.setDate(date);
-	    timeBlock.setOrder_index(order_index);
 	}
+	timewarpManager = new TimewarpManager();
+	if(!id.isEmpty())
+	    timeBlock.setId(id);
+	if(!document_id.isEmpty()){
+	    timeBlock.setDocument_id(document_id);
+	    timewarpManager.setDocument_id(document_id);
+	}
+	if(!date.isEmpty())
+	    timeBlock.setDate(date);
+	timeBlock.setOrder_index(order_index);
 	return timeBlock;
     }
+    @StrutsParameter(depth=3)    
     public void setTimeBlock(TimeBlock val){
 	if(val != null){
 	    timeBlock = val;
 	}
     }
-
+    @StrutsParameter(depth=1)    
+    public void setDate(String val){
+	if(val != null && !val.isEmpty())		
+	    date = val;
+    }    
     public String getTimeBlocksTitle(){
 	return timeBlocksTitle;
     }
@@ -208,21 +215,20 @@ public class TimeBlockAction extends TopAction{
 	    order_index = val;
     }
     public int getOrder_index(){
-	if(order_index == 0 && timeBlock != null){
-	    order_index = timeBlock.getOrder_index();
-	}
+	order_index = timeBlock.getOrder_index();
 	return order_index;
     }
+    public String getSalary_group_id(){
+	return timeBlock.getSalary_group_id();
+    }
+    
     public void setErrors(String val){
 	// do nothing
     }
     //
     // this is passed through the link
     public String getDocument_id(){
-	if(document_id.isEmpty() && timeBlock != null){
-	    document_id = timeBlock.getDocument_id();
-	}
-	return document_id;
+	return timeBlock.getDocument_id();
     }
     private GroupManager findGroupManager(String g_id){
 	GroupManager manager = null;
@@ -267,28 +273,73 @@ public class TimeBlockAction extends TopAction{
 		       department = employee.getDepartment();
 		       }
 		    */
-		    JobTask job = document.getJob();
-		    if(job != null){
-			Group group = job.getGroup();
-			group_id = job.getGroup_id();
-			if(group != null){
-			    department_id = group.getDepartment_id();
-			}
-		    }
 		}
 	    }
 	}
-	return document;
+	if(document != null){
+	    job = document.getJob();
+	    if(job != null){
+		Group group = job.getGroup();
+		group_id = job.getGroup_id();
+		salary_group_id = job.getSalary_group_id();
+		if(group != null){
+		    department_id = group.getDepartment_id();
+		}
+	    }
+	    return document;	    
+	}
+	return null;
     }
-		
+    @StrutsParameter(depth=1)    		
     public void setDocument_id(String val){
-	if(val != null && !val.isEmpty())		
+	if(val != null && !val.isEmpty()){		
 	    document_id = val;
+	    timeBlock.setDocument_id(val);
+	}
     }
-    public void setDate(String val){
-	if(val != null && !val.isEmpty())		
-	    date = val;
+    public String getStart_date(){
+	return timeBlock.getStart_date();
     }
+    public String getEnd_date(){
+	return timeBlock.getEnd_date();
+    }
+    public String getId_compound(){
+	return timeBlock.getId_compound();
+    }
+    public String getTime_in(){
+	return timeBlock.getTime_in();
+	    
+    }
+    public String getTime_out(){
+	return timeBlock.getTime_out();
+	    
+    }
+    public String getOvernightOption(){
+	return timeBlock.getOvernightOption();
+    }
+    public String getHoursStr(){
+	return timeBlock.getHoursStr();
+    }
+    public String getAmountStr(){
+	return timeBlock.getAmountStr();
+    }
+    public String getHour_code_id(){
+	return timeBlock.getHour_code_id();
+    }
+    public String getEarn_code_reason_id(){
+	return timeBlock.getEarn_code_reason_id();
+    }
+    // 
+    public String getRecord_method(){
+	return timeBlock.getHourCode().getRecord_method();
+    }
+    // 
+    public boolean isHourType(){
+	return timeBlock.isHourType();
+    }
+    public boolean getInclude_weekends(){
+	return timeBlock.getInclude_weekends();
+    }    
     @StrutsParameter(depth=3)    
     public List<HourCode> getHourCodes(){
 	//
@@ -303,7 +354,7 @@ public class TimeBlockAction extends TopAction{
 	    getDocument();
 	    if(document != null){
 		HourCodeList ecl = new HourCodeList();
-		String salary_group_id = document.getJob().getSalary_group_id();
+		// String salary_group_id = document.getJob().getSalary_group_id();
 		ecl.setSalary_group_id(salary_group_id);
 		if(!department_id.isEmpty()){
 		    ecl.setDepartment_id(department_id);
@@ -330,7 +381,7 @@ public class TimeBlockAction extends TopAction{
 		// Police department_id=20
 		// if(!department_id.isEmpty() && department_id.equals("20")){
 		CodeReasonConditionList crcl = new CodeReasonConditionList();
-		String salary_group_id = document.getJob().getSalary_group_id();
+		// String salary_group_id = document.getJob().getSalary_group_id();
 		crcl.setSalary_group_id(salary_group_id);
 		if(!department_id.isEmpty()){
 		    crcl.setDepartment_id(department_id);
@@ -394,6 +445,15 @@ public class TimeBlockAction extends TopAction{
 	getEmpAccruals();
 	boolean ret = employeeAccruals != null && employeeAccruals.size() > 0;
 	return ret;
+    }
+    public String getGroup_id(){
+	return timeBlock.getGroup_id();
+    }
+    public String getClock_in(){
+	return timeBlock.getClock_in();
+    }
+    public String getClock_out(){
+	return timeBlock.getClock_out();
     }
     //
     // Not used for now, need rethinking

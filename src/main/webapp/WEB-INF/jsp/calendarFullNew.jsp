@@ -10,12 +10,12 @@
   </div>
 
   <div class="week">
-      <s:iterator value="#dayBlocksMap" var="dayBlocks" >
-	  <s:set var="blockKey" value="#dayBlocks.key" />
-	  <s:set var="dayBlock" value="#dayBlocks.value" />
+      <s:iterator value="dayBlocksList" var="dayBlocks" status="key">
+	  <s:set var="blockKey" value="#key.index" />
+	  <s:set var="dayBlock" value="#dayBlocks" />
 	  <s:set var="dayInt" value="#dayBlock.dayInt" />
 	  <s:set var="dayHours" value="#dayBlock.dayHours" />
-	  <s:set var="blockList" value="#dayBlock.blocks" />      
+	  <s:set var="blockList" value="#dayBlock.blocks" />
 	  <s:if test="#blockKey == 7">
   </div><div class="week">
 	  </s:if>

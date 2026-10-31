@@ -284,7 +284,11 @@ public class TimeBlock extends Block{
     public void setLocation_id(String val){
 	if(val != null)
 	    location_id = val;
-    }		
+    }
+    public void setDocument_id(String val){
+	if(val != null)
+	    document_id = val;
+    }    
     public void setHour_code(String val){
 	if(val != null)
 	    hour_code = val;

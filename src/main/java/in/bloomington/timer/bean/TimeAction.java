@@ -146,7 +146,14 @@ public class TimeAction implements Serializable{
     public void setCancelled_time(String val){
 	if(val != null)
 	    cancelled_time = val;
-    }		
+    }
+    public String getAction_name(){
+	getWorkflow();
+	if(workflow != null){ 
+	    return workflow.getNode().getAnnotation();
+	}
+	return "";
+    }
     public Workflow getWorkflow(){
 	if(workflow == null && !workflow_id.isEmpty()){
 	    Workflow one = new Workflow(workflow_id);
@@ -157,6 +164,13 @@ public class TimeAction implements Serializable{
 	}
 	return workflow;
     }
+    public String getActioner_name(){
+	getActioner();
+	if(actioner != null){
+	    return actioner.getFull_name();
+	}
+	return "";
+    }    
     public Employee getActioner(){
 	if(actioner == null && !action_by.isEmpty()){
 	    Employee one = new Employee(action_by);

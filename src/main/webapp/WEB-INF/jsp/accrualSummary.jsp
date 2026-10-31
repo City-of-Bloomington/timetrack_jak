@@ -1,6 +1,4 @@
-<s:set var="allAccruals" value="document.allAccruals" />
-
-<s:if test="document.hasAllAccruals()">
+<s:if test="hasAllAccruals()">
     <table class="accruals-summary width-full">
 	<caption style="text-align:left;font-weight:bold">
 	    Accrual Summary
@@ -9,13 +7,13 @@
 	    <th width="25%">Accrual Category</th>
 	    <th>&nbsp;</th>
 	    <th width="25%">Carry Over Balance (as of <s:property value="document.accrualAsOfDate" />)</th>
-	    <s:if test="document.isPendingAccrualAllowed()">
+	    <s:if test="isPendingAccrualAllowed()">
 		<th width="15%">Pending Accrual</th>
 	    </s:if>
 	    <th width="15%">Usage</th>
 	    <th>Available Balance </th>
 	</tr>
-	<s:iterator value="document.allAccruals" var="one" >
+	<s:iterator value="allAccruals" var="one" >
 	    <s:set var="key" value="#one.key" />
 	    <s:set var="list" value="#one.value" />
 	    <tr>

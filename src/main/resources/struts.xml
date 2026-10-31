@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-  <constant name="struts.devMode" value="false" />
+  <constant name="struts.devMode" value="true" />
   <constant name="struts.ui.theme" value="simple" />
 	<!-- to remove .action 
 	<constant name="struts.action.extension" value = ""/>
@@ -13,8 +13,16 @@
 
   <package name="default" extends="struts-default">
 
+    <!--
+    <interceptors>
+      <interceptor-stack name="defaultStack">
+	<interceptor-ref name="params">
+	  <param name="excludeParams">^getDayBlocksMap*,^getDayBlocks*</param>
+	</interceptor-ref>
+      </interceptor-stack>
+    </interceptors>
+    -->
     <!-- this is a global action that makes sure user is logged in -->
-		
     <global-results>
       <result name="login" type="redirect">welcome.action</result>
     </global-results>
@@ -848,10 +856,16 @@
     <action name="timeDetails" 
 	    class="in.bloomington.timer.action.TimeDetailsAction" 
 	    method="execute">
+      <!--
+      <interceptor-ref name="defaultStack" />
+      <interceptor-ref name="validation">
+        <param name="excludeMethods">getDayBlocksMap,getDailyBlocks</param>
+      </interceptor-ref>
+      -->
       <result name="input">/WEB-INF/jsp/timeDetails.jsp</result>		
       <result name="error">/WEB-INF/jsp/timeDetails.jsp</result>
       <result name="success">/WEB-INF/jsp/timeDetails.jsp</result>
-      <result name="view">/WEB-INF/jsp/timeDetailView.jsp</result>			
+      <result name="view">/WEB-INF/jsp/timeDetailView.jsp</result>
       <result name="login">/Login</result>			
     </action>
     <action name="timeAction" 

@@ -74,32 +74,38 @@ public class SwitchAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)        
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)        
     public void setType(String val){
 	// needed for js
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setNew_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    new_employee_id = val;
     }
-		
+    @StrutsParameter(depth=1)    		
     public void setEmployee_name(String val){
 	// for auto complete
     }
     public String getEmployee_name(){
 	return "";
-    }    
+    }
+    @StrutsParameter(depth=1)        
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)    
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;

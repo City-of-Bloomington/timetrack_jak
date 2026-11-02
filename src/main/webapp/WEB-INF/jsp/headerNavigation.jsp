@@ -36,7 +36,7 @@
               <div class="user-proxy">
                 <b>Proxy User:</b><br><s:property value="employee" />
               </div>
-              <a href="<s:property value='#application.url' />timeDetails.action?employee_id=<s:property value='user.id' />&action=Change">Stop User Proxy</a>
+              <a href="<s:property value='#application.url' />timeDetails.action?employee_id=<s:property value='user_id' />&action=Change">Stop User Proxy</a>
               <hr>
             </s:if>
 

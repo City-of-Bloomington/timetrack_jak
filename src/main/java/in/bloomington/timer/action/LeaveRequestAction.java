@@ -47,15 +47,8 @@ public class LeaveRequestAction extends TopAction{
 	resetEmployee();
 	String ret = SUCCESS;
 	String back = "";
-	/**
-	String back = doPrepare("leaveRequest.action");
-	if(!back.isEmpty()){
-	    return back;
-	}
-	*/
+	getLeave();
 	if(action.startsWith("Submit Request")){
-	    if(leave == null)
-		getLeave();
 	    leave.setInitiated_by(user.getId());
 	    leave.setJob_id(job_id);
 	    leave.setEarn_code_ids(earn_code_ids);
@@ -80,7 +73,6 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}
 	else if(action.equals("Edit")){
-	    getLeave();
 	    back = leave.doSelect();
 	    if(!back.isEmpty()){
 		addError(back);
@@ -110,7 +102,6 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}
 	else if(action.startsWith("startCancel")){
-	    getLeave();
 	    back = leave.doSelect();
 	    if(!back.isEmpty()){
 		addError(back);
@@ -121,7 +112,6 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}		
 	else if(action.startsWith("Submit Cancel")){
-	    getLeave();
 	    back = leave.doSelect();
 	    if(!back.isEmpty()){
 		addError(back);
@@ -157,7 +147,6 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}		
 	else{		
-	    getLeave();
 	    if(!id.isEmpty()){
 		back = leave.doSelect();
 		if(!back.isEmpty()){
@@ -183,6 +172,7 @@ public class LeaveRequestAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public LeaveRequest getLeave(){
 	if(leave == null){
 	    leave = new LeaveRequest();
@@ -195,6 +185,7 @@ public class LeaveRequestAction extends TopAction{
 	return leave;
 						
     }
+    @StrutsParameter(depth=2)
     public void setLeave(LeaveRequest val){
 	if(val != null){
 	    leave = val;
@@ -234,28 +225,79 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setCancel_reason(String val){
 	if(val != null && !val.isEmpty())		
 	    cancel_reason = val;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setJob_id(String val){
 	if(val != null && !val.isEmpty())		
 	    job_id = val;
     }
+    @StrutsParameter(depth=2)
     public void setEarn_code_ids(String[] val){
 	if(val != null)		
 	    earn_code_ids = val;
     }
     public String getJob_id(){
 	return job_id;
+    }
+    public String getLeave_id(){
+	return leave.getId();
+    }
+    public String getEmp_name(){
+	return leave.getEmployee().getFull_name();
+    }
+    public String getJob_title(){
+	return leave.getJobTitle();
+    }
+    public String getRequestDate(){
+	return leave.getRequestDate();
+    }
+    public String getDate_range(){
+	return leave.getDate_range();
+    }    
+    public String getEmp_group(){
+	return leave.getJob().getGroup().getName();
+    }
+    public double getTotalHours(){
+	return leave.getTotalHours();
+    }
+    public String getEarnCodes(){
+	return leave.getEarnCodes();
+    }
+    public String getManagerName(){
+	return leave.getManagerName();
+    }
+    public String getRequestDetails(){
+	return leave.getRequestDetails();
+    }
+    public String getReviewStatus(){
+	return leave.getReviewStatus();
+    }
+    public boolean hasReviewer(){
+	return leave.hasReviewer();
+    }
+    public boolean hasReviewNotes(){
+	return leave.hasReviewNotes();
+    }
+    public boolean isCancelled(){
+	return leave.isCancelled();
+    }
+    
+    public String getReviewerName(){
+	return leave.getReviewer().getFull_name();
     }
     public String[] getEarn_code_ids(){
 	if(earn_code_ids == null){
@@ -276,6 +318,7 @@ public class LeaveRequestAction extends TopAction{
 	}
 	return leaveLogs != null && leaveLogs.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<LeaveLog> getLeaveLogs(){
 	return leaveLogs;
     }
@@ -293,7 +336,8 @@ public class LeaveRequestAction extends TopAction{
 		}
 	    }
 	}
-    }    
+    }
+    @StrutsParameter(depth=3)
     public List<LeaveRequest> getRequests(){
 	if(requests == null){
 	    findCurrentPayPeriod();
@@ -330,6 +374,7 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=3)
     public List<LeaveRequest> getHistory(){
 	return history_leaves;
     }
@@ -341,6 +386,7 @@ public class LeaveRequestAction extends TopAction{
 	getRequests();
 	return requests != null && requests.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<HourCode> getHourCodes(){
 	//
 	// earn codes are part of finding document
@@ -401,6 +447,7 @@ public class LeaveRequestAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)
     public JobTask getJob(){
 	if(!job_id.isEmpty()){
 	    JobTask one = new JobTask(job_id);

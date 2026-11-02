@@ -86,6 +86,14 @@ public abstract class TopAction implements SessionAware, ServletContextAware{
     public String getId(){
 	return id;
     }
+    @StrutsParameter(depth=1)        
+    public String getUser_id(){
+	getUser();
+	if(user != null)
+	    return user.getId();
+	return "";
+    }
+	
     @StrutsParameter(depth=3)    
     public Employee getUser(){
 	if(user == null){

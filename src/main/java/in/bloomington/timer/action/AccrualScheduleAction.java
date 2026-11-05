@@ -118,19 +118,22 @@ public class AccrualScheduleAction extends TopAction{
 	return accrualSchedulesTitle;
     }
 
-
+    @StrutsParameter(depth=1)   
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)  
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
     }
+    @StrutsParameter(depth=1)  
     public void setWriteDate(String val){
 	if(val != null && !val.equals("-1"))		
 	    write_date = val;
-    }		
+    }
+    @StrutsParameter(depth=1)  
     public void setDept_ref_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    dept_ref_id = val;
@@ -151,6 +154,7 @@ public class AccrualScheduleAction extends TopAction{
     public boolean hasPrevDates(){
 	return !prev_date.isEmpty();
     }
+    @StrutsParameter(depth=3)      
     public List<Department> getDepts(){
 	if(depts == null){
 	    DepartmentList dl = new DepartmentList();
@@ -173,6 +177,7 @@ public class AccrualScheduleAction extends TopAction{
 	getDepts();
 	return depts != null && depts.size() > 0;
     }
+    @StrutsParameter(depth=2)  
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

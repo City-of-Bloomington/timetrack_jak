@@ -29,11 +29,11 @@ public class JobTaskAction extends TopAction{
     static Logger logger = LogManager.getLogger(JobTaskAction.class);
     //
     String add_employee_id = "", employee_number="", first_name="", last_name="";
-    String dept_id = "", effective_date="";
+    String dept_id = "", effective_date="", emp_id="";
     boolean employee_found = false;
     Employee emp = null;
     Department dept = null;
-    JobTask jobTask = null, oldJob=null;
+    JobTask job = null, oldJob=null;
     String jobTasksTitle = "Current jobs";
     List<PayPeriod> payPeriods = null;
     List<Type> salaryGroups = null;
@@ -49,48 +49,46 @@ public class JobTaskAction extends TopAction{
     boolean oneDpetOnly = false;
     public String execute(){
 	String ret = SUCCESS;
-	// String back = doPrepare();
-	//
 	String back = canProceed("job.action");
 	if(!back.isEmpty()){
 	    return back;
 	}
 	//
+	getJobTask();
 	if(action.equals("Save")){
-	    back = jobTask.doSaveAll();
+	    back = job.doSaveAll();
 	    if(!back.isEmpty()){
 		addError(back);
 		prepareData();
 	    }
 	    else{// for adding another job
-		effective_date = jobTask.getEffective_date();
+		effective_date = job.getEffective_date();
 		ret="view";
-		id = jobTask.getId();
+		id = job.getId();
 		addMessage("Added Successfully");
 	    }
 	}				
 	else if(action.startsWith("Save")){
-	    back = jobTask.doUpdate();
+	    back = job.doUpdate();
 	    if(!back.isEmpty()){
 		addError(back);
 	    }
 	    else{
-		id = jobTask.getId();
+		id = job.getId();
 		ret="view";
 		addMessage("Saved Successfully");
 		prepareData();
 	    }
 	}
 	else if(action.startsWith("Edit")){
-	    getJobTask();
-	    back = jobTask.doSelect();
+	    back = job.doSelect();
 	    if(!back.isEmpty()){
 		addError(back);
 	    }
 	    else{
-		id = jobTask.getId();
-		Group group = jobTask.getGroup();
-		add_employee_id = jobTask.getEmployee_id();
+		id = job.getId();
+		Group group = job.getGroup();
+		add_employee_id = job.getEmployee_id();
 		getEmp();
 		if(emp.hasMultipleDepts()){
 		    empDeptIds = emp.getAlEmpDeptIds();
@@ -102,15 +100,14 @@ public class JobTaskAction extends TopAction{
 	    }
 	}
 	else if(action.startsWith("React")){ // reactivate
-	    getJobTask();
-	    back = jobTask.doSelect();
+	    back = job.doSelect();
 	    if(!back.isEmpty()){
 		addError(back);
 	    }
 	    else{
-		back  = jobTask.reactivate();
+		back  = job.reactivate();
 		if(back.isEmpty()){
-		    String emp_id = jobTask.getEmployee_id();
+		    String emp_id = job.getEmployee_id();
 		    String str = "employee.action?emp_id="+emp_id;
 		    try{
 			HttpServletResponse res = ServletActionContext.getResponse();
@@ -132,7 +129,7 @@ public class JobTaskAction extends TopAction{
 	else{		
 	    getJobTask();
 	    if(!id.isEmpty()){
-		back = jobTask.doSelect();
+		back = job.doSelect();
 		if(!back.isEmpty()){
 		    addError(back);
 		}
@@ -142,16 +139,16 @@ public class JobTaskAction extends TopAction{
 	    else{
 		prepareData();
 		if(oldJob != null){
-		    jobTask.setSalary_group_id(oldJob.getSalary_group_id());
-		    if(!jobTask.hasEffective_date()){
-			jobTask.setEffective_date(oldJob.getEffective_date());
+		    job.setSalary_group_id(oldJob.getSalary_group_id());
+		    if(!job.hasEffective_date()){
+			job.setEffective_date(oldJob.getEffective_date());
 		    }
-		    jobTask.setWeekly_regular_hours(oldJob.getWeekly_regular_hours());
-		    jobTask.setComp_time_weekly_hours(oldJob.getComp_time_weekly_hours());
-		    jobTask.setComp_time_factor(oldJob.getComp_time_factor());
-		    jobTask.setHoliday_comp_factor(oldJob.getHoliday_comp_factor());
+		    job.setWeekly_regular_hours(oldJob.getWeekly_regular_hours());
+		    job.setComp_time_weekly_hours(oldJob.getComp_time_weekly_hours());
+		    job.setComp_time_factor(oldJob.getComp_time_factor());
+		    job.setHoliday_comp_factor(oldJob.getHoliday_comp_factor());
 		    if(effective_date.isEmpty()){
-			effective_date = jobTask.getEffective_date();
+			effective_date = job.getEffective_date();
 		    }
 		}
 	    }
@@ -196,22 +193,24 @@ public class JobTaskAction extends TopAction{
 	    }
 	}						
     }
+    @StrutsParameter(depth=3)      
     public JobTask getJobTask(){ 
-	if(jobTask == null){
-	    jobTask = new JobTask();
-	    jobTask.setId(id);
+	if(job == null){
+	    job = new JobTask();
+	    job.setId(id);
 	}
 	if(!add_employee_id.isEmpty()){
-	    jobTask.setEmployee_id(add_employee_id);
+	    job.setEmployee_id(add_employee_id);
 	}
-	return jobTask;
+	return job;
     }
-	 
+    @StrutsParameter(depth=3)      	 
     public void setJobTask(JobTask val){
 	if(val != null){
-	    jobTask = val;
+	    job = val;
 	}
     }
+    @StrutsParameter(depth=2)      
     public Employee getEmp(){
 	if(!add_employee_id.isEmpty()){
 	    Employee one = new Employee(add_employee_id);
@@ -220,24 +219,43 @@ public class JobTaskAction extends TopAction{
 		emp = one;
 	    }
 	}
+	else{
+	    getJobTask();
+	    emp_id = job.getEmployee_id();
+	    Employee one = new Employee(emp_id);
+	    String back = one.doSelect();
+	    if(back.isEmpty()){
+		emp = one;
+	    }	    
+	}
 	return emp;
     }
+    public String getEmp_id(){
+	return emp.getId();
+    }
+    public String getEmp_name(){
+	return emp.getFull_name();
+    }    
     public String getJobTasksTitle(){
 	return jobTasksTitle;
     }
+    @StrutsParameter(depth=1)      
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)      
     public void setAdd_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    add_employee_id = val;
     }
+    @StrutsParameter(depth=1)      
     public void setEmployee_number(String val){
 	if(val != null && !val.isEmpty())		
 	    employee_number = val;
     }
     // needed for new employee
+    @StrutsParameter(depth=1)      
     public void setEffective_date(String val){
 	if(val != null && !val.isEmpty())		
 	    effective_date = val;
@@ -257,9 +275,11 @@ public class JobTaskAction extends TopAction{
     public boolean hasJobs(){
 	return jobs != null && jobs.size() > 0;
     }
+    @StrutsParameter(depth=3)      
     public List<JobTask> getJobs(){
 	return jobs;
     }
+    @StrutsParameter(depth=3)      
     public List<Type> getSalaryGroups(){
 	TypeList tl = new TypeList("salary_groups");
 	String back = tl.find();
@@ -280,7 +300,8 @@ public class JobTaskAction extends TopAction{
 		positions = ones;
 	    }
 	}
-    }		
+    }
+    @StrutsParameter(depth=2)      
     public List<Position> getPositions(){
 	if(positions == null){
 	    findPositions();
@@ -292,6 +313,7 @@ public class JobTaskAction extends TopAction{
 	return shortListPositions != null && shortListPositions.size() > 0;
     }
     // using streams
+    @StrutsParameter(depth=2)      
     public List<Position> getShortListPositions(){
 	if(positions != null && jobTitles != null){
 	    List<Position> plist = positions.stream()
@@ -338,6 +360,7 @@ public class JobTaskAction extends TopAction{
 	    getShortListPositions();								
 	}
     }
+    @StrutsParameter(depth=2)      
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -353,6 +376,7 @@ public class JobTaskAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)      
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -368,6 +392,7 @@ public class JobTaskAction extends TopAction{
 	}
 	return payPeriods;
     }
+    @StrutsParameter(depth=3)      
     public List<Group> getGroups(){ // for one dept
 	if(groups == null && !dept_id.isEmpty()){
 	    GroupList gl = new GroupList();
@@ -390,6 +415,7 @@ public class JobTaskAction extends TopAction{
 	}
 	return groups;
     }
+    @StrutsParameter(depth=3)      
     public List<Group> getAllGroups(){
 	if(groups == null && empDeptIds != null){
 	    GroupList gl = new GroupList();
@@ -417,9 +443,43 @@ public class JobTaskAction extends TopAction{
     public boolean isDeptSpecified(){
 	return !dept_id.isEmpty();
     }
+    public boolean hasExpireDate(){
+	return job.hasExpireDate();
+    }
     public String getDept_id(){
 	return dept_id;
     }
+    public String getExpire_date(){
+	return job.getExpire_date();
+    }
+    public String getPosition_id(){
+	return job.getPosition_id();
+    }
+    public String getAlt_position_name(){
+	return "";
+    }
+    
+    public String getSalary_group_id(){
+	return job.getSalary_group_id();
+    }
+    public String getGroup_id(){
+	return job.getGroup_id();
+    }
+    public double getWeekly_regular_hours(){
+	return job.getWeekly_regular_hours();
+    }
+    public double getComp_time_weekly_hours(){
+	return job.getComp_time_weekly_hours();
+    }
+    public double getComp_time_factor(){
+	return job.getComp_time_factor();
+    }
+    public boolean getPrimary_flag(){
+	return job.getPrimary_flag();
+    }
+    public boolean getIrregularWorkDays(){
+	return job.getIrregularWorkDays();
+    }    
     public String fillJobInfo(){
 	String msg = "";
 	boolean isTemp = false;
@@ -439,12 +499,12 @@ public class JobTaskAction extends TopAction{
 		    employee_number = pp.getEmployee_number();
 		}
 		getJobTask();
-		jobTask.setWeekly_regular_hours(pp.getStWeeklyHrs());
-		jobTask.setComp_time_weekly_hours(pp.getCompTimeAfter());
-		jobTask.setComp_time_factor(pp.getCompTimeMultiple());
-		jobTask.setHoliday_comp_factor(pp.getHolidayTimeMultiple());
-		jobTask.setJobTitle(pp.getJobTitle());
-		jobTask.setSalary_group_name(pp.getSalary_group_name());
+		job.setWeekly_regular_hours(pp.getStWeeklyHrs());
+		job.setComp_time_weekly_hours(pp.getCompTimeAfter());
+		job.setComp_time_factor(pp.getCompTimeMultiple());
+		job.setHoliday_comp_factor(pp.getHolidayTimeMultiple());
+		job.setJobTitle(pp.getJobTitle());
+		job.setSalary_group_name(pp.getSalary_group_name());
 		//
 		if(pp.getSalary_group_name().equals("Temp")){
 		    // jobTask.setClock_time_required(true);

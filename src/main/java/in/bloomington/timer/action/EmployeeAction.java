@@ -170,13 +170,20 @@ public class EmployeeAction extends TopAction{
     public String getUsername(){
 	getEmp();
 	return emp.getUsername();
+
 	
+    }
+    public String getEmp_name(){
+	getEmp();
+	return emp.getFull_name();
     }
     public String getFirst_name(){
 	getEmp();
-	if(emp != null)
-	    return emp.getFirst_name();
-	return "";
+	return emp.getFirst_name();
+    }
+    public boolean hasNoJob(){
+	getEmp();
+	return emp.hasNoJob();
     }
     public String getLast_name(){
 	getEmp();
@@ -320,7 +327,7 @@ public class EmployeeAction extends TopAction{
 	getEmp();
 	return emp.getLeaveReviewers();
     }
-    
+    @StrutsParameter(depth=1)
     public void setWizard(boolean val){
 	if(val){
 	    wizard = true;
@@ -345,7 +352,8 @@ public class EmployeeAction extends TopAction{
     public void setEffective_date(String val){
 	if(val != null)
 	    effective_date = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;

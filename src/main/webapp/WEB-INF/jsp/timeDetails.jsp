@@ -84,16 +84,16 @@ function loginTimer() {
 	    
 	    <hr class="m-b-40" />
 	    <s:if test="hasMultipleJobs()">
-		<s:set var="payPeriodTotal" value="mjdoc.payPeriodTotal" />
-		<s:set var="payPeriodAmount" value="mjdoc.payPeriodAmount" />
-		<s:set var="daily" value="mjdoc.daily" />
-		<s:set var="week1Total" value="mjdoc.week1Total" />
-		<s:set var="week2Total" value="mjdoc.week2Total" />
+		<s:set var="payPeriodTotal" value="mjdoc_payPeriodTotal" />
+		<s:set var="payPeriodAmount" value="mjdoc_payPeriodAmount" />
+		<s:set var="daily" value="mjdoc_daily" />
+		<s:set var="week1Total" value="mjdoc_week1Total" />
+		<s:set var="week2Total" value="mjdoc_week2Total" />
 		
 		<s:if test="isUnionned()">
 		    <s:set var="unionned" value="'true'" />
-		    <s:set var="week1Flsa" value="mjdoc.week1_flsa" />
-		    <s:set var="week2Flsa" value="mjdoc.week2_flsa" />
+		    <s:set var="week1Flsa" value="mjdoc_week1_flsa" />
+		    <s:set var="week2Flsa" value="mjdoc_week2_flsa" />
 		</s:if>
 		<s:else>
 		    <s:set var="unionned" value="'false'" />

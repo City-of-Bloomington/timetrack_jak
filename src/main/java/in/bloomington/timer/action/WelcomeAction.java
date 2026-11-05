@@ -35,6 +35,7 @@ public class WelcomeAction extends TopAction{
 	}
 	return ret;
     }
+
     public void setAction(String val){
 	action = val;
     }

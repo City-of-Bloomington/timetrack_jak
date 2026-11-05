@@ -18,7 +18,7 @@
 	    </ul>
 	</s:if>
 	<s:else>
-	    <h1>Employee <s:property value="emp.full_name" /></h1>
+	    <h1>Employee <s:property value="emp_name" /></h1>
 	    <s:hidden name="emp.id" value="%{emp_id}" />
 	    <s:if test="!canAssignRoles()">
 		<s:hidden name="emp.rolesText" value="%{rolesText}" />
@@ -104,7 +104,7 @@
 		      <s:checkboxlist key="emp.roles" list="roles" id="roles"/>
 		  </div>
 	      </s:if>
-	      <s:if test="emp.id == ''">
+	      <s:if test="emp_id == ''">
 		  <s:submit name="action" type="button" value="Save" class="button"/>
 	      </s:if>
 	      <s:else>

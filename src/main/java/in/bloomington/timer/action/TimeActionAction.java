@@ -27,7 +27,7 @@ public class TimeActionAction extends TopAction{
     TimeAction timeAction = null;
     List<TimeAction> otherActions = null; 
     String timeActionsTitle = "Time Actions";
-    String document_id = "", workflow_id="";
+    String document_id = "", workflow_id="", pay_period_id="";
     String source = ""; // where we are coming from
     //
     public String execute(){
@@ -36,8 +36,8 @@ public class TimeActionAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getTimeAction();	
 	if(action.startsWith("Submit")){
-	    getTimeAction();
 	    getUser();
 	    if(user != null){
 		timeAction.setAction_by(user.getId());
@@ -51,7 +51,6 @@ public class TimeActionAction extends TopAction{
 	    }
 	}
 	else if(action.startsWith("Cancel")){
-	    getTimeAction();
 	    getUser();
 	    if(user != null){
 		timeAction.setCancelled_by(user.getId());
@@ -74,7 +73,6 @@ public class TimeActionAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getTimeAction();
 	    if(!id.isEmpty()){
 		back = timeAction.doSelect();
 		if(!back.isEmpty()){
@@ -87,10 +85,21 @@ public class TimeActionAction extends TopAction{
 	    }
 	}
 	if(!source.isEmpty()){
-	    return source;
+	    try{
+		HttpServletResponse res = ServletActionContext.getResponse();
+		// we do not need the url here
+		String str = source+".action?";
+		if(!document_id.isEmpty()){
+		    str += "document_id="+document_id;
+		}
+		res.sendRedirect(str);
+	    }catch(Exception ex){
+		System.err.println(ex);
+	    }
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)        
     public TimeAction getTimeAction(){ 
 	if(timeAction == null){
 	    timeAction = new TimeAction();
@@ -100,7 +109,12 @@ public class TimeActionAction extends TopAction{
 	}
 	return timeAction;
     }
-    
+    @StrutsParameter(depth=1)
+    public void setPay_period_id(String val){
+	if(val != null)
+	    pay_period_id = val;
+    }
+	
     private boolean hasOtherActions(){
 	if(otherActions == null)
 	    findOtherTimeActions();
@@ -119,6 +133,7 @@ public class TimeActionAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)    
     public void setTimeAction(TimeAction val){
 	if(val != null){
 	    timeAction = val;
@@ -127,10 +142,12 @@ public class TimeActionAction extends TopAction{
     public String getTimeActionsTitle(){
 	return timeActionsTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -143,10 +160,12 @@ public class TimeActionAction extends TopAction{
 	}
 	return document_id;
     }
+    @StrutsParameter(depth=1)    
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)    
     public void setWorkflow_id(String val){
 	if(val != null && !val.isEmpty())		
 	    workflow_id = val;

@@ -6,7 +6,7 @@
 	<tr>
 	    <th width="25%">Accrual Category</th>
 	    <th>&nbsp;</th>
-	    <th width="25%">Carry Over Balance (as of <s:property value="document.accrualAsOfDate" />)</th>
+	    <th width="25%">Carry Over Balance (as of <s:property value="accrualAsOfDate" />)</th>
 	    <s:if test="isPendingAccrualAllowed()">
 		<th width="15%">Pending Accrual</th>
 	    </s:if>

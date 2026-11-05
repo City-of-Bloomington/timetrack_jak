@@ -132,10 +132,10 @@
               </s:if>
               <s:if test="hasJob()">
                 <li>
-                  <strong>Weekly Standard Work Hours: </strong> <s:property value="job.weekly_regular_hours" />
+                  <strong>Weekly Standard Work Hours: </strong> <s:property value="weekly_regular_hours" />
                 </li>
                 <li>
-                  <strong>Weekly Compt Time Earned After Hours: </strong> <s:property value="job.comp_time_weekly_hours" />
+                  <strong>Weekly Compt Time Earned After Hours: </strong> <s:property value="comp_time_weekly_hours" />
                 </li>
               </s:if>
             </ul>
@@ -170,14 +170,14 @@
             </s:if>
 	    <div class="monetary-hours-tables">							
 		<s:if test="hasTmwrpRun()">
-		    <s:if test="tmwrpRun.hasWeek1Rows()">
-			<s:set var="rows" value="tmwrpRun.week1Rows" />
+		    <s:if test="hasWeek1Rows()">
+			<s:set var="rows" value="week1Rows" />
 			<s:set var="weeklyTitle" value="'Week 1 (Earn Codes)'" />
 			<s:set var="whichWeek" value="'week-one'" />
 			<%@ include file="weeklyTmwrp.jsp" %>
 		    </s:if>
-		    <s:if test="tmwrpRun.hasWeek2Rows()">
-			<s:set var="rows" value="tmwrpRun.week2Rows" />
+		    <s:if test="hasWeek2Rows()">
+			<s:set var="rows" value="week2Rows" />
 			<s:set var="weeklyTitle" value="'Week 2 (Earn Codes)'" />
 			<s:set var="whichWeek" value="'week-two'" />
 			<%@ include file="weeklyTmwrp.jsp" %>

@@ -74,10 +74,12 @@ public class TimeDetailsAction extends TopAction{
     public String getTimeBlocksTitle(){
 	return timeBlocksTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -590,7 +592,16 @@ public class TimeDetailsAction extends TopAction{
 	    return document.getDaily();
 	}
 	return null;
-    }	    
+    }
+    public Map<JobType, Map<Integer, String>> getMjdoc_daily(){
+	if(mjdoc == null){
+	    getMjdoc();
+	}
+	if(mjdoc != null){	
+	    return mjdoc.getDaily();
+	}
+	return null;
+    }	        
     public boolean isUnionned(){
 	if(document == null){
 	    getDocument();
@@ -615,13 +626,24 @@ public class TimeDetailsAction extends TopAction{
     }
     public String getCurrentPayPeriod_id(){
 	return getCurrentPayPeriod().getId();
-    }    
+    }
+    
     public String getPayPeriodTotal(){
 	return document.getPayPeriodTotal();
     }
     public String getPayPeriodAmount(){
 	return document.getPayPeriodAmount();
     }
+    public String getMjdoc_payPeriodTotal(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getPayPeriodTotal();
+    }
+    public String getMjdoc_payPeriodAmount(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getPayPeriodAmount();
+    }    
     public boolean hasAnnuance(){
 	findCurrentAnnuance();
 	return annuance != null;
@@ -693,6 +715,27 @@ public class TimeDetailsAction extends TopAction{
     public String getWeek2_flsa(){
 	return document.getWeek2_flsa();
     }
+    //
+    public String getMjdoc_week1Total(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getWeek1Total();
+    }
+    public String getMjdoc_week2Total(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getWeek2Total();
+    }
+    public String getMjdoc_week1_flsa(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getWeek1_flsa();
+    }
+    public String getMjdoc_week2_flsa(){
+	if(mjdoc == null)
+	    getMjdoc();
+	return mjdoc.getWeek2_flsa();
+    }    
     public boolean hasWarnings(){
 	return document.hasWarnings();
     }
@@ -736,6 +779,9 @@ public class TimeDetailsAction extends TopAction{
     public String getEmployeeAccrualsShort(){
 	return document.getEmployeeAccrualsShort();
     }
+    public String getAccrualAsOfDate(){
+	return document.getAccrualAsOfDate();
+    }    
     public boolean isProcessed(){
 	return document.isProcessed();
     }

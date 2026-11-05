@@ -42,7 +42,7 @@ public class QuartzMisc{
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	String qq = " select from_unixtime(prev_fire_time/1000), from_unixtime(next_fire_time/1000) from qrtz_triggers where job_group like '"+type+"'";
+	String qq = " select from_unixtime(prev_fire_time/1000), from_unixtime(next_fire_time/1000) from QRTZ_TRIGGERS where job_group like '"+type+"'";
 	try{
 	    con = UnoConnect.getConnection();
 	    if(con == null){
@@ -103,11 +103,11 @@ public class QuartzMisc{
 	//
 	String where_strig = " where trigger_group like '"+type+"'";
 	String where_job = " where job_group like '"+type+"'";
-	String[] qq = {"delete from qrtz_cron_triggers "+where_strig,
-	    "delete from qrtz_simple_triggers "+where_strig,
-	    "delete from qrtz_fired_triggers "+where_strig,
-	    "delete from qrtz_triggers "+where_strig,
-	    "delete from qrtz_job_details "+where_job};
+	String[] qq = {"delete from QRTZ_CRON_TRIGGERS "+where_strig,
+	    "delete from QRTZ_SIMPLE_TRIGGERS "+where_strig,
+	    "delete from QRTZ_FIRED_TRIGGERS "+where_strig,
+	    "delete from QRTZ_TRIGGERS "+where_strig,
+	    "delete from QRTZ_JOB_DETAILS "+where_job};
 	con = UnoConnect.getConnection();
 	if(con == null){
 	    msg = "Could not connect to DB";
@@ -145,11 +145,11 @@ public class QuartzMisc{
 	//
 	String where_strig = " where trigger_group like '"+group_name+"%';";
 	String where_job = " where job_group like '"+group_name+"%';";
-	String[] qq = {"delete from qrtz_cron_triggers "+where_strig,
-	    " delete from qrtz_simple_triggers "+where_strig,
-	    " delete from qrtz_fired_triggers "+where_strig,
-	    " delete from qrtz_triggers "+where_strig,
-	    " delete from qrtz_job_details "+where_job};
+	String[] qq = {"delete from QRTZ_CRON_TRIGGERS "+where_strig,
+	    " delete from QRTZ_SIMPLE_TRIGGERS "+where_strig,
+	    " delete from QRTZ_FIRED_TRIGGERS "+where_strig,
+	    " delete from QRTZ_TRIGGERS "+where_strig,
+	    " delete from QRTZ_JOB_DETAILS "+where_job};
 	con = UnoConnect.getConnection();
 	if(con == null){
 	    msg = "Could not connect to DB";

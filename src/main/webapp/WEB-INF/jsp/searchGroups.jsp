@@ -47,11 +47,10 @@
 	      </div>
 	  </div>
 	</s:form>
-	
-	<s:if test="groups != null && groups.size() > 0">
-		<s:set var="groups" value="%{groups}" />
-		<s:set var="groupsTitle" value="groupsTitle" />
-		<%@ include file="groups.jsp" %>
+	<s:if test="groups != null">
+	    <s:set var="groups" value="%{groups}" />
+	    <s:set var="groupsTitle" value="groupsTitle" />
+	    <%@ include file="groups.jsp" %>
 	</s:if>
 </div>
 <%@ include file="footer.jsp" %>

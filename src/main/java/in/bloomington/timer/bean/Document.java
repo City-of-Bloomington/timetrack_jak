@@ -581,7 +581,15 @@ public class Document implements Serializable{
     }
     public double getWeek2_flsaDbl(){
 	return week2_flsa;
-    }					
+    }
+    public int getWeekly_regular_hours(){
+	getJob();
+	return job.getWeekly_regular_hours();
+    }
+    public int getComp_time_weekly_hours(){
+	getJob();
+	return job.getComp_time_weekly_hours();
+    }    
     public boolean hasDaily(){
 	prepareDaily();
 	return daily != null && daily.size() > 0;
@@ -740,6 +748,19 @@ public class Document implements Serializable{
     public TmwrpRun getTmwrpRun(){
 	return tmwrpRun;
     }
+    public boolean hasWeek1Rows(){
+	return tmwrpRun.hasWeek1Rows();
+    }
+    public boolean hasWeek2Rows(){
+	return tmwrpRun.hasWeek2Rows();
+    }
+    
+    public List<List<String>> getWeek1Rows(){
+	return tmwrpRun.getWeek1Rows();
+    }
+    public List<List<String>> getWeek2Rows(){
+	return tmwrpRun.getWeek2Rows();
+    }    
     // total hours
     public String getPayPeriodTotal(){
 	double ret = week1Total+week2Total;
@@ -1227,7 +1248,7 @@ public class Document implements Serializable{
 	if(!accrualAdjusted){
 	    accrualAdjusted = true;
 	    boolean pendingAccrualAllowed = isPendingAccrualAllowed();
-	    if(employeeAccruals != null && usedAccrualTotals != null){
+	    if(employeeAccruals != null){
 		for(EmployeeAccrual one: employeeAccruals){
 		    if(!one.hasValue() && !one.isCompTimeRelated()) continue;
 		    String accrual_id = one.getAccrual_id();

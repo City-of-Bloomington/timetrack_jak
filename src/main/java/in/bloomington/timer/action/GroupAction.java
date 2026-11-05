@@ -41,6 +41,7 @@ public class GroupAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGroup();
 	if(action.equals("Save")){
 	    back = group.doSave();
 	    if(!back.isEmpty()){
@@ -62,7 +63,6 @@ public class GroupAction extends TopAction{
 	    }
 	}
 	else if(action.startsWith("Edit")){
-	    getGroup();
 	    if(!id.isEmpty()){
 		back = group.doSelect();
 		if(!back.isEmpty()){
@@ -71,7 +71,6 @@ public class GroupAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getGroup();
 	    if(!id.isEmpty()){
 		back = group.doSelect();
 		if(!back.isEmpty()){
@@ -82,6 +81,7 @@ public class GroupAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)    
     public Group getGroup(){ 
 	if(group == null){
 	    group = new Group();
@@ -90,24 +90,88 @@ public class GroupAction extends TopAction{
 	}		
 	return group;
     }
-
+    @StrutsParameter(depth=3)
     public void setGroup(Group val){
 	if(val != null){
 	    group = val;
 	}
     }
+    public String getGroup_id(){
+	return group.getId();
+    }
+    public String getGroup_name(){
+	return group.getName();
+    }
+    public String getDept_name(){
+	return group.getDepartment().getName();
+    }    
+    public String getDescription(){
+	return group.getDescription();
+    }
+    public String getExcessHoursEarnType(){
+	return group.getExcessHoursEarnType();
+    }
+    public boolean getClock_time_required(){
+	return group.getClock_time_required();
+    }
+    public boolean getAllowPendingAccrual(){
+	return group.getAllowPendingAccrual();
+    }
+    public boolean isInactive(){
+	return group.isInactive();
+    }
+    public boolean hasEmployees(){
+	return group.hasEmployees();
+    }
+    @StrutsParameter(depth=3)    
+    public List<Employee> getEmployees(){
+	return group.getEmployees();
+    }
+    public boolean hasJobs(){
+	return group.hasJobs();
+    }
+    @StrutsParameter(depth=3)        
+    public List<JobTask> getJobs(){
+	return group.getJobs();
+    }
+    public boolean hasGroupShifts(){
+	return group.hasGroupShifts();
+    }
+    @StrutsParameter(depth=3)       
+    public List<GroupShift> getGroupShifts(){
+	return group.getGroupShifts();
+    }
+    public boolean hasLocation(){
+	return group.hasLocation();
+    }    
+    @StrutsParameter(depth=2)
+    public Location getLocation(){
+	return group.getLocation();
+    }
+    /**
+    public boolean hasGroupManagers(){
+	return group.hasGroupManagers();
+    }
 
+    @StrutsParameter(depth=3)    
+    public List<GroupManager> getGroupManagers(){
+	return group.getGoupManagers();
+    }
+    */
     public String getGroupsTitle(){
 	return groupsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	if(groups == null){
 	    GroupList tl = new GroupList();
@@ -125,6 +189,7 @@ public class GroupAction extends TopAction{
 	}
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	TypeList tl = new TypeList("departments");
 	String back = tl.find();
@@ -140,6 +205,7 @@ public class GroupAction extends TopAction{
 	getGroupManagers();
 	return groupManagers != null;
     }
+    @StrutsParameter(depth=3)
     public List<GroupManager> getGroupManagers(){
 	//
 	if(groupManagers == null){
@@ -155,6 +221,7 @@ public class GroupAction extends TopAction{
 	}
 	return groupManagers;
     }
+    @StrutsParameter(depth=3)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList gml = new HourCodeList();
@@ -170,7 +237,7 @@ public class GroupAction extends TopAction{
 	}
 	return hourCodes;				
     }
-    //
+    @StrutsParameter(depth=2)    //
     public String[] getExcessHoursEarnTypes(){
 	return CommonInc.excess_hours_earn_types;
     }

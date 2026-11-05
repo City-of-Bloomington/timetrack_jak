@@ -34,6 +34,7 @@ public class SearchGroupAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGrplst();
 	if(!action.isEmpty()){
 	    back = grplst.find();
 	    if(!back.isEmpty()){
@@ -55,13 +56,14 @@ public class SearchGroupAction extends TopAction{
 	getGrplst();
 	return ret;
     }
+    @StrutsParameter(depth=2)       
     public GroupList getGrplst(){ 
 	if(grplst == null){
 	    grplst = new GroupList();
 	}		
 	return grplst;
     }
-
+    @StrutsParameter(depth=3)   
     public void setGrplst(GroupList val){
 	if(val != null){
 	    grplst = val;
@@ -71,6 +73,7 @@ public class SearchGroupAction extends TopAction{
     public String getGroupsTitle(){
 	return groupsTitle;
     }
+    @StrutsParameter(depth=1)   
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -78,10 +81,11 @@ public class SearchGroupAction extends TopAction{
     public boolean hasGroups(){
 	return groups != null && groups.size() > 0;
     }
-
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	return groups;
     }
+    @StrutsParameter(depth=3)    
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

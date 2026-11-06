@@ -55,7 +55,7 @@
           <a href="<s:property value='#application.url'/>payrollProcess.action">Payroll Approval</a>
       </s:if>
       <s:if test="isLeaveEligible()">
-	  <a href="<s:property value='#application.url'/>leave_request.action?job_id=<s:property value='user.job_id' />">Leave Request </a>	
+	  <a href="<s:property value='#application.url'/>leave_request.action"/>">Leave Request </a>	
       </s:if>      
       <s:if test="canLeaveReview() && isLeaveEligible()">      
           <a href="<s:property value='#application.url'/>leave_review.action">Leave Review</a>

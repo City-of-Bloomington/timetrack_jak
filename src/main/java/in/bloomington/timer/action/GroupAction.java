@@ -96,10 +96,7 @@ public class GroupAction extends TopAction{
 	    group = val;
 	}
     }
-    public String getGroup_id(){
-	return group.getId();
-    }
-    public String getGroup_name(){
+    public String getName(){
 	return group.getName();
     }
     public String getDept_name(){
@@ -122,6 +119,9 @@ public class GroupAction extends TopAction{
     }
     public boolean hasEmployees(){
 	return group.hasEmployees();
+    }
+    public boolean hasNoShift(){
+	return group.hasNoShift();
     }
     @StrutsParameter(depth=3)    
     public List<Employee> getEmployees(){
@@ -147,6 +147,9 @@ public class GroupAction extends TopAction{
     @StrutsParameter(depth=2)
     public Location getLocation(){
 	return group.getLocation();
+    }
+    public String getDepartment_id(){
+	return group.getDepartment_id();
     }
     /**
     public boolean hasGroupManagers(){

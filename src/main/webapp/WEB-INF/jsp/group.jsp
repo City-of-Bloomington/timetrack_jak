@@ -2,12 +2,12 @@
 <div class="internal-page">
     <s:form action="group" id="form_id" method="post" >
 	<s:hidden name="action2" id="action2" value="" />
-	<s:if test="group.id == ''">
+	<s:if test="id == ''">
 	    <h1>New group</h1>
 	</s:if>
 	<s:else>
-	    <h1>Edit Group: <s:property value="%{group.name}" /></h1>
-	    <s:hidden id="group.id" name="group.id" value="%{group.id}" />
+	    <h1>Edit Group: <s:property value="%{name}" /></h1>
+	    <s:hidden id="group.id" name="group.id" value="%{id}" />
 	</s:else>
 	<s:if test="hasMessages()">
 	    <s:set var="messages" value="%{messages}" />			
@@ -21,48 +21,48 @@
 	    <li>Excess Hours Earn Type is the compensatory type either 'Earn Time' such as 'CE1.0 Comp Time' or Monetary such as 'OT1.0 Overtime' for certain groups such as union, if hours worked exceeds weekly, daily or pay period hours. The Donation is for groups that do not earn either. </li>
 	</ul>
 	<div class="width-one-half">
-	    <s:if test="group.id != ''">
+	    <s:if test="id != ''">
 		<div class="form-group">
 		    <label>ID</label>
-		    <s:property value="group.id" />
+		    <s:property value="id" />
 		</div>
 	    </s:if>
 	    
 	    <div class="form-group">
 		<label>Name </label>
-		<s:textfield name="group.name" value="%{group.name}" size="30" maxlength="70" required="true" />
+		<s:textfield name="group.name" value="%{name}" size="30" maxlength="70" required="true" />
 	    </div>
 	    
 	    <div class="form-group">
 		<label>Department</label>
-		<s:select name="group.department_id" value="%{group.department_id}" list="departments" listKey="id" listValue="name" headerKey="-1" headerValue="Pick Dept" required="true" />
+		<s:select name="group.department_id" value="%{department_id}" list="departments" listKey="id" listValue="name" headerKey="-1" headerValue="Pick Dept" required="true" />
 	    </div>
 	    
 	    <div class="form-group">
 		<label>Description</label>
-		<s:textarea name="group.description" value="%{group.description}" rows="5" cols="50" />
+		<s:textarea name="group.description" value="%{description}" rows="5" cols="50" />
 	    </div>
 	    <div class="form-group">
 		<label>Excess Hours Earn Type</label>			
-		<s:radio name="group.excessHoursEarnType" value="%{group.excessHoursEarnType}" list="excessHoursEarnTypes" />
+		<s:radio name="group.excessHoursEarnType" value="%{excessHoursEarnType}" list="excessHoursEarnTypes" />
 	    </div>
 	    <div class="form-group">
 		<label>Clock Time Required?</label>
-		<s:checkbox name="group.clock_time_required" value="%{group.clock_time_required}" fieldValue="true" id="clock_required_id" />Yes (Employees who are required to use punch clock)
+		<s:checkbox name="group.clock_time_required" value="%{clock_time_required}" fieldValue="true" id="clock_required_id" />Yes (Employees who are required to use punch clock)
 	    </div>
 	    
 	    <div class="form-group">
 		<label>Allow Pending Accrual?</label>
-		<s:checkbox name="group.allowPendingAccrual" value="%{group.allowPendingAccrual}" fieldValue="true" />Yes
+		<s:checkbox name="group.allowPendingAccrual" value="%{allowPendingAccrual}" fieldValue="true" />Yes
 	    </div>
 	    <div class="form-group">
 		<label>Include in Auto Submit Batch?</label>
-		<s:checkbox name="group.includeInAutoBatch" value="%{group.includeInAutoBatch}" fieldValue="true" id="include_in_auto_batch" />Yes (The system will auto submit timesheet for approval for the whole group)
+		<s:checkbox name="group.includeInAutoBatch" value="%{includeInAutoBatch}" fieldValue="true" id="include_in_auto_batch" />Yes (The system will auto submit timesheet for approval for the whole group)
 	    </div>			
 	    
 	    <div class="form-group">
 		<label>Inactive?</label>
-		<s:checkbox name="group.inactive" value="%{group.inactive}" fieldValue="true" />Yes
+		<s:checkbox name="group.inactive" value="%{inactive}" fieldValue="true" />Yes
 	    </div>
 	    
 	    <s:if test="group.id == ''">
@@ -70,11 +70,11 @@
 	    </s:if>
 	    <s:else>
 		<div class="button-group">
-		    <a href="<s:property value='#application.url' />groupManagerAdd.action?group_id=<s:property value='group.id' />" class="button">Assign managers to group </a>
-		    <a href="<s:property value='#application.url' />groupJobTerminate.action?group_id=<s:property value='group.id' />" class="button">Terminate group jobs</a>	  
+		    <a href="<s:property value='#application.url' />groupManagerAdd.action?group_id=<s:property value='id' />" class="button">Assign managers to group </a>
+		    <a href="<s:property value='#application.url' />groupJobTerminate.action?group_id=<s:property value='id' />" class="button">Terminate group jobs</a>	  
 		    <a href="<s:property value='#application.url'/>group.action" class="button">New Group</a><s:submit name="action" type="button" value="Save Changes" class="button"/>
-		    <s:if test="group.hasNoShift()">
-			<a href="<s:property value='#application.url'/>groupShift.action?group_id=<s:property value='group.id' />" class="button">Add Time Rounding</a>		
+		    <s:if test="hasNoShift()">
+			<a href="<s:property value='#application.url'/>groupShift.action?group_id=<s:property value='id' />" class="button">Add Time Rounding</a>		
 		    </s:if>
 		</div>
 	    </s:else>

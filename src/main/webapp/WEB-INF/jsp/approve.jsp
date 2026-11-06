@@ -2,7 +2,7 @@
 <s:form action="approve" id="form_id" method="post" class="internal-page">
   <s:hidden name="action2" id="action2" value="" />
   <h1>Approve Timesheets
-    <small><b>Approver:&nbsp;</b><s:property value="user.full_name" /></small>
+    <small><b>Approver:&nbsp;</b><s:property value="employee_name" /></small>
    </h1>
 
   <s:if test="hasErrors()">

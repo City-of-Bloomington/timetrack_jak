@@ -180,7 +180,12 @@ public class LeaveRequestAction extends TopAction{
 	    getUser();
 	    if(user != null)
 		leave.setInitiated_by(user.getId());
-	    leave.setJob_id(job_id);
+	    if(id.isEmpty()){
+		if(job_id.isEmpty())
+		    getJob();
+		leave.setJob_id(job_id);		
+		leave.findGroupManager();
+	    }
 	}
 	return leave;
 						
@@ -455,6 +460,10 @@ public class LeaveRequestAction extends TopAction{
 	    if(back.isEmpty()){
 		job = one;
 	    }
+	}
+	else{
+	    job = employee.getJob();
+	    job_id = job.getId();
 	}
 	return job;
     }

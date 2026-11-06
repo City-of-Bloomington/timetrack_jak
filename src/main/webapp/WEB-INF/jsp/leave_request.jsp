@@ -1,7 +1,6 @@
 <%@ include file="header.jsp" %>
 <div class="internal-page">
-    <h1>LEAVE REQUESTS <small><b>Requester:&nbsp;</b><s:property value="user"/>&nbsp;<b> Reviewer:&nbsp;</b><s:property value="leave.managerName" /> </small></h1><br />
-
+    <h1>LEAVE REQUESTS <small><b>Requester:&nbsp;</b><s:property value="user"/>&nbsp;<b> Reviewer:&nbsp;</b><s:property value="managerName" /> </small></h1><br />
     <s:if test="hasErrors()">
 	<s:set var="errors" value="errors" />
 	<%@ include file="errors.jsp" %>
@@ -25,9 +24,9 @@
 	<s:hidden name="action2" id="action2" value="" />
 	<s:hidden name="leave.job_id" value="%{job_id}" />
 	<s:hidden name="job_id" value="%{job_id}" />
-	<s:if test="leave.id != ''">
-	    <s:hidden name="leave.id" value="%{leave.id}" />
-	    <s:hidden name="id" value="%{leave.id}" />
+	<s:if test="id != ''">
+	    <s:hidden name="leave.id" value="%{id}" />
+	    <s:hidden name="id" value="%{id}" />
 	    <h1 style="border-bottom:none;">Edit Leave Request</h1>	    
 	</s:if>
 	<s:else>
@@ -40,20 +39,20 @@
 		<div class="date-range-picker">
 		    <div>	    
 			<label>First Day on Leave *</label>
-			<s:textfield name="leave.startDate" value="%{leave.startDate}" type="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" id="start" requiredLabel="true" required="true" />
+			<s:textfield name="leave.startDate" value="%{startDate}" type="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" id="start" requiredLabel="true" required="true" />
 		    </div>
 		    <div>		    
 			<label>Last Day on Leave *</label>
-			<s:textfield name="leave.lastDate" value="%{leave.lastDate}" type="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" requiredLabel="true"  required="true" />
+			<s:textfield name="leave.lastDate" value="%{lastDate}" type="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" requiredLabel="true"  required="true" />
 		    </div>
 		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    <div id="div_time_in" class="form-group">
 			<label>Leave Hours to be used *</label>
-			<s:if test="leave.id == ''">
+			<s:if test="id == ''">
 			    <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="" size="5" maxlength="5" placeholder="Total hrs (xxx.xx)" required="true" /><br />
 			</s:if>
 			<s:else>
-			      <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="%{leave.totalHours}" size="5" maxlength="5" placeholder="(xxx.xx)" required="true" /><br />
+			      <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="%{totalHours}" size="5" maxlength="5" placeholder="(xxx.xx)" required="true" /><br />
 			</s:else>
 		   </div>
 		</div>
@@ -84,7 +83,7 @@
 	    <br />
 	    <div class="form-group">
 		<label>Proposed Leave Description *</label>
-		<s:textarea name="leave.requestDetails" value="%{leave.requestDetails}" rows="4" cols="50" wrap="true" required="true" /><br />
+		<s:textarea name="leave.requestDetails" value="%{requestDetails}" rows="4" cols="50" wrap="true" required="true" /><br />
 	    </div>
 	    <div class="button-group">
 		<s:if test="leave.id == ''">

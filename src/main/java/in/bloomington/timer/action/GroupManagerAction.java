@@ -97,6 +97,7 @@ public class GroupManagerAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)        
     public GroupManager getGroupManager(){ 
 	if(groupManager == null){
 	    groupManager = new GroupManager(id);
@@ -105,7 +106,7 @@ public class GroupManagerAction extends TopAction{
 	}		
 	return groupManager;
     }
-
+    @StrutsParameter(depth=3)    
     public void setGroupManager(GroupManager val){
 	if(val != null){
 	    groupManager = val;
@@ -115,14 +116,51 @@ public class GroupManagerAction extends TopAction{
     public String getGroupManagersTitle(){
 	return groupManagersTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-
+    @StrutsParameter(depth=1)    
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty() && !val.equals("-1"))		
 	    group_id = val;
+    }
+    public String getGm_emp_id(){
+	getGroupManager();
+	return groupManager.getEmployee_id();
+    }
+    public String getGm_emp_name(){
+	getGroupManager();
+	return groupManager.getEmployee().getFull_name();
+    }
+    public String getWf_node_id(){
+	getGroupManager();
+	return groupManager.getWf_node_id();
+    }
+    public String getStart_date(){
+	getGroupManager();
+	return groupManager.getStart_date();
+    }
+    public String getExpire_date(){
+	getGroupManager();
+	return groupManager.getExpire_date();
+    }
+    public boolean hasExpireDate(){
+	getGroupManager();
+	return groupManager.hasExpireDate();
+    }    
+    public boolean getInactive(){
+	getGroupManager();
+	return groupManager.getInactive();
+    }
+    public boolean isPrimary(){
+	getGroupManager();
+	return groupManager.isPrimary();
+    }
+    public String getGroup_name(){
+	getGroup();
+	return group.getName();
     }
     public String getGroup_id(){
 	if(group_id.isEmpty()){
@@ -135,6 +173,7 @@ public class GroupManagerAction extends TopAction{
 	}
 	return group_id;
     }
+    @StrutsParameter(depth=2)    
     public Group getGroup(){
 	getGroup_id();
 	if(!group_id.isEmpty()){
@@ -147,6 +186,7 @@ public class GroupManagerAction extends TopAction{
 	}
 	return group;
     }
+    @StrutsParameter(depth=3)    
     public List<Node> getNodes(){
 	if(nodes == null){
 	    NodeList nl = new NodeList();
@@ -168,6 +208,7 @@ public class GroupManagerAction extends TopAction{
 	getEmployees();
 	return employees != null;
     }
+    @StrutsParameter(depth=3)    
     public List<Employee> getEmployees(){
 	//
 	// given a group we will find employees in the related department
@@ -201,6 +242,7 @@ public class GroupManagerAction extends TopAction{
 	getGroupManagers();
 	return groupManagers != null;
     }
+    @StrutsParameter(depth=3)    
     public List<GroupManager> getGroupManagers(){
 	//
 	getGroup_id();
@@ -215,6 +257,7 @@ public class GroupManagerAction extends TopAction{
 	}
 	return groupManagers;
     }
+    @StrutsParameter(depth=2)    
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

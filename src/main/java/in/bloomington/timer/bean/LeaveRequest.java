@@ -407,7 +407,7 @@ public class LeaveRequest implements java.io.Serializable{
 	findGroupManager();
 	return manager;
     }    
-    void findGroupManager(){
+    public void findGroupManager(){
 	if(manager == null){
 	    GroupManagerList gml = new GroupManagerList();
 	    if(group_id.isEmpty()){

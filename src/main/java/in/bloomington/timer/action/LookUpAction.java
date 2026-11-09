@@ -48,10 +48,12 @@ public class LookUpAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setOther_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    other_employee_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	other_employee_name = val;
     }
@@ -83,18 +85,22 @@ public class LookUpAction extends TopAction{
 	findDocuments();
 	return documents != null && documents.size() > 0 ;
     }
+    @StrutsParameter(depth=3)
     public List<Document> getDocuments(){
 	findDocuments();
 	return documents;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setType(String val){ // needed for js but not used here
 	if(val != null && !val.isEmpty())		
 	    type = val; // all employees
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
@@ -105,7 +111,7 @@ public class LookUpAction extends TopAction{
 	}
 	return pay_period_id;
     }
-
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -122,6 +128,7 @@ public class LookUpAction extends TopAction{
 	}
 	return payPeriods;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	if(!pay_period_id.isEmpty()){
 	    PayPeriod one = new PayPeriod(pay_period_id);

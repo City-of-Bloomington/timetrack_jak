@@ -35,6 +35,7 @@ public class PartTimeEmailLogsAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getLel();
 	if(!action.isEmpty()){
 	    lel.setDateFrom(dateFrom);
 	    lel.setDateTo(dateTo);
@@ -56,12 +57,9 @@ public class PartTimeEmailLogsAction extends TopAction{
 		}
 	    }
 	}
-	else{
-
-	}
-	getLel();
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public PartTimeEmailLogList getLel(){
 	return lel;
     }
@@ -73,15 +71,18 @@ public class PartTimeEmailLogsAction extends TopAction{
     }
     public String getDateTo(){
 	return dateTo;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action =val;
     }
+    @StrutsParameter(depth=1)
     public void setDateFrom(String val){
 	if(val != null && !val.isEmpty())		
 	    dateFrom =val;
     }
+    @StrutsParameter(depth=1)
     public void setDateTo(String val){
 	if(val != null && !val.isEmpty())		
 	    dateTo =val;
@@ -92,6 +93,7 @@ public class PartTimeEmailLogsAction extends TopAction{
 	return logs != null && logs.size() > 0;
     }
     // default
+    @StrutsParameter(depth=3)
     public List<PartTimeEmailLog> getLogs(){
 	if(action.isEmpty() && logs == null){
 	    String back = lel.find();

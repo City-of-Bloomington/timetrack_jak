@@ -157,15 +157,48 @@ public class TimeClockAction extends TopAction{
 	}
 	return timeClock;
     }
+    @StrutsParameter(depth=3)    
     public void setTimeClock(TimeClock val){
 	if(val != null){
 	    timeClock = val;
 	}
     }
+    public boolean hasWarnings(){
+	return timeClock.hasWarnings();
+    }
+    @StrutsParameter(depth=2)        
+    public List<String> getWarnings(){
+	return timeClock.getWarnings();
+    }
+    public boolean isClockOut(){
+	return timeClock.getTimeBlock().isClockOut();
+    }
+    public boolean isClockIn(){
+	return timeClock.getTimeBlock().isClockIn();
+    }
+    public boolean hasNextLine(){
+	return timeClock.getTimeBlock().hasNextLine();
+    }
+    public String getLocation_id(){
+	return timeClock.getLocation_id();
+    }
+    public String getTime(){
+	return timeClock.getTime();
+    }
+    public String getEmployee_name(){
+	return timeClock.getEmployee().getFull_name();
+    }
 
+    public String getTimeInfo(){
+	return timeClock.getTimeBlock().getTimeInfo();
+    }
+    public String getTimeInfoNextLine(){
+	return timeClock.getTimeBlock().getTimeInfoNextLine();
+    }    
     public String getTimeClocksTitle(){
 	return timeClocksTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;

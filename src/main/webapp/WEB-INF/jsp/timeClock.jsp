@@ -19,9 +19,9 @@
 
     <s:if test="isAccepted()">
 	<s:if test="!hasErrors()">
-	    <s:if test="timeClock.hasWarnings()">
+	    <s:if test="hasWarnings()">
 		<h2 class="alert-full">
-		    <s:iterator var="one" value="timeClock.warnings">
+		    <s:iterator var="one" value="warnings">
 			<s:property />
 		    </s:iterator>
 		</h2>
@@ -30,16 +30,14 @@
 	<div class="clock-wrapper">
 	    <div class="actions">
 		<s:if test="!hasErrors()">
-		    <s:if test="timeClock.timeBlock.isClockOut()">
+		    <s:if test="isClockOut()">
 			<div class="in">In</div>
 			<div class="out active">Out</div>
 		    </s:if>
-		    
-		    <s:elseif test="timeClock.timeBlock.isClockIn()">
+		    <s:elseif test="isClockIn()">
 			<div class="in active">In</div>
 			<div class="out">Out</div>
 		    </s:elseif>
-		    
 		    <s:else>
 			<div class="in">In</div>
 			<div class="out">Out</div>
@@ -67,18 +65,16 @@
 		<s:if test="!hasErrors()">
 		    <div class="log-info">
 			<h1>
-			    <s:if test="timeClock.timeBlock.isClockOut()">Bye,</s:if>
-			    <s:elseif test="timeClock.timeBlock.isClockIn()">Hi,</s:elseif>
-			    
-			    <s:property value="timeClock.timeBlock.document.employee" />
+			    <s:if test="isClockOut()">Bye,</s:if>
+			    <s:elseif test="isClockIn()">Hi,</s:elseif>
+			    <s:property value="employee_name" />
 			</h1><br />
 			
-
 			<h2>Current Log:</h2>
 			<h3>
-			    - <s:property value="timeClock.timeBlock.timeInfo" />
-			    <s:if test="timeClock.timeBlock.hasNextLine()">
-				<small>(<s:property value="timeClock.timeBlock.timeInfoNextLine" /> )</small><br />
+			    - <s:property value="timeInfo" />
+			    <s:if test="hasNextLine()">
+				<small>(<s:property value="timeInfoNextLine" /> )</small><br />
 			    </s:if>
 			</h3>
 		    </div>
@@ -89,8 +85,8 @@
 	<s:form action="timeClock" id="form_id" class="time-clock-form" method="post" >
 	    <s:hidden name="action2" id="action2" value="" />
 	    <s:if test="action == ''">
-		<s:hidden name="timeClock.time" value="%{timeClock.time}" id="time_clock_id2" />
-		<s:hidden name="timeClock.location_id" value="%{timeClock.location_id}" id="location_id" />			    
+		<s:hidden name="timeClock.time" value="%{time}" id="time_clock_id2" />
+		<s:hidden name="timeClock.location_id" value="%{location_id}" id="location_id" />			    
 		<s:textfield name="timeClock.id_code" size="10" maxlength="10" requiredLabel="true" required="true" id="emp_id_code" autofocus="autofocus" placeholder="Employee ID" tabindex="0" />
 		<s:submit name="action" type="button" value="Submit" cssClass="button_link" />
 	    </s:if>
@@ -102,12 +98,6 @@
 		 }, 3000);
 		</script>
 		&nbsp;&nbsp;
-		<!-- 
-		<s:hidden name="timeClock.time" value="%{timeClock.time}" id="time_clock_id2" />
-		<s:hidden name="timeClock.location_id" value="%{timeClock.location_id}" id="location_id" />			    
-		<s:textfield name="timeClock.id_code" size="10" maxlength="10" requiredLabel="true" required="true" id="emp_id_code" autofocus="autofocus" placeholder="Employee ID" tabindex="0" />
-		<s:submit name="action" type="button" value="Submit" cssClass="button_link" />
-		-->
 	    </s:else>
 	</s:form>
     </s:if>

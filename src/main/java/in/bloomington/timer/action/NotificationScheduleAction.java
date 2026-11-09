@@ -135,15 +135,17 @@ public class NotificationScheduleAction extends TopAction{
 				
 	return notificationSchedulesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
@@ -166,6 +168,7 @@ public class NotificationScheduleAction extends TopAction{
     public boolean hasPrevDates(){
 	return !prev_date.isEmpty();
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPeriods(){
 	if(periods == null){
 	    PayPeriodList dl = new PayPeriodList();
@@ -192,6 +195,7 @@ public class NotificationScheduleAction extends TopAction{
 	getLogs();
 	return logs != null && logs.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<NotificationLog> getLogs(){
 	if(logs == null){
 	    NotificationLogList nll = new NotificationLogList();

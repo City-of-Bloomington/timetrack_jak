@@ -111,10 +111,12 @@ public class LeaveReceiverAction extends TopAction{
 	getEmployee();
 	dept_id = employee.getDepartment_id();
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1")){		
 	    group_id = val;
@@ -126,6 +128,7 @@ public class LeaveReceiverAction extends TopAction{
 	}
 	return group_id;
     }
+    @StrutsParameter(depth=1)
     public void setId(String val){
 	if(val != null && !val.equals("-1")){		
 	    id = val;
@@ -133,7 +136,8 @@ public class LeaveReceiverAction extends TopAction{
     }
     public String getId(){
 	return id;
-    }    
+    }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();
@@ -147,7 +151,8 @@ public class LeaveReceiverAction extends TopAction{
 	    }
 	}
 	return departments;
-    }    
+    }
+    @StrutsParameter(depth=3)
     public LeaveReceiver getReceiver(){
 	if(receiver == null)
 	    receiver = new LeaveReceiver();
@@ -162,6 +167,7 @@ public class LeaveReceiverAction extends TopAction{
 	}
 	return receiver;
     }
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 	getGroups();
 	if(hasGroups()){
@@ -186,6 +192,7 @@ public class LeaveReceiverAction extends TopAction{
     public boolean hasDepartment(){
 	return !dept_id.isEmpty();
     }
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	if(groups == null){
 	    findGroups();
@@ -217,6 +224,7 @@ public class LeaveReceiverAction extends TopAction{
 	}
 	return allDepts && departments != null && departments.size() > 0;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1")){
 	    dept_id = val;
@@ -225,11 +233,13 @@ public class LeaveReceiverAction extends TopAction{
 	    dept_id = "";
 	}
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.equals("-1")){
 	    emp_id = val;
 	}
     }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null){
 	    if(!dept_id.isEmpty()){
@@ -282,6 +292,7 @@ public class LeaveReceiverAction extends TopAction{
 	return receivers != null && receivers.size() > 0;
 	
     }
+    @StrutsParameter(depth=3)
     public List<LeaveReceiver> getReceivers(){
 	return receivers;
     }
@@ -304,6 +315,7 @@ public class LeaveReceiverAction extends TopAction{
 	getEmployees();
 	return employees != null && employees.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	if(employees != null && employees.size() > 1){
 	    Collections.sort(employees);

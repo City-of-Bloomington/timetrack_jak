@@ -41,6 +41,7 @@ public class ReportElAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(!action.isEmpty()){
 	    back = report.findHoursByNameCode();
 	    back += report.findHoursByDateAndCode();
@@ -70,21 +71,19 @@ public class ReportElAction extends TopAction{
 		}
 	    }
 	}
-	else{
-	    getReport();
-	}
 	if(report.getType().equals("csv")){
 	    return "csv";
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public ElReport getReport(){ 
 	if(report == null){
 	    report = new ElReport();
 	}		
 	return report;
     }
-
+    @StrutsParameter(depth=1)
     public void setReport(ElReport val){
 	if(val != null){
 	    report = val;
@@ -97,15 +96,17 @@ public class ReportElAction extends TopAction{
 	}
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
     // todo
+    @StrutsParameter(depth=3)
     public List<TimeBlock> getTimeBlocks(){
 	return timeBlocks;
     }
-
+    @StrutsParameter(depth=2)
     public List<Integer> getYears(){
 	if(years == null){
 	    int currentYear = Helper.getCurrentYear();
@@ -130,6 +131,7 @@ public class ReportElAction extends TopAction{
 	String str = report.getStart_date()+" - "+report.getEnd_date();
 	return str;
     }
+    @StrutsParameter(depth=3)
     public List<Department> getDepts(){
 	if(depts == null){
 	    DepartmentList dl = new DepartmentList();

@@ -35,6 +35,7 @@ public class NodeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getNode();
 	if(action.equals("Save")){
 	    back = node.doSave();
 	    if(!back.isEmpty()){
@@ -55,7 +56,6 @@ public class NodeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getNode();
 	    if(!id.isEmpty()){
 		back = node.doSelect();
 		if(!back.isEmpty()){
@@ -65,13 +65,14 @@ public class NodeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public Node getNode(){ 
 	if(node == null){
 	    node = new Node(id);
 	}		
 	return node;
     }
-
+    @StrutsParameter(depth=2)
     public void setNode(Node val){
 	if(val != null){
 	    node = val;
@@ -81,11 +82,12 @@ public class NodeAction extends TopAction{
     public String getNodesTitle(){
 	return nodesTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-
+    @StrutsParameter(depth=1)
     public void setNode_id(String val){
 	if(val != null && !val.isEmpty())		
 	    node_id = val;
@@ -102,6 +104,7 @@ public class NodeAction extends TopAction{
 	getNodes();
 	return nodes != null;
     }
+    @StrutsParameter(depth=2)
     public List<Node> getNodes(){
 	//
 	NodeList gml = new NodeList();

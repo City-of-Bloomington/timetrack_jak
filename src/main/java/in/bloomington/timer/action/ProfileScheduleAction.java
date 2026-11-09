@@ -135,15 +135,17 @@ public class ProfileScheduleAction extends TopAction{
 	return profileSchedulesTitle;
     }
 
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
     }
+    @StrutsParameter(depth=1)
     public void setDept_ref_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    dept_ref_id = val;
@@ -161,6 +163,7 @@ public class ProfileScheduleAction extends TopAction{
     public boolean hasPrevDates(){
 	return !prev_date.isEmpty();
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepts(){
 	if(depts == null){
 	    DepartmentList dl = new DepartmentList();

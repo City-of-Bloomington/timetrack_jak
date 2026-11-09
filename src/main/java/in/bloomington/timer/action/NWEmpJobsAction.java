@@ -58,6 +58,7 @@ public class NWEmpJobsAction extends TopAction{
 	nwEmpJobs = new NWEmployeeJobs(envBean, emp_id, emp_number, date, jobs);
        
     }
+    @StrutsParameter(depth=3)
     public List<JobTask> getJobs(){
 	if(!emp_id.isEmpty() && jobs == null){
 	    JobTaskList jtl = new JobTaskList();

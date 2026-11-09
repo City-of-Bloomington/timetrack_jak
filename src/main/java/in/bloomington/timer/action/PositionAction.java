@@ -36,6 +36,7 @@ public class PositionAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getPosition();
 	if(action.equals("Save")){
 	    back = position.doSave();
 	    if(!back.isEmpty()){
@@ -55,7 +56,6 @@ public class PositionAction extends TopAction{
 	    }
 	}
 	else{		
-	    getPosition();
 	    if(!id.isEmpty()){
 		back = position.doSelect();
 		if(!back.isEmpty()){
@@ -65,6 +65,7 @@ public class PositionAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public Position getPosition(){
 	if(position == null){
 	    position = new Position();
@@ -73,6 +74,7 @@ public class PositionAction extends TopAction{
 	return position;
 						
     }
+    @StrutsParameter(depth=1)
     public void setPosition(Position val){
 	if(val != null){
 	    position = val;
@@ -82,11 +84,12 @@ public class PositionAction extends TopAction{
     public String getPositionsTitle(){
 	return positionsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Position> getPositions(){
 	if(positions == null){
 	    PositionList tl = new PositionList();

@@ -46,12 +46,12 @@ public class MyGroupsAction extends TopAction{
 	selected_group_id = obtainGroupIdFromSession();
 	return ret;
     }
-
+    @StrutsParameter(depth=1)            
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-
+    @StrutsParameter(depth=1)        
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty() && !val.equals("all")){		
 	    group_id = val;
@@ -59,6 +59,7 @@ public class MyGroupsAction extends TopAction{
 	    addGroupIdToSession(selected_group_id);
 	}
     }
+    @StrutsParameter(depth=3)        
     public void setGroup(Group val){
 	if(val != null){		
 	    group = val;
@@ -115,6 +116,7 @@ public class MyGroupsAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)        
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -131,7 +133,8 @@ public class MyGroupsAction extends TopAction{
 	    }
 	}
 	return payPeriod;
-    }		
+    }
+    @StrutsParameter(depth=2)        
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -151,6 +154,7 @@ public class MyGroupsAction extends TopAction{
 	}
 	return currentPayPeriod;
     }
+    @StrutsParameter(depth=2)        
     public Group getGroup(){
 	getGroups();
 	if(group == null && !group_id.isEmpty()){
@@ -187,9 +191,11 @@ public class MyGroupsAction extends TopAction{
 	}
 	return terms != null && terms.size() > 0;
     }
+    @StrutsParameter(depth=3)        
     public List<EmpTerminate> getTerms(){
 	return terms;
     }
+    @StrutsParameter(depth=3)        
     public List<Group> getGroups(){
 	return groups;
     }

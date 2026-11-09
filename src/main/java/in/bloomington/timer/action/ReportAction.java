@@ -48,6 +48,7 @@ public class ReportAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(action.startsWith("Add")){
 	    // we just ignore but we add the code to the list   
 	}
@@ -88,24 +89,24 @@ public class ReportAction extends TopAction{
 		}
 	    }
 	}
-	else{
-	    getReport();
-	}
 	if(report.getType().equals("csv")){
 	    return "csv";
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public Report getReport(){ 
 	if(report == null){
 	    report = new Report();
 	}		
 	return report;
     }
+    @StrutsParameter(depth=1)
     public void setCodeSet(String val){
 	if(val != null)
 	    codeSet = val;
     }
+    
     public String getCodeSet(){
 	if(codeSet == null || codeSet.isEmpty()){
 	    if(sessionMap != null){	    
@@ -116,6 +117,7 @@ public class ReportAction extends TopAction{
 	}
 	return codeSet;
     }
+    @StrutsParameter(depth=1)
     public void setAddCode(String val){
 	if(val != null && !val.equals("-1")){
 	    if(sessionMap != null){	    
@@ -130,6 +132,7 @@ public class ReportAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=1)
     public void setRemoveCode(String val){
 	String newCodeSet = "";
 	if(val != null && !val.equals("-1")){
@@ -161,7 +164,7 @@ public class ReportAction extends TopAction{
 	    }
 	}
     }    
-
+    @StrutsParameter(depth=2)
     public void setReport(Report val){
 	if(val != null){
 	    report = val;
@@ -225,7 +228,7 @@ public class ReportAction extends TopAction{
 	return selectedCodes != null && selectedCodes.size() > 0;
 	    
     }
-	
+    @StrutsParameter(depth=3)	
     public List<HourCode> getAvailableCodes(){
 	if(allCodes == null)
 	    findAllCodes();
@@ -247,6 +250,7 @@ public class ReportAction extends TopAction{
 	}
 	return availableCodes;
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getSelectedCodes(){
 	if(selectedCodes == null)
 	    findSelectedCodes();
@@ -258,15 +262,17 @@ public class ReportAction extends TopAction{
 	}
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
     // todo
+    @StrutsParameter(depth=3)
     public List<TimeBlock> getTimeBlocks(){
 	return timeBlocks;
     }
-
+    @StrutsParameter(depth=2)
     public List<Integer> getYears(){
 	if(years == null){
 	    int currentYear = Helper.getCurrentYear();
@@ -291,6 +297,7 @@ public class ReportAction extends TopAction{
 	String str = report.getStart_date()+" - "+report.getEnd_date();
 	return str;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepts(){
 	if(depts == null){
 	    DepartmentList dl = new DepartmentList();
@@ -313,11 +320,13 @@ public class ReportAction extends TopAction{
 	getDepts();
 	return depts != null && depts.size() > 0;
     }
+    @StrutsParameter(depth=1)
     public void setNew_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    new_employee_id = val;
     }
-		
+
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	// for auto complete
     }

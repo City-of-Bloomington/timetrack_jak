@@ -34,6 +34,7 @@ public class ReasonCategoryAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReasonCategory();
 	if(action.equals("Save")){
 	    back = reasonCategory.doSave();
 	    if(!back.isEmpty()){
@@ -53,7 +54,7 @@ public class ReasonCategoryAction extends TopAction{
 	    }
 	}
 	else{		
-	    getReasonCategory();
+
 	    if(!id.isEmpty()){
 		back = reasonCategory.doSelect();
 		if(!back.isEmpty()){
@@ -63,6 +64,7 @@ public class ReasonCategoryAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public ReasonCategory getReasonCategory(){
 	if(reasonCategory == null){
 	    reasonCategory = new ReasonCategory(id);
@@ -70,6 +72,7 @@ public class ReasonCategoryAction extends TopAction{
 	return reasonCategory;
 						
     }
+    @StrutsParameter(depth=2)
     public void setReasonCategory(ReasonCategory val){
 	if(val != null){
 	    reasonCategory = val;
@@ -78,7 +81,7 @@ public class ReasonCategoryAction extends TopAction{
     public String getCategoriessTitle(){
 	return categoriesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -87,6 +90,7 @@ public class ReasonCategoryAction extends TopAction{
 	getCategories();
 	return categories != null;
     }
+    @StrutsParameter(depth=2)
     public List<ReasonCategory> getCategories(){
 	if(categories == null){
 	    ReasonCategoryList tl = new ReasonCategoryList();

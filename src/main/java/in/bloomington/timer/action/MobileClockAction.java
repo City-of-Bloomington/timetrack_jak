@@ -53,6 +53,7 @@ public class MobileClockAction extends TopAction{
     public String execute(){
 	String ret = SUCCESS;
 	String back = doPrepare("mobile.action");
+	getMobileClock();
 	if(!action.isEmpty()){
 	    if(action.equals("checkLocation")){
 		if(isWithinLocation()){
@@ -142,9 +143,6 @@ public class MobileClockAction extends TopAction{
 		ret = "error";
 	    }
 	}
-	else{		
-	    getMobileClock();
-	}
 	return ret;				
     }
     //
@@ -164,6 +162,7 @@ public class MobileClockAction extends TopAction{
 	// }
 	return mobileClock;
     }
+    @StrutsParameter(depth=3)            
     public void setMobileClock(TimeClock val){
 	if(val != null){
 	    mobileClock = val;
@@ -173,22 +172,51 @@ public class MobileClockAction extends TopAction{
     public String getTimeClocksTitle(){
 	return timeClocksTitle;
     }
+    @StrutsParameter(depth=1)        
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)        
     public void setLocation_id(String val){
 	if(val != null && !val.isEmpty())		
 	    location_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)        
     public void setUser_lat(Double val){
 	if(val != null)		
 	    user_lat = val;
     }
+    @StrutsParameter(depth=1)        
     public void setUser_long(Double val){
 	if(val != null)		
 	    user_long = val;
-    }		
+    }
+    public double getUser_lat(){
+	return user_lat;
+    }
+    public double getUser_long(){
+	return user_long;
+    }
+    public String getTimeInfo(){
+	return mobileClock.getTimeBlock().getTimeInfo();
+    }
+    public String getTimeInfoNextLine(){
+	return mobileClock.getTimeBlock().getTimeInfoNextLine();
+    }
+    public boolean isClockOut(){
+	return mobileClock.getTimeBlock().isClockOut();
+    }
+    public boolean isClockIn(){
+	return mobileClock.getTimeBlock().isClockIn();
+    }
+    public boolean hasNextLine(){
+	return mobileClock.getTimeBlock().hasNextLine();
+    }
+    public String getEmployee_name(){
+	return mobileClock.getEmployee().getFull_name();
+    }    
+
     private void prepareLocations(){
 	boolean needUpdate = false;
 	if(startTime == null){

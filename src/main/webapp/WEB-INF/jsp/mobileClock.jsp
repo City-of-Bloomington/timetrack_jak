@@ -59,19 +59,6 @@ a:hover {
 			If you encounter any problems, contact your manager and report the problem to ITS support at (812) 349-3454 or 
 			<a href="https://help.bloomington.in.gov"> online HelpDesk</a></li>
 	</ul>
-	<!-- 
-			<ul>
-				<li>The location must be enabled for this browser in the device you are using. You may be asked to 'Turn on location' you should answer "Yes'</li>
-				<li>Next, click on the 'Next' button when you are close enough to the establishment </li>
-				<li>It may take some time before your location is found, normally less than one minute </li>
-				<li>The geo-location is accepted if it is within reasonable distance from the establishment you will be working at</li>
-				<li>If you receive a message saying that you are not close enough, move closer to the establishment and try again</li>
-				<li>If your location is accepted you will be directed to the 'Login' screen where you use the City of Bloomington username and password</li>
-				<li>A successful login will take you to the welcome screen with 'Clock-in' time or 'Clock-out' time</li>
-				<li>If you are using an Iphone and you did not get any response, you have to make location services enabled. Go to your settings->Privacy->Safari->Location Services->Safari Websites: choose 'While Using the App' on the list of available options</li>  
-				<li>If you encounter any problem, talk to your manager and report the problem using ITS helpdesk at (812) 349-3454 or online at https://help.bloomington.in.gov</li>
-			</ul>
-			-->
 			<form name="locationForm" id="locationForm" type="post" action="./mobile.action" onsubmit="verifyLocation();return false;">
 				<input type="hidden" name="user_lat" value="" id="user_lat" />
 				<input type="hidden" name="user_long" value="" id="user_long" />
@@ -110,8 +97,6 @@ function geoFindLocation() {
 				alert("Geo Location is not supported or turned off on your device, please turn the location feature on to be able to use this app");
 		}
 		else{
-				// const watchID = navigator.geolocation.watchPosition((position, success, error, options) => {
-				// call the geo location js here
 				const watchID = navigator.geolocation.getCurrentPosition((position, success, error, options) => {
 					checkLocation(position.coords.latitude, position.coords.longitude);
 						
@@ -119,10 +104,6 @@ function geoFindLocation() {
 			}
 		function success(position) {
 				updateLocation(position.coords.latitude, position.coords.longitude);
-				//
-				// after success turn off watch
-				//
-				// navigator.geolocation.clearWatch(watchID);	
 		};
 		
 		function error() {
@@ -135,13 +116,13 @@ function geoFindLocation() {
 				timeout: 10
 		};
 		function checkLocation(lat, lng) {
-			//alert('your location is at '+lat+","+lng);
+
 			lat_id.textContent = lat;
 			lng_id.textContent = lng;
 			user_lat.value = lat;
 			user_long.value = lng;
 			action_id.value = "checkLocation";
-			// navigator.geolocation.clearWatch(watchID);
+
 			if(lat > 0){
 						// location.replace("http://localhost/geoLocation/next.html");
 				form_id.submit();

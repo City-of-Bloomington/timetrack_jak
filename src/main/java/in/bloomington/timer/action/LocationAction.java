@@ -37,6 +37,7 @@ public class LocationAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getLocation();
 	if(action.equals("Save")){
 	    back = location.doSave();
 	    if(!back.isEmpty()){
@@ -79,7 +80,6 @@ public class LocationAction extends TopAction{
 	    }
 	}	
 	else{		
-	    getLocation();
 	    if(!id.isEmpty()){
 		back = location.doSelect();
 		if(!back.isEmpty()){
@@ -109,6 +109,7 @@ public class LocationAction extends TopAction{
 	}
 	return back;
     }
+    @StrutsParameter(depth=2)    
     public Location getLocation(){
 	if(location == null){
 	    location = new Location(id);
@@ -116,21 +117,42 @@ public class LocationAction extends TopAction{
 	return location;
 						
     }
+    @StrutsParameter(depth=2)
     public void setLocation(Location val){
 	if(val != null){
 	    location = val;
 	}
     }
-		
+    public String getIp_address(){
+	return location.getIp_address();
+    }
+    
+    public String getName(){
+	return location.getName();
+    }
+    public String getStreet_address(){
+	return location.getStreet_address();
+    }
+    public double getLatitude(){
+	return location.getLatitude();
+    }
+    public double getLongitude(){
+	return location.getLongitude();
+    }    
+    public double getRadius(){
+	return location.getRadius();
+    }
+    
     public String getLocationsTitle(){
 				
 	return locationsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Location> getLocations(){
 	if(locations == null){
 	    LocationList tl = new LocationList();

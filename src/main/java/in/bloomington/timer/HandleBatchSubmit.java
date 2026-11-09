@@ -74,7 +74,7 @@ public class HandleBatchSubmit{
 	    " from time_documents d,"+
 	    " employees e,"+
 	    " jobs j, "+
-	    " groups g "+
+	    " `groups` g "+
 	    " where e.id=d.employee_id "+
 	    " and e.inactive is null "+
 	    " and d.job_id=j.id "+	    

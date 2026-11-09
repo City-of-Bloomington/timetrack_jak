@@ -94,25 +94,29 @@ public class ProcessAction extends TopAction{
 	selected_group_id = obtainGroupIdFromSession();				
 	return ret;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty())		
 	    group_id = val;
 	selected_group_id = group_id;
 	addGroupIdToSession(selected_group_id);
     }
+    @StrutsParameter(depth=2)
     public void setDocument_ids(String[] vals){
 	if(vals != null)		
 	    document_ids = vals;
     }
+    @StrutsParameter(depth=1)
     public void setDocument_id(String val){
 	if(val != null)		
 	    document_id = val;
@@ -127,7 +131,8 @@ public class ProcessAction extends TopAction{
     }
     public boolean hasMoreThanOneGroup(){
 	return isGroupManager() && groups != null && groups.size() > 1;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 				
 	getGroups();
@@ -152,6 +157,7 @@ public class ProcessAction extends TopAction{
 	getManagers();
 	return managers != null && managers.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<GroupManager> getManagers(){
 		
 	GroupManagerList gml = new GroupManagerList(user.getId());
@@ -176,6 +182,7 @@ public class ProcessAction extends TopAction{
 	}
 	return managers;
     }
+    @StrutsParameter(depth=3)
     public GroupManager findGroupApprover(String gid){
 	GroupManager gmanager = null;
 	GroupManagerList gml = new GroupManagerList();
@@ -191,7 +198,8 @@ public class ProcessAction extends TopAction{
 	    }
 	}
 	return gmanager;
-    }    
+    }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -210,6 +218,7 @@ public class ProcessAction extends TopAction{
 	}
 	return currentPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -228,9 +237,11 @@ public class ProcessAction extends TopAction{
     public boolean hasGroups(){
 	return isGroupManager() && groups != null && groups.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	return groups;
     }
+
     public String getPay_period_id(){
 	if(pay_period_id.isEmpty()){
 	    PayPeriodList ppl = new PayPeriodList();
@@ -246,7 +257,7 @@ public class ProcessAction extends TopAction{
 	}
 	return pay_period_id;
     }
-
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -266,6 +277,7 @@ public class ProcessAction extends TopAction{
 	getDocuments();
 	return documents != null && documents.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<Document> getDocuments(){
 	if(hasGroups()){
 	    if(pay_period_id.isEmpty()){
@@ -291,6 +303,7 @@ public class ProcessAction extends TopAction{
 	}
 	return documents;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNonDocEmps(){
 	if(nonDocEmps == null){
 	    EmployeeList empl = new EmployeeList();
@@ -329,6 +342,7 @@ public class ProcessAction extends TopAction{
 	getNonDocEmps();
 	return nonDocEmps != null && nonDocEmps.size() > 0; 
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPreviousPayPeriod(){
 	//
 	if(previousPayPeriod == null){
@@ -346,6 +360,7 @@ public class ProcessAction extends TopAction{
 	}
 	return previousPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getNextPayPeriod(){
 	//
 	if(nextPayPeriod == null){
@@ -374,6 +389,7 @@ public class ProcessAction extends TopAction{
     public boolean needAction(){
 	return hasNotApprovedMap() || hasNotSubmittedDocs() || hasNonDocEmps();
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNotApprovedEmps(){
 	return notApprovedEmps;
     }
@@ -478,6 +494,7 @@ public class ProcessAction extends TopAction{
     public boolean hasNoDocNorSubmitEmps(){
 	return hasNotSubmittedDocs() || hasNonDocEmps();
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNoDocNorSubmitEmps(){
 	return noDocNorSubmitEmps;
     }
@@ -485,12 +502,15 @@ public class ProcessAction extends TopAction{
 	findNotSubmittedAndNotApprovedEmps();
 	return notSubmittedDocs != null && notSubmittedDocs.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<Document> getNotSubmittedDocs(){
 	return notSubmittedDocs;
-    }				
+    }
+    @StrutsParameter(depth=1)
     public void setCheck_all(boolean val){
 	// will do nothing
     }
+    @StrutsParameter(depth=3)
     public Map<String, List<Document>> getNotApproved(){
 	return notApprovedMap;
     }    

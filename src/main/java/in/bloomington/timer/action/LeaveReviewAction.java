@@ -113,6 +113,7 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)    
     public LeaveRequest getLeave(){
 	if(!leave_id.isEmpty()){
 	    LeaveRequest one = new LeaveRequest(leave_id);
@@ -123,6 +124,7 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return leave;
     }
+    @StrutsParameter(depth=2)
     public Employee getReviewer(){
 	if(reviewer == null){
 	    getUser();
@@ -130,21 +132,25 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return reviewer;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty()){		
 	    group_id = val;
 	    selected_group_id = group_id;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setLeave_id(String val){
 	if(val != null && !val.isEmpty()){		
 	   leave_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setDate_from(String val){
 	if(val != null && !val.isEmpty()){		
 	   date_from = val;
@@ -159,18 +165,22 @@ public class LeaveReviewAction extends TopAction{
     public String getSortBy(){
 	return sortBy;
     }
+    @StrutsParameter(depth=1)
     public void setSortBy(String val){
 	if(val != null && !val.equals("-1"))
 	    sortBy = val;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getSort_options(){
 	return sort_options;
-    }        
+    }
+    @StrutsParameter(depth=1)
     public void setRev_date_to(String val){
 	if(val != null && !val.isEmpty()){		
 	   rev_date_to = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setRev_date_from(String val){
 	if(val != null && !val.isEmpty()){		
 	   rev_date_from = val;
@@ -181,7 +191,8 @@ public class LeaveReviewAction extends TopAction{
     }
     public String getRev_date_to(){
 	return rev_date_to;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setDate_to(String val){
 	if(val != null && !val.isEmpty()){		
 	   date_to = val;
@@ -190,6 +201,7 @@ public class LeaveReviewAction extends TopAction{
     public String getLeave_id(){
 	return leave_id = "";
     }
+    @StrutsParameter(depth=3)
     public LeaveReview getReview(){
 	if(review == null){
 	    review = new LeaveReview();
@@ -201,7 +213,7 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return review;
     }
-    
+    @StrutsParameter(depth=3)    
     public void setReview(LeaveReview val){
 	if(val != null)
 	    review = val;
@@ -214,6 +226,7 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return group_id;
     }
+    @StrutsParameter(depth=2)
     public String[] getStatusVals(){
 	return statusVals;
     }
@@ -227,7 +240,7 @@ public class LeaveReviewAction extends TopAction{
 	return leaves_total_number;
 	
     }
-	
+    @StrutsParameter(depth=3)	
     public List<GroupManager> getManagers(){
 	if(managers == null)
 	    findManagers();
@@ -260,6 +273,7 @@ public class LeaveReviewAction extends TopAction{
 	}
 	}
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -299,6 +313,7 @@ public class LeaveReviewAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=3)
     public Group getGroup(){
 				
 	getGroups();
@@ -326,9 +341,11 @@ public class LeaveReviewAction extends TopAction{
 	return isGroupManager() && groups != null && groups.size() > 0;
 				
     }
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public void setCheck_all(boolean val){
 	// will do nothing
     }
@@ -338,28 +355,32 @@ public class LeaveReviewAction extends TopAction{
 	}
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1")){
 	    department_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setFilter_emp_id(String val){
 	if(val != null && !val.equals("-1")){
 	    filter_emp_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setRev_filter_emp_id(String val){
 	if(val != null && !val.equals("-1")){
 	    rev_filter_emp_id = val;
 	}
-    }    
+    }
+    
     public String getRev_filter_emp_id(){
 	if(rev_filter_emp_id.isEmpty())
 	    return "-1";
 	return rev_filter_emp_id;
     }
     
-	
+    @StrutsParameter(depth=2)	
     public Department getDepartment(){
 	if(department == null){
 	    if(department_id.isEmpty()){
@@ -388,6 +409,7 @@ public class LeaveReviewAction extends TopAction{
 	getEmployees();
 	return employees != null && employees.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	if(employees == null)
 	    // findLeaveRequests();
@@ -404,6 +426,7 @@ public class LeaveReviewAction extends TopAction{
 	getLeaves();
 	return leaves != null && leaves.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<LeaveRequest> getLeaves(){
 	if(leaves == null){
 	    findLeaveRequests();
@@ -468,7 +491,7 @@ public class LeaveReviewAction extends TopAction{
 	    }
 	}
     }
-    
+    @StrutsParameter(depth=3)    
     public List<LeaveReview> getReviews(){
 	return reviews;
     }
@@ -495,6 +518,7 @@ public class LeaveReviewAction extends TopAction{
     public boolean hasRevEmployees(){
 	return rev_employees != null && rev_employees.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getRev_employees(){
 	return rev_employees;
     }

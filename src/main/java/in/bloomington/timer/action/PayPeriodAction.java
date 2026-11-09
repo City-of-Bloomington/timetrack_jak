@@ -49,6 +49,7 @@ public class PayPeriodAction extends TopAction{
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setYear(Integer val){
 	if(val != null && (val != -1))		
 	    year = val;
@@ -56,6 +57,7 @@ public class PayPeriodAction extends TopAction{
     public Integer getYear(){
 	return year;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
@@ -66,6 +68,7 @@ public class PayPeriodAction extends TopAction{
 	}
 	return pay_period_id;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	if(currentPayPeriod == null){
 	    PayPeriodList ppl = new PayPeriodList();
@@ -81,6 +84,7 @@ public class PayPeriodAction extends TopAction{
 	}
 	return currentPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -100,6 +104,7 @@ public class PayPeriodAction extends TopAction{
 	getPayPeriods();
 	return payPeriods != null && payPeriods.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Integer> getYears(){
 	if(years == null){
 	    PayPeriodList ppl = new PayPeriodList();

@@ -52,7 +52,7 @@
 			    <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="" size="5" maxlength="5" placeholder="Total hrs (xxx.xx)" required="true" /><br />
 			</s:if>
 			<s:else>
-			      <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="%{totalHours}" size="5" maxlength="5" placeholder="(xxx.xx)" required="true" /><br />
+			    <s:textfield style="height:31px;width:150px" name="leave.totalHours" value="%{totalHours}" size="5" maxlength="5" placeholder="(xxx.xx)" pattern="[0-9]{2}.[0-9]{2}" required="true" /><br />
 			</s:else>
 		   </div>
 		</div>

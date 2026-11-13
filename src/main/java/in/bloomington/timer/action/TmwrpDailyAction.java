@@ -85,18 +85,22 @@ public class TmwrpDailyAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setType(String val){
 	if(val != null && !val.isEmpty())		
 	    type = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -118,14 +122,17 @@ public class TmwrpDailyAction extends TopAction{
 	}				
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setIsHand(boolean val){
 	if(val)
 	    isHand = val;
     }
+    @StrutsParameter(depth=1)
     public void setOutputType(String val){
 	if(val != null){
 	    outputType = val;
@@ -135,6 +142,7 @@ public class TmwrpDailyAction extends TopAction{
 		csvOutput = false;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setCsvOutuput(boolean val){
 	if(val)
 	    csvOutput = val;
@@ -147,7 +155,8 @@ public class TmwrpDailyAction extends TopAction{
     }
     public String getSource(){
 	return source;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1") && !val.equals("all"))
 	    group_id = val;
@@ -240,9 +249,11 @@ public class TmwrpDailyAction extends TopAction{
     public boolean hasDailyBlocks(){
 	return dailyBlocks != null && dailyBlocks.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<DailyBlock> getDailyBlocks(){
 	return dailyBlocks;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    getPayPeriod(); // so that we can initialize the list
@@ -273,6 +284,7 @@ public class TmwrpDailyAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null && !department_id.isEmpty()){
 	    Department one = new Department(department_id);
@@ -364,6 +376,7 @@ public class TmwrpDailyAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	// if pay period is not set, we look for previous one
@@ -391,6 +404,7 @@ public class TmwrpDailyAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -423,7 +437,6 @@ public class TmwrpDailyAction extends TopAction{
 	    dept_name = dept_name.replaceAll("\\s","_");
 	}
 	String ret = "timesheet_"+dt+"_"+dept_name+".csv";
-	System.err.println(" csv file "+ret);
 	return ret;
     }
     public List<String> getCsvLines(){
@@ -477,7 +490,7 @@ public class TmwrpDailyAction extends TopAction{
 		    csvLine += one.getGlString();
 		}
 		csvLine += line2;
-		if(one.isSeasonal()){
+		if(one.isSeasonal()){ // include temp and part time
 		    csvLine += one.getJobTitle();
 		}
 		allCsvLines.add(csvLine);

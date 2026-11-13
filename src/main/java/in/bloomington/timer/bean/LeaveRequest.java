@@ -456,7 +456,8 @@ public class LeaveRequest implements java.io.Serializable{
 			    arr = earn_codes.split(",");
 			}catch(Exception ex){
 			    System.err.println(ex);
-			}		    }
+			}
+		    }
 		    else{
 			arr[0] = earn_codes;
 		    }

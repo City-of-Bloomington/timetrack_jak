@@ -98,22 +98,26 @@ public class LeaveReportAction extends TopAction{
     public String getSortBy(){
 	return sortBy;
     }
+    @StrutsParameter(depth=1)
     public void setSortBy(String val){
 	if(val != null && !val.equals("-1"))
 	    sortBy = val;
     }
     public List<Type> getSort_options(){
 	return sort_options;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1")){		
 	    group_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1")){		
 	    pay_period_id = val;
@@ -125,6 +129,7 @@ public class LeaveReportAction extends TopAction{
 	}
 	return pay_period_id;
     }
+    @StrutsParameter(depth=1)
     public void setDate_from(String val){
 	if(val != null && !val.isEmpty()){		
 	   date_from = val;
@@ -135,7 +140,8 @@ public class LeaveReportAction extends TopAction{
     }
     public String getDate_to(){
 	return date_to;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setDate_to(String val){
 	if(val != null && !val.isEmpty()){		
 	   date_to = val;

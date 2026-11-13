@@ -23,14 +23,18 @@
 	    </s:elseif>
 	    
   	    <div class="form-group">
-  		<label>Employee</label>
+  		<label for="employee_name">Employee</label>
 		<s:textfield name="employee_name" value="" id="employee_name" size="20" />
   	    </div>
 	    
 	    <div class="form-group">
-		<label>ID</label>
+		<label for="employee_id">ID</label>
 		<s:textfield name="new_employee_id" value="" id="employee_id" size="5" />
 	    </div>
+  	    <div class="form-group">
+  		<label for="work_date">Work Date (for previous employees)</label>
+		<s:textfield name="workingDate" value="%{workingDate}" id="work_date" size="20" />
+  	    </div>	    
 
   	    <s:submit name="action" type="button" value="Change" class="button"/></dd>
     </div>

@@ -69,10 +69,12 @@ public class SearchReasonConditionsAction extends TopAction{
     public String getConditionsTitle(){
 	return conditionsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    dept_id = val;
@@ -83,6 +85,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return dept_id;
     }
+    @StrutsParameter(depth=1)
     public void setHour_code_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    hour_code_id = val;
@@ -92,7 +95,8 @@ public class SearchReasonConditionsAction extends TopAction{
 	    return "-1";
 	}
 	return hour_code_id;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setSalary_group_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    salary_group_id = val;
@@ -103,6 +107,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return salary_group_id;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    group_id = val;
@@ -113,6 +118,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return group_id;
     }
+    @StrutsParameter(depth=1)
     public void setReason_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    reason_id = val;

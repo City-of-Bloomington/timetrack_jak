@@ -35,6 +35,7 @@ public class SearchDeptEmployeeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getDeptEmpLst();
 	if(!action.isEmpty()){
 	    back = deptEmpLst.find();
 	    if(!back.isEmpty()){
@@ -65,16 +66,16 @@ public class SearchDeptEmployeeAction extends TopAction{
 		}
 	    }
 	}
-	getDeptEmpLst();
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public DepartmentEmployeeList getDeptEmpLst(){ 
 	if(deptEmpLst == null){
 	    deptEmpLst = new DepartmentEmployeeList();
 	}		
 	return deptEmpLst;
     }
-
+    @StrutsParameter(depth=3)
     public void setDepartmentEmployeeList(DepartmentEmployeeList val){
 	if(val != null){
 	    deptEmpLst = val;
@@ -84,8 +85,21 @@ public class SearchDeptEmployeeAction extends TopAction{
     // to his/her department
 		
     public String getDepartment_id(){
-	return department_id;
+	return deptEmpLst.getDepartment_id();
     }
+    public String getName(){
+	return deptEmpLst.getName();
+    }
+    public String getEmployee_number(){
+	return deptEmpLst.getEmployee_number();
+    }
+    public String getId_code(){
+	return deptEmpLst.getId_code();
+    }
+    public String getActiveStatus(){
+	return deptEmpLst.getActiveStatus();
+    }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null)
 	    department_id = val;
@@ -93,6 +107,7 @@ public class SearchDeptEmployeeAction extends TopAction{
     public String getDeptEmployeeTitle(){
 	return deptEmployeesTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -100,10 +115,11 @@ public class SearchDeptEmployeeAction extends TopAction{
     public boolean hasDepartmentEmployees(){
 	return departmentEmployees != null && departmentEmployees.size() > 0;
     }
-
+    @StrutsParameter(depth=3)
     public List<DepartmentEmployee> getDepartmentEmployees(){
 	return departmentEmployees;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

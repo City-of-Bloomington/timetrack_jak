@@ -55,6 +55,7 @@ public class JobTaskAction extends TopAction{
 	}
 	//
 	getJobTask();
+	getEmp();
 	if(action.equals("Save")){
 	    back = job.doSaveAll();
 	    if(!back.isEmpty()){
@@ -127,7 +128,6 @@ public class JobTaskAction extends TopAction{
 	    prepareData();
 	}
 	else{		
-	    getJobTask();
 	    if(!id.isEmpty()){
 		back = job.doSelect();
 		if(!back.isEmpty()){
@@ -231,10 +231,36 @@ public class JobTaskAction extends TopAction{
 	return emp;
     }
     public String getEmp_id(){
+	if(emp == null)
+	    getEmp();
 	return emp.getId();
     }
     public String getEmp_name(){
+	if(emp == null)
+	    getEmp();	
 	return emp.getFull_name();
+    }
+    public String getId(){
+	return job.getId();
+    }
+    public String getJob_name(){
+	return job.getPosition().getName();
+    }
+
+    public String getSalary_group_name(){
+	return job.getSalaryGroup().getName();
+    }
+    public String getGroup_name(){
+	return job.getGroup().getName();
+    }
+    public String getEffective_date(){
+	return job.getEffective_date();
+    }
+    public double getHoliday_comp_factor(){
+	return job.getHoliday_comp_factor();
+    }
+    public String getAdded_date(){
+	return job.getAdded_date();
     }    
     public String getJobTasksTitle(){
 	return jobTasksTitle;
@@ -262,12 +288,6 @@ public class JobTaskAction extends TopAction{
     }		
     public String getEmployee_number(){
 	return employee_number;
-    }
-    public String getEffective_date(){
-	return effective_date;
-    }		
-    public boolean hasEmployeeNumber(){
-	return !employee_number.isEmpty();
     }
     public boolean isEmployeeFound(){
 	return employee_found;

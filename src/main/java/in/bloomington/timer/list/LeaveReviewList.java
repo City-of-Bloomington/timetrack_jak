@@ -69,9 +69,10 @@ public class LeaveReviewList{
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	Connection con = UnoConnect.getConnection();
-	String qq = "select r.id,r.leave_id,date_format(r.review_date,'%m/%d/%Y'),r.review_status,r.review_notes,r.reviewed_by "+
+	String qq = "select r.id,r.leave_id,date_format(r.review_date,'%m/%d/%Y'),r.review_status,r.review_notes,r.reviewed_by,p.name "+
 	    "from leave_reviews r join leave_requests l on l.id=r.leave_id "+
-	    "join jobs j on j.id=l.job_id ";
+	    "join jobs j on j.id=l.job_id "+
+	    "join positions p on p.id=j.position_id ";
 	if(con == null){
 	    back = "Could not connect to DB";
 	    return back;
@@ -142,11 +143,13 @@ public class LeaveReviewList{
 	    while(rs.next()){
 		LeaveReview one =
 		    new LeaveReview(rs.getString(1),
-				     rs.getString(2),
-				     rs.getString(3),
-				     rs.getString(4),
-				     rs.getString(5),
-				     rs.getString(6));
+				    rs.getString(2),
+				    rs.getString(3),
+				    rs.getString(4),
+				    rs.getString(5),
+				    rs.getString(6));
+		one.setLeave_job_title(rs.getString(7));		
+		one.getLeave();
 		if(!reviews.contains(one))
 		    reviews.add(one);
 	    }

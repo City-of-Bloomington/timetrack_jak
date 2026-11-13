@@ -37,6 +37,7 @@ public class SearchJobAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getJoblst();
 	if(!action.isEmpty()){
 	    back = joblst.find();
 	    if(!back.isEmpty()){
@@ -66,30 +67,71 @@ public class SearchJobAction extends TopAction{
 		}
 	    }
 	}
-	getJoblst();
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public JobTaskList getJoblst(){ 
 	if(joblst == null){
 	    joblst = new JobTaskList();
 	}		
 	return joblst;
     }
-
+    @StrutsParameter(depth=2)
     public void setJoblst(JobTaskList val){
 	if(val != null){
 	    joblst = val;
 	}
     }
-
+    public String getEmployee_name(){
+	return ""; // we are using auto complete
+    }
+    public String getEmployee_id(){
+	return joblst.getEmployee_id();
+    }
+    public String getSalary_group_id(){
+	return joblst.getSalary_group_id();
+    }
+    public String getPosition_id(){
+	return joblst.getPosition_id();
+    }
+    public String getDate_from(){
+	return joblst.getDate_from();
+    }
+    public String getWhich_date(){
+	return joblst.getWhich_date();
+    }
+    public String getActive_status(){
+	return joblst.getActive_status();
+    }
+    public String getDepartment_id(){
+	return joblst.getDepartment_id();
+    }
+    public String getGroup_id(){
+	return joblst.getGroup_id();
+    }
+    public String getId(){
+	return joblst.getId();
+    }
+    public String getClock_status(){
+	return joblst.getClock_status();
+    }
+    public boolean getIncludeInAutoBatch(){
+	return joblst.getIncludeInAutoBatch();
+    }
+    public boolean getIrregularWorkDays(){
+	return joblst.getIrregularWorkDays();
+    }
+	
     public String getJobTasksTitle(){
 	return jobTasksTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
     // todo
+    @StrutsParameter(depth=3)
     public List<JobTask> getJobs(){
 	return jobs;
     }
@@ -97,6 +139,7 @@ public class SearchJobAction extends TopAction{
     public boolean hasJobs(){
 	return jobs != null && jobs.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getSalaryGroups(){
 	TypeList tl = new TypeList("salary_groups");
 	String back = tl.find();
@@ -108,6 +151,7 @@ public class SearchJobAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getPositions(){
 	TypeList tl = new TypeList("positions");
 	String back = tl.find();
@@ -119,6 +163,7 @@ public class SearchJobAction extends TopAction{
 	}
 	return positions;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	EmployeeList tl = new EmployeeList();
 	tl.setActiveOnly();
@@ -131,6 +176,7 @@ public class SearchJobAction extends TopAction{
 	}
 	return employees;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

@@ -33,10 +33,9 @@ public class NWEmpJobsAction extends TopAction{
     String pay_period_id = "704";
     public String execute(){
 	String ret = SUCCESS;
-	
 	String back = "";
 	if(!action.isEmpty()){
-	    getNwEmpJobs();
+	    getNwEmpJobs();		    
 	    back = nwEmpJobs.find3();
 	    if(!back.isEmpty()){
 		addError(back);
@@ -47,6 +46,7 @@ public class NWEmpJobsAction extends TopAction{
 	}				
 	return ret;
     }
+    @StrutsParameter(depth=3)    
     private void getNwEmpJobs(){
 	getJobs();
 	if(jobs == null){

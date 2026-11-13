@@ -52,6 +52,9 @@ public class DepartmentEmployeeList{
     public void setName(String val){
 	// needed for auto complete but not used
     }
+    public String getName(){
+	return "";
+    }
     public String getEmployee_id(){
 	return employee_id;
     }

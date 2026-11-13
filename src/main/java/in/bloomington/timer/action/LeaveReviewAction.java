@@ -75,12 +75,12 @@ public class LeaveReviewAction extends TopAction{
 	    }catch(Exception ex){
 		System.err.println(ex);
 	    }	
-	}	
+	}
+	getReview();	
 	String back = doPrepare("leaveReview.action");
 	if(action.equals("Submit")){
 	    review.setReviewed_by(user.getId());
 	    if(activeMail){ 
-
 		review.setActiveMail();
 		review.setMail_host(mail_host);
 		review.setUser(user); // current manager
@@ -101,7 +101,6 @@ public class LeaveReviewAction extends TopAction{
 	    findRevEmployees();
 	}
 	else if(!leave_id.isEmpty()){
-	    getReview();
 	    review.setLeave_id(leave_id);
 	}
 	else{
@@ -115,11 +114,15 @@ public class LeaveReviewAction extends TopAction{
     }
     @StrutsParameter(depth=3)    
     public LeaveRequest getLeave(){
-	if(!leave_id.isEmpty()){
-	    LeaveRequest one = new LeaveRequest(leave_id);
-	    String back = one.doSelect();
-	    if(back.isEmpty()){
-		leave = one;
+	if(leave == null){
+	    leave = new LeaveRequest();
+	    if(!leave_id.isEmpty()){
+		leave.setId(leave_id);
+		String back = leave.doSelect();
+	    }
+	    else if(!id.isEmpty()){
+		getReview();
+		leave = review.getLeave();
 	    }
 	}
 	return leave;
@@ -165,6 +168,31 @@ public class LeaveReviewAction extends TopAction{
     public String getSortBy(){
 	return sortBy;
     }
+    // related to leave request linked to this review
+    public String getLeave_emp_name(){
+	getLeave();
+	return leave.getEmployee().getFull_name();
+    }
+    public String getLeave_job_title(){
+	getLeave();
+	return leave.getJobTitle();
+    }
+    public String getLeave_date_range(){
+	getLeave();
+	return leave.getDate_range();
+    }
+    public String getLeave_earn_codes(){
+	getLeave();
+	return leave.getEarnCodes();
+    }
+    public String getLeave_details(){
+	getLeave();
+	return leave.getRequestDetails();
+    }
+    public double getLeave_total_hours(){
+	getLeave();
+	return leave.getTotalHours();
+    }    
     @StrutsParameter(depth=1)
     public void setSortBy(String val){
 	if(val != null && !val.equals("-1"))
@@ -201,14 +229,17 @@ public class LeaveReviewAction extends TopAction{
     public String getLeave_id(){
 	return leave_id = "";
     }
-    @StrutsParameter(depth=3)
+    @StrutsParameter(depth=4)
     public LeaveReview getReview(){
 	if(review == null){
-	    review = new LeaveReview();
-	    if(!leave_id.isEmpty())
-		review.setLeave_id(leave_id);
+	    review = new LeaveReview(id);
 	    if(!id.isEmpty()){
-		review.setId(id);
+		review.doSelect();
+		leave_id = review.getLeave_id();
+		leave = getLeave();
+	    }	    
+	    else if(!leave_id.isEmpty()){
+		review.setLeave_id(leave_id);
 	    }
 	}
 	return review;

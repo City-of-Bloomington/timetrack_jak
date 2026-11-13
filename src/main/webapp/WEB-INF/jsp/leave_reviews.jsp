@@ -1,4 +1,4 @@
-
+<!--TODO Need change -->
 <table>
     <tr>
 	<th>&nbsp;</th>
@@ -26,12 +26,12 @@
 		<a href="<s:property value='#application.url' />leave_request.action?id=<s:property value='leave_id' />"><s:property value="id" /></a>
 	    </td>
 	    <td><s:property value="date" /></td>
-	    <td><s:property value="leave.employee" /></td>
-	    <td><s:property value="leave.jobTitle" /></td>
-	    <td><s:property value="leave.date_range" /></td>
-	    <td><s:property value="leave.earnCodes" /></td>	    
-	    <td><s:property value="leave.totalHours" /></td>
-	    <td><s:property value="leave.requestDetails" /></td>	    
+	    <td><s:property value="leave_emp_name" /></td>
+	    <td><s:property value="jobTitle" /></td>
+	    <td><s:property value="date_range" /></td>
+	    <td><s:property value="earnCodes" /></td>	    
+	    <td><s:property value="totalHours" /></td>
+	    <td><s:property value="leave_details" /></td>	    
 	    <td><s:property value="reviewStatus" /></td>
 	    <td><s:property value="reviewer" /></td>	    
 	    <td><s:property value="notes" /></td>	

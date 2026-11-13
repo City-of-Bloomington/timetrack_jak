@@ -22,6 +22,7 @@ public class LeaveReview implements java.io.Serializable{
 	leave_id="", reviewed_by="", date="", notes="", cancel_reason="";
     boolean activeMail = false;
     String mail_host = "";
+    String leave_job_title = "";
     Employee user = null;
     //
     // the form will have 3 leave request max
@@ -256,6 +257,10 @@ public class LeaveReview implements java.io.Serializable{
 	if(val != null)
 	    mail_host = val;
     }
+    public void setLeave_job_title(String val){
+	if(val != null)
+	    leave_job_title = val;
+    }    
     public void setUser(Employee val){
 	if(val != null)
 	    user = val;
@@ -286,14 +291,68 @@ public class LeaveReview implements java.io.Serializable{
 	}
 	return reviewer;
     }
+    public String getLeave_emp_name(){
+	getLeave();
+	if(leave != null){
+	    return leave.getEmployee().getFull_name();
+	}
+	return "";
+    }
+    public JobTask getJob(){
+	getLeave();
+	if(leave != null){
+	    return leave.getJob();
+	}
+	return null;
+    }
+    public String getJobTitle(){
+	if(!leave_job_title.isEmpty()){
+	    return leave_job_title;
+	}
+	getLeave();
+	if(leave != null){
+	    return leave.getJobTitle();
+	}
+	return "";
+    }
+    public String getEarnCodes(){
+	getLeave();
+	if(leave != null){
+	    return leave.getEarnCodes();
+	}
+	return "";
+    }
+    public String getDate_range(){
+	getLeave();
+	if(leave != null){
+	    return leave.getDate_range();
+	}
+	return "";
+    }
+    public String getLeave_details(){
+	getLeave();
+	if(leave != null){
+	    return leave.getRequestDetails();
+	}
+	return "";
+    }
+    public double getTotalHours(){
+	getLeave();
+	if(leave != null){
+	    return leave.getTotalHours();
+	}
+	return 0;
+    }
+    
     //
     public String doSelect(){
 	String back = "";
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	String qq = "select id,leave_id,date_format(review_date,'%m/%d/%Y'),review_status,review_notes,reviewed_by "+
-	    "from leave_reviews where id=?";
+	String qq = "select r.id,r.leave_id,date_format(r.review_date,'%m/%d/%Y'),r.review_status,r.review_notes,r.reviewed_by "+
+	    "from leave_reviews r "+
+	    "where r.id=?";
 	con = UnoConnect.getConnection();
 	if(con == null){
 	    back = "Could not connect to DB";

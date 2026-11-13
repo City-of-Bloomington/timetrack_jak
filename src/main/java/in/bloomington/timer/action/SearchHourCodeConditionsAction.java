@@ -62,10 +62,12 @@ public class SearchHourCodeConditionsAction extends TopAction{
     public String getConditionsTitle(){
 	return conditionsTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.isEmpty())		
 	    dept_id = val;
@@ -76,6 +78,7 @@ public class SearchHourCodeConditionsAction extends TopAction{
 	}
 	return dept_id;
     }
+    @StrutsParameter(depth=1)
     public void setHour_code_id(String val){
 	if(val != null && !val.isEmpty())		
 	    hour_code_id = val;
@@ -85,7 +88,8 @@ public class SearchHourCodeConditionsAction extends TopAction{
 	    return "-1";
 	}
 	return hour_code_id;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setSalary_group_id(String val){
 	if(val != null && !val.isEmpty())		
 	    salary_group_id = val;
@@ -100,10 +104,11 @@ public class SearchHourCodeConditionsAction extends TopAction{
     public boolean hasConditions(){
 	return conditions != null && conditions.size() > 0;
     }
-
+    @StrutsParameter(depth=2)
     public List<HourCodeCondition> getConditions(){
 	return conditions;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -119,6 +124,7 @@ public class SearchHourCodeConditionsAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<SalaryGroup> getSalaryGroups(){
 	if(salaryGroups == null){
 	    SalaryGroupList sgl = new SalaryGroupList();
@@ -133,6 +139,7 @@ public class SearchHourCodeConditionsAction extends TopAction{
 	return salaryGroups;
 
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList sgl = new HourCodeList();

@@ -34,6 +34,7 @@ public class LeaveEmailLogsAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getLel();
 	if(!action.isEmpty()){
 	    lel.setNoLimit();
 	    back = lel.find();
@@ -59,12 +60,29 @@ public class LeaveEmailLogsAction extends TopAction{
 	getLel();
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public LeaveEmailLogList getLel(){
 	return lel;
     }
     public String getLogsTitle(){
 	return logsTitle;
     }
+    /**
+       // these are in lel 
+    public String getEmail_to(){
+	return lel.getEmail_to();
+    }
+    public String getEmail_from(){
+	return lel.getEmail_from();
+    }
+    public String getDate_to(){
+	return lel.getDate_to();
+    }
+    public String getDate_from(){
+	return lel.getDate_from();
+    }
+    */
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action =val;

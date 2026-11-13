@@ -84,18 +84,22 @@ public class TmwrpWrapAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setType(String val){
 	if(val != null && !val.isEmpty())		
 	    type = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -117,14 +121,17 @@ public class TmwrpWrapAction extends TopAction{
 	}				
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setIsHand(boolean val){
 	if(val)
 	    isHand = val;
     }
+    @StrutsParameter(depth=1)
     public void setOutputType(String val){
 	if(val != null){
 	    outputType = val;
@@ -134,6 +141,7 @@ public class TmwrpWrapAction extends TopAction{
 		csvOutput = false;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setCsvOutuput(boolean val){
 	if(val)
 	    csvOutput = val;
@@ -146,7 +154,8 @@ public class TmwrpWrapAction extends TopAction{
     }
     public String getSource(){
 	return source;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1") && !val.equals("all"))
 	    group_id = val;
@@ -221,9 +230,11 @@ public class TmwrpWrapAction extends TopAction{
     public boolean hasEmployeeRuns(){
 	return employeeRuns != null && !employeeRuns.isEmpty();
     }
+    @StrutsParameter(depth=5)
     public Map<Employee, List<TmwrpRun>> getEmployeeRuns(){
 	return employeeRuns;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    getPayPeriod(); // so that we can initialize the list
@@ -254,6 +265,7 @@ public class TmwrpWrapAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null && !department_id.isEmpty()){
 	    Department one = new Department(department_id);
@@ -264,6 +276,7 @@ public class TmwrpWrapAction extends TopAction{
 	}
 	return department;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getEmpsWithNoEmpNum(){
 	if(empsWithNoEmpNum == null){
 	    getDepartment();
@@ -287,6 +300,7 @@ public class TmwrpWrapAction extends TopAction{
 	}
 	return empsWithNoEmpNum;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getEmployees(){
 	if(employees == null){
 	    findEmployees();
@@ -321,6 +335,7 @@ public class TmwrpWrapAction extends TopAction{
     public boolean hasNoDataEmployees(){
 	return noDataEmployees != null;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getNoDataEmployees(){
 	return noDataEmployees;
     }
@@ -345,6 +360,7 @@ public class TmwrpWrapAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	// if pay period is not set, we look for previous one
@@ -372,6 +388,7 @@ public class TmwrpWrapAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -404,6 +421,7 @@ public class TmwrpWrapAction extends TopAction{
 	String ret = "timesheet_"+dt+"_"+dept_name+".csv";
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public List<String> getCsvLines(){
 	return allCsvLines; 
     }

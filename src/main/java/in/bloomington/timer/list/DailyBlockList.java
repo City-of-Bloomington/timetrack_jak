@@ -345,7 +345,7 @@ public class DailyBlockList{
 	    " join positions p2 on j.position_id=p2.id "+
 	    " join employees e on j.employee_id=e.id "+
 	    " join salary_groups s on j.salary_group_id=s.id "+
-	    " join groups g on j.group_id=g.id "+
+	    " join `groups` g on j.group_id=g.id "+
 	    " join departments d2 on g.department_id=d2.id "+
 	    " join code_cross_ref n on n.code_id=c.id "+
 	    " left join group_shifts gs on g.id=gs.group_id "+
@@ -428,6 +428,7 @@ public class DailyBlockList{
 		String salaryGroupName = rs.getString(17);
 		boolean isSeasonal = false;
 		if(salaryGroupName.equals("Temp") ||
+		   salaryGroupName.equals("Part Time") ||
 		   salaryGroupName.indexOf("Season") >-1){
 		    isSeasonal = true;
 		}
@@ -611,7 +612,7 @@ public class DailyBlockList{
 	    " join positions p2 on j.position_id=p2.id "+
 	    " join employees e on j.employee_id=e.id "+
 	    " join salary_groups s on j.salary_group_id=s.id "+
-	    " join groups g on j.group_id=g.id "+
+	    " join `groups` g on j.group_id=g.id "+
 	    " join departments d2 on g.department_id=d2.id "+
 	    " join code_cross_ref n on n.code_id=c.id "+
 	    " left join group_shifts gs on gs.group_id = g.id "+
@@ -768,7 +769,7 @@ public class DailyBlockList{
 	     join positions p2 on j.position_id=p2.id 
 	     join employees e on j.employee_id=e.id 
 	     join salary_groups s on j.salary_group_id=s.id 
-	     join groups g on j.group_id=g.id 
+	     join `groups` g on j.group_id=g.id 
 	     join departments d2 on g.department_id=d2.id 
 	     join code_cross_ref n on n.code_id=c.id 
 	where (t.hours > 0 or t.amount > 0) and
@@ -811,7 +812,7 @@ public class DailyBlockList{
 	     join positions p2 on j.position_id=p2.id 
 	     join employees e on j.employee_id=e.id 
 	     join salary_groups s on j.salary_group_id=s.id 
-	     join groups g on j.group_id=g.id 
+	     join `groups` g on j.group_id=g.id 
 	     join departments d2 on g.department_id=d2.id 
 	     join code_cross_ref n on n.code_id=c.id
 	     left join group_shifts gs on gs.group_id=g.id

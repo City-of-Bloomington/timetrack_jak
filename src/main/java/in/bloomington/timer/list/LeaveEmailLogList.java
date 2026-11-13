@@ -65,7 +65,7 @@ public class LeaveEmailLogList{
 	ResultSet rs = null;
 	Connection con = UnoConnect.getConnection();
 	String qq = "select id,email_to,email_from, email_msg,date_format(sent_date,'%m/%d/%Y'),emaiL_type,error_msg "+
-	    "from leave_emaiL_logs ";
+	    "from leave_email_logs ";
 	String qw = "";
 	if(con == null){
 	    back = "Could not connect to DB";

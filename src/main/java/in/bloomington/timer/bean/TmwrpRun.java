@@ -24,7 +24,9 @@ public class TmwrpRun{
     static Logger logger = LogManager.getLogger(TmwrpRun.class);
     static final DecimalFormat df = new DecimalFormat("#0.00");		
     static final long serialVersionUID = 1500L;
-    String id="", document_id="", run_time="", reg_code_id="";
+    String id="", document_id="", run_time="", reg_code_id="",
+	job_title = "", workflow_status="",  employeeAccrualsShort="";
+    int weekly_regular_hours=0, comp_time_weekly_hours=0;
     double week1_grs_reg_hrs = 0,
 	week2_grs_reg_hrs=0,
 	week1_net_reg_hrs=0,
@@ -50,6 +52,7 @@ public class TmwrpRun{
 
     List<List<String>> week1Rows = null, week2Rows = null;
     List<String> cycleTotalRow = null; // pay period row
+    List<TimeAction> timeActions = null;
     Map<String, Double> cycleHourMap = new TreeMap<>();
     Map<String, Double> cycleAmountMap = new TreeMap<>();
     List<List<String>> cycleRows = new ArrayList<>();   
@@ -65,6 +68,7 @@ public class TmwrpRun{
     }		
     public TmwrpRun(String val){
 	setId(val);
+	getDocument();
     }
     // new record or discovery
     public TmwrpRun(String val,
@@ -105,7 +109,8 @@ public class TmwrpRun{
 	setWeek1NetRegHrs(val7);
 	setWeek2NetRegHrs(val8);
 	setCycle1NetRegHrs(val9);
-	setCycle2NetRegHrs(val10);					
+	setCycle2NetRegHrs(val10);
+	getDocument();
     }
     //
     // getters
@@ -119,7 +124,9 @@ public class TmwrpRun{
     public String getReg_code_id(){
 	return reg_code_id;
     }
-
+    public String getJob_title(){
+	return job_title;
+    }
     public String getRunTime(){
 	return run_time;
     }
@@ -213,7 +220,25 @@ public class TmwrpRun{
     }
     public double getCycleTotalAmount(){
 	return week1_total_amount+week2_total_amount;
-    }		
+    }
+    public boolean hasLastWorkflow(){
+	return !workflow_status.isEmpty();
+    }
+    public String getWorkflow_status(){
+	return workflow_status;
+    }
+    public boolean hasAllAccruals(){
+	return !employeeAccrualsShort.isEmpty();
+    }
+    public String getEmployeeAccrualsShort(){
+	return employeeAccrualsShort;
+    }
+    public int getWeekly_regular_hours(){
+	return weekly_regular_hours;
+    }
+    public int getComp_time_weekly_hours(){
+	return comp_time_weekly_hours;
+    }    
     public boolean equals(Object o) {
 	if (o instanceof TmwrpRun) {
 	    TmwrpRun c = (TmwrpRun) o;
@@ -239,7 +264,12 @@ public class TmwrpRun{
     public boolean isOldRecord(){
 	return old_record;
     }
-		
+    public boolean hasTimeActions(){
+	return timeActions !=null && timeActions.size() > 0;
+    }
+    public List<TimeAction> getTimeActions(){
+	return timeActions;
+    }
     public Document getDocument(){
 	if(document == null && !document_id.isEmpty()){
 	    Document one = new Document(document_id);
@@ -248,8 +278,18 @@ public class TmwrpRun{
 		document = one;
 		// Employee employee = document.getEmployee();
 		Department dp = document.getJob().getGroup().getDepartment();
-		// if(employee != null){
-		//Department dp = employee.getDepartment();
+		job_title = document.getJob().getPosition().getName();
+		weekly_regular_hours = document.getJob().getWeekly_regular_hours();
+		comp_time_weekly_hours = document.getJob().getComp_time_weekly_hours();
+		if(document.hasTimeActions()){
+		    timeActions = document.getTimeActions();
+		}
+		if(document.hasLastWorkflow()){
+		    workflow_status = document.getLastWorkflow().getNode().getAnnotation();
+		}
+		if(document.hasAllAccruals()){
+		    employeeAccrualsShort = document.getEmployeeAccrualsShort();
+		}
 		if(dp != null)
 		    department = dp;
 	    }

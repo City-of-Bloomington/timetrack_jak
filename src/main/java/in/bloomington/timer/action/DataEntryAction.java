@@ -50,19 +50,22 @@ public class DataEntryAction extends TopAction{
 	}
 	return ret;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty())		
 	    group_id = val;
     }
+    @StrutsParameter(depth=2)
     public void setDocument_ids(String[] vals){
 	if(vals != null)		
 	    document_ids = vals;
@@ -77,6 +80,7 @@ public class DataEntryAction extends TopAction{
 	getManagers();
 	return managers != null && managers.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<GroupManager> getManagers(){
 	if(employee_id.isEmpty()){
 	    getEmployee_id();
@@ -106,6 +110,7 @@ public class DataEntryAction extends TopAction{
 	}
 	return managers;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -134,9 +139,11 @@ public class DataEntryAction extends TopAction{
 	}
 	return isGroupManager() && groups != null && groups.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 	getGroups();
 	if(hasGroups()){
@@ -159,7 +166,8 @@ public class DataEntryAction extends TopAction{
     }
     public boolean hasMoreThanOneGroup(){
 	return isGroupManager() && groups != null && groups.size() > 1;
-    }		
+    }
+    
     public String getPay_period_id(){
 	if(pay_period_id.isEmpty()){
 	    PayPeriodList ppl = new PayPeriodList();
@@ -175,6 +183,7 @@ public class DataEntryAction extends TopAction{
 	}
 	return pay_period_id;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	if(payPeriod == null){
 	    if(!pay_period_id.isEmpty()){
@@ -190,6 +199,7 @@ public class DataEntryAction extends TopAction{
 	return payPeriod;
 
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -204,7 +214,7 @@ public class DataEntryAction extends TopAction{
 	}
 	return payPeriods;
     }
-		
+    @StrutsParameter(depth=2)		
     public PayPeriod getPreviousPayPeriod(){
 	//
 	if(previousPayPeriod == null){
@@ -222,6 +232,7 @@ public class DataEntryAction extends TopAction{
 	}
 	return previousPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getNextPayPeriod(){
 	//
 	if(nextPayPeriod == null){
@@ -243,6 +254,7 @@ public class DataEntryAction extends TopAction{
 	getDocuments();
 	return documents != null && documents.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Document> getDocuments(){
 	if(hasGroups()){
 	    if(pay_period_id.isEmpty()){
@@ -271,6 +283,7 @@ public class DataEntryAction extends TopAction{
 	}
 	return documents;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNonDocEmps(){
 	EmployeeList empl = new EmployeeList();
 	if(!group_id.isEmpty() && !group_id.equals("all")){
@@ -299,10 +312,12 @@ public class DataEntryAction extends TopAction{
 	getNonDocEmps();
 	return nonDocEmps != null && nonDocEmps.size() > 0; 
     }
+    @StrutsParameter(depth=1)
     public void setPageNumber(Integer val){
 	if(val != null)
 	    page_number = val;
     }
+    @StrutsParameter(depth=1)
     public void setPageSize(Integer val){
 	if(val != null)
 	    page_size = val;
@@ -311,6 +326,7 @@ public class DataEntryAction extends TopAction{
 	getPages();
 	return pages != null && pages.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<String> getPages(){
 	if(pages == null){
 	    int page_count = 0;

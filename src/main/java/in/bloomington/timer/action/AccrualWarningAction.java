@@ -37,6 +37,7 @@ public class AccrualWarningAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getAccrualWarning();
 	if(action.equals("Save")){
 	    back = accrualWarning.doSave();
 	    if(!back.isEmpty()){
@@ -60,7 +61,6 @@ public class AccrualWarningAction extends TopAction{
 	    }
 	}
 	else{		
-	    getAccrualWarning();
 	    if(!id.isEmpty()){
 		back = accrualWarning.doSelect();
 		if(!back.isEmpty()){
@@ -71,6 +71,7 @@ public class AccrualWarningAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public AccrualWarning getAccrualWarning(){
 	if(accrualWarning == null){
 	    accrualWarning = new AccrualWarning();
@@ -79,6 +80,7 @@ public class AccrualWarningAction extends TopAction{
 	return accrualWarning;
 						
     }
+    @StrutsParameter(depth=2)
     public void setAccrualWarning(AccrualWarning val){
 	if(val != null){
 	    accrualWarning = val;
@@ -92,11 +94,12 @@ public class AccrualWarningAction extends TopAction{
     public String getAccrualWarningsTitle(){
 	return accrualWarningsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<AccrualWarning> getAccrualWarnings(){
 	if(accrualWarnings == null){
 	    AccrualWarningList tl = new AccrualWarningList();
@@ -110,6 +113,7 @@ public class AccrualWarningAction extends TopAction{
 	}
 	return accrualWarnings;
     }
+    @StrutsParameter(depth=2)
     public List<Accrual> getAccruals(){
 	if(accruals == null){
 	    AccrualList tl = new AccrualList();
@@ -122,7 +126,8 @@ public class AccrualWarningAction extends TopAction{
 	    }
 	}
 	return accruals;
-    }    
+    }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	//
 	HourCodeList hcl = new HourCodeList();

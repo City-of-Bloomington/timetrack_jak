@@ -201,7 +201,7 @@ public class LeaveRequestAction extends TopAction{
 				
 	return leavesTitle;
     }
-
+    @StrutsParameter(depth=2)
     public Document getDocument(){
 	if(leave != null)
 	    document = leave.getDocument();
@@ -304,6 +304,7 @@ public class LeaveRequestAction extends TopAction{
     public String getReviewerName(){
 	return leave.getReviewer().getFull_name();
     }
+    @StrutsParameter(depth=2)
     public String[] getEarn_code_ids(){
 	if(earn_code_ids == null){
 	    earn_code_ids = leave.getEarn_code_ids();

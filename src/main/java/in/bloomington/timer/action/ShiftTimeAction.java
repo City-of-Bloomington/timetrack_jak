@@ -38,7 +38,8 @@ public class ShiftTimeAction extends TopAction{
 	String back = doPrepare("shiftTime.action");
 	if(!back.isEmpty()){
 	    return back;
-	}	
+	}
+	getShift();
 	if(action.equals("Save")){
 	    getUser();
 	    shift.setAdded_by_id(user.getId());
@@ -77,7 +78,6 @@ public class ShiftTimeAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getShift();
 	    if(!id.isEmpty()){
 		back = shift.doSelect();
 		Group group = shift.getGroup();
@@ -89,6 +89,7 @@ public class ShiftTimeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public ShiftTime getShift(){ 
 	if(shift == null){
 	    shift = new ShiftTime();
@@ -96,17 +97,19 @@ public class ShiftTimeAction extends TopAction{
 	}		
 	return shift;
     }
-
+    @StrutsParameter(depth=2)
     public void setShift(ShiftTime val){
 	if(val != null){
 	    shift = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1")){
 	    group_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1")){
 	    department_id = val;
@@ -120,7 +123,8 @@ public class ShiftTimeAction extends TopAction{
 	    return "-1";
 	}
 	return department_id;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 
     }		
@@ -129,11 +133,13 @@ public class ShiftTimeAction extends TopAction{
     }
     public String getDate(){
 	return "";
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<ShiftTime> getShifts(){
 	if(shifts == null){
 	    ShiftTimeList tl = new ShiftTimeList();
@@ -153,6 +159,7 @@ public class ShiftTimeAction extends TopAction{
 	getGroups();
 	return groups != null  && groups.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null){
 	    if(!department_id.isEmpty()){
@@ -169,6 +176,7 @@ public class ShiftTimeAction extends TopAction{
 	}
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null && !department_id.isEmpty()){
 	    Department one = new Department(department_id);
@@ -179,6 +187,7 @@ public class ShiftTimeAction extends TopAction{
 	}
 	return department;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList gsl = new DepartmentList();
@@ -192,7 +201,8 @@ public class ShiftTimeAction extends TopAction{
 	    }
 	}
 	return departments;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList gsl = new HourCodeList();
@@ -209,6 +219,7 @@ public class ShiftTimeAction extends TopAction{
 	}
 	return hourCodes;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList gsl = new PayPeriodList();

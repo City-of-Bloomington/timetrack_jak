@@ -61,11 +61,12 @@ public class ActiveEmployeesAction extends TopAction{
 	findManagedGroups();
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty() && !val.equals("all")){		
 	    group_id = val;
@@ -73,6 +74,7 @@ public class ActiveEmployeesAction extends TopAction{
 	    addGroupIdToSession(selected_group_id);
 	}
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.isEmpty() && !val.equals("all")){		
 	    dept_id = val;
@@ -81,6 +83,7 @@ public class ActiveEmployeesAction extends TopAction{
     public String getDept_id(){
 	return dept_id;
     }
+    @StrutsParameter(depth=2)
     public void setGroup(Group val){
 	if(val != null){		
 	    group = val;
@@ -162,6 +165,7 @@ public class ActiveEmployeesAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -178,7 +182,8 @@ public class ActiveEmployeesAction extends TopAction{
 	    }
 	}
 	return payPeriod;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -201,9 +206,11 @@ public class ActiveEmployeesAction extends TopAction{
     public boolean hasMoreThanOneDept(){
 	return departments != null && departments.size() > 1;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 	getGroups();
 	if(group == null && !group_id.isEmpty()){
@@ -240,13 +247,15 @@ public class ActiveEmployeesAction extends TopAction{
 	return terms != null && terms.size() > 0;
     }
     */
+    @StrutsParameter(depth=2)
     public List<EmpTerminate> getTerms(){
 	return terms;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	return groups;
     }
-        @Override  
+    @Override  
     public void withSession(Map<String, Object> map) {  
 	sessionMap=map;  
     }

@@ -34,6 +34,7 @@ public class SearchEmployeeAction extends TopAction{
 	String ret = SUCCESS;
 	String back = "";
 	System.err.println("action "+action);
+	getEmplst();
 	if(!action.isEmpty()){
 	    back = emplst.find();
 	    if(back.isEmpty()){
@@ -68,7 +69,6 @@ public class SearchEmployeeAction extends TopAction{
 		    department_id = val;
 	    }
 	}
-	getEmplst();
 	return ret;
     }
     @StrutsParameter(depth=3)

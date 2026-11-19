@@ -45,15 +45,17 @@ public class ReportEmpNoNumAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public EmployeeNoNumberReport getReport(){
 	if(report == null)
 	    report = new EmployeeNoNumberReport();
 	return report;
     }
+    @StrutsParameter(depth=2)
     public void setReport(EmployeeNoNumberReport report){
 	this.report = report;
     }
-
+    @StrutsParameter(depth=3)
     public List<List<String>> getEntries(){
 	return entries;
     }

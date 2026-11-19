@@ -35,6 +35,7 @@ public class EarnCodeReasonAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReason();
 	if(action.equals("Save")){
 	    back = reason.doSave();
 	    if(!back.isEmpty()){
@@ -54,7 +55,6 @@ public class EarnCodeReasonAction extends TopAction{
 	    }
 	}
 	else{		
-	    getReason();
 	    if(!id.isEmpty()){
 		back = reason.doSelect();
 		if(!back.isEmpty()){
@@ -64,6 +64,7 @@ public class EarnCodeReasonAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public EarnCodeReason getReason(){
 	if(reason == null){
 	    reason = new EarnCodeReason(id);
@@ -71,6 +72,7 @@ public class EarnCodeReasonAction extends TopAction{
 	return reason;
 						
     }
+    @StrutsParameter(depth=2)
     public void setReason(EarnCodeReason val){
 	if(val != null){
 	    reason = val;
@@ -79,7 +81,7 @@ public class EarnCodeReasonAction extends TopAction{
     public String getReasonsTitle(){
 	return reasonsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -88,6 +90,7 @@ public class EarnCodeReasonAction extends TopAction{
 	getReasons();
 	return reasons != null;
     }
+    @StrutsParameter(depth=2)
     public List<EarnCodeReason> getReasons(){
 	if(reasons == null){
 	    EarnCodeReasonList tl = new EarnCodeReasonList();
@@ -105,6 +108,7 @@ public class EarnCodeReasonAction extends TopAction{
 	getCategories();
 	return categories != null;
     }
+    @StrutsParameter(depth=2)
     public List<ReasonCategory> getCategories(){
 	if(categories == null){
 	    ReasonCategoryList tl = new ReasonCategoryList();

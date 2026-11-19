@@ -47,6 +47,7 @@ public class LeaveReceiverAction extends TopAction{
 	resetEmployee();
 	String back = doPrepare("leaveReceivers.action");
 	getEmployee();
+	
 	if(employee.isAdmin()){
 	    allDepts = true;
 	}

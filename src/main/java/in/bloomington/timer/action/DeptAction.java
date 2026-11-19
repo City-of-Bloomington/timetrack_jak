@@ -39,6 +39,7 @@ public class DeptAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getDepartment();
 	if(action.equals("Save")){
 	    back = department.doSave();
 	    if(!back.isEmpty()){
@@ -60,7 +61,6 @@ public class DeptAction extends TopAction{
 	    }
 	}
 	else if(action.equals("Edit")){
-	    getDepartment();
 	    if(!id.isEmpty()){
 		back = department.doSelect();
 		if(!back.isEmpty()){
@@ -69,7 +69,6 @@ public class DeptAction extends TopAction{
 	    }
 	}
 	else{		
-	    getDepartment();
 	    if(!id.isEmpty()){
 		back = department.doSelect();
 		if(!back.isEmpty()){
@@ -80,6 +79,7 @@ public class DeptAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null){
 	    department = new Department();
@@ -88,6 +88,7 @@ public class DeptAction extends TopAction{
 	return department;
 						
     }
+    @StrutsParameter(depth=2)
     public void setDepartment(Department val){
 	if(val != null){
 	    department = val;
@@ -97,11 +98,12 @@ public class DeptAction extends TopAction{
 				
 	return deptsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();
@@ -116,6 +118,7 @@ public class DeptAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(department != null && !department.getId().isEmpty()){
 	    GroupList gl = new GroupList();
@@ -130,6 +133,7 @@ public class DeptAction extends TopAction{
 	}
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	if(employees == null && !id.isEmpty()){
 	    EmployeeList tl = new EmployeeList();
@@ -145,6 +149,7 @@ public class DeptAction extends TopAction{
 	}
 	return employees;
     }
+    @StrutsParameter(depth=2)
     public List<DepartmentEmployee> getDepartmentEmployees(){
 	if(departmentEmployees == null && !id.isEmpty()){
 	    DepartmentEmployeeList tl = new DepartmentEmployeeList();

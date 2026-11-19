@@ -40,6 +40,7 @@ public class GroupManagerAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGroupManager();
 	if(action.equals("Save")){
 	    back = groupManager.doSave();
 	    if(!back.isEmpty()){
@@ -61,7 +62,6 @@ public class GroupManagerAction extends TopAction{
 	}
 	else if(action.startsWith("Delete")){
 	    if(!id.isEmpty()){
-		getGroupManager();								
 		back = groupManager.doSelect();
 		if(back.isEmpty()){
 		    group_id = groupManager.getGroup_id();
@@ -83,7 +83,6 @@ public class GroupManagerAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getGroupManager();
 	    if(!id.isEmpty()){
 		back = groupManager.doSelect();
 		if(!back.isEmpty()){

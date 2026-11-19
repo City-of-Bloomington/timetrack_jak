@@ -96,32 +96,39 @@ public class TmwrpInitiateAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1") && !val.isEmpty())		
 	    group_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setNew_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    new_employee_id = val;
     }
-    // 
+    //
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1")){		
 	    department_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -134,7 +141,8 @@ public class TmwrpInitiateAction extends TopAction{
     }
     public String getNew_employee_id(){
 	return new_employee_id;
-    }				
+    }
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	if(val != null && !val.isEmpty())		
 	    employee_name = val;
@@ -148,20 +156,23 @@ public class TmwrpInitiateAction extends TopAction{
 	}
 	return pay_period_id;
     }
+    @StrutsParameter(depth=2)
     public TmwrpInitiate getTmwrp(){
 	if(tmwrp == null){
 	    tmwrp = new TmwrpInitiate();
 	}
 	return tmwrp;
     }
+    @StrutsParameter(depth=2)
     public void setTmwrp(TmwrpInitiate val){
 	if(val != null)
 	    tmwrp = val;
     }
+    @StrutsParameter(depth=1)
     public void setType(String val){
 	// needed for js
     }
-		
+    @StrutsParameter(depth=2)		
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    getPayPeriod(); // so that we can initialize the list
@@ -177,7 +188,7 @@ public class TmwrpInitiateAction extends TopAction{
 	}
 	return payPeriods;
     }
-
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	// if not set we look for current one
@@ -196,6 +207,7 @@ public class TmwrpInitiateAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -221,9 +233,11 @@ public class TmwrpInitiateAction extends TopAction{
     /**
      * list of employees' full names who needed timewarp initiations;
      */
+    @StrutsParameter(depth=2)
     public List<String> getEmps(){
 	return emps;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");

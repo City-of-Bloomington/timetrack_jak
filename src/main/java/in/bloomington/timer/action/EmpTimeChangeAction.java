@@ -72,22 +72,27 @@ public class EmpTimeChangeAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setRelated_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    related_employee_id = val;
     }
-		
+
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	// for auto complete
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -95,6 +100,7 @@ public class EmpTimeChangeAction extends TopAction{
     public String getEmployee_name(){
 	return "";
     }
+    @StrutsParameter(depth=2)
     public Employee getEmp(){
 	if(emp == null && !related_employee_id.isEmpty()){
 	    Employee one = new Employee(related_employee_id);

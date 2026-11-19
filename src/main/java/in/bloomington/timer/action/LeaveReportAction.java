@@ -103,6 +103,7 @@ public class LeaveReportAction extends TopAction{
 	if(val != null && !val.equals("-1"))
 	    sortBy = val;
     }
+    @StrutsParameter(depth=1)
     public List<Type> getSort_options(){
 	return sort_options;
     }
@@ -157,7 +158,7 @@ public class LeaveReportAction extends TopAction{
 	return leaves_total_number;
 	
     }
-
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();
@@ -172,7 +173,7 @@ public class LeaveReportAction extends TopAction{
 	}
 	return departments;
     }    
-
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 	getGroups();
 	if(hasGroups()){
@@ -194,6 +195,7 @@ public class LeaveReportAction extends TopAction{
 	return has_groups;
 				
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null){
 	    findGroups();
@@ -225,6 +227,7 @@ public class LeaveReportAction extends TopAction{
 	}
 	return allDepts && departments != null && departments.size() > 0;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1")){
 	    dept_id = val;
@@ -233,11 +236,13 @@ public class LeaveReportAction extends TopAction{
 	    dept_id = "";
 	}
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.equals("-1")){
 	    emp_id = val;
 	}
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -252,6 +257,7 @@ public class LeaveReportAction extends TopAction{
 	}
 	return payPeriods;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -266,7 +272,8 @@ public class LeaveReportAction extends TopAction{
 	    }
 	}
 	return payPeriod;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -285,7 +292,8 @@ public class LeaveReportAction extends TopAction{
 	    }
 	}
 	return currentPayPeriod;
-    }	
+    }
+    @StrutsParameter(depth=2)
     public Department getDepartment(){
 	if(department == null){
 	    if(!dept_id.isEmpty()){
@@ -315,6 +323,7 @@ public class LeaveReportAction extends TopAction{
 	getEmployees();
 	return employees != null && employees.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	if(employees != null && employees.size() > 1){
 	    Collections.sort(employees);
@@ -326,6 +335,7 @@ public class LeaveReportAction extends TopAction{
 	getLeaves();
 	return leaves != null && leaves.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<LeaveRequest> getLeaves(){
 	return leaves;
     }

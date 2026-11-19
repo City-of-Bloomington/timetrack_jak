@@ -37,6 +37,7 @@ public class JobChangeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getJobTask();
 	if(action.startsWith("Change")){ 
 	    back = jobTask.doChange();
 	    if(!back.isEmpty()){
@@ -51,7 +52,6 @@ public class JobChangeAction extends TopAction{
 	}
 	else{
 	    if(!id.isEmpty()){
-		getJobTask();
 		back = jobTask.doSelect();
 		if(!back.isEmpty()){
 		    addError(back);
@@ -75,6 +75,7 @@ public class JobChangeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public List<JobTask> getJobs(){
 	if(jobs == null && !related_employee_id.isEmpty()){
 	    JobTaskList jtl = new JobTaskList();
@@ -95,19 +96,20 @@ public class JobChangeAction extends TopAction{
 	getJobs();
 	return jobs  != null && jobs.size() > 0;
     }
-				
+    @StrutsParameter(depth=2)    				
     public JobTask getJobTask(){ 
 	if(jobTask == null){
 	    jobTask = new JobTask(id);
 	}		
 	return jobTask;
     }
-
+    @StrutsParameter(depth=2)    
     public void setJobTask(JobTask val){
 	if(val != null){
 	    jobTask = val;
 	}
     }
+    @StrutsParameter(depth=2)    
     public Employee getRelatedEmployee(){
 	if(relatedEmployee == null && !related_employee_id.isEmpty()){
 	    Employee one = new Employee(related_employee_id);
@@ -118,19 +120,22 @@ public class JobChangeAction extends TopAction{
 	}
 	return relatedEmployee;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setRelated_employee_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    related_employee_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -146,6 +151,7 @@ public class JobChangeAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)    
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -161,6 +167,7 @@ public class JobChangeAction extends TopAction{
 	}
 	return payPeriods;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getSalaryGroups(){
 	TypeList tl = new TypeList("salary_groups");
 	String back = tl.find();
@@ -172,6 +179,7 @@ public class JobChangeAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)    
     public List<Position> getPositions(){
 	PositionList tl = new PositionList();
 	String back = tl.find();

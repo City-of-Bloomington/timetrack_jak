@@ -36,6 +36,7 @@ public class TermManagerAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getManager();
 	if(action.equals("Save")){
 	    back = manager.doSave();
 	    if(!back.isEmpty()){
@@ -55,7 +56,6 @@ public class TermManagerAction extends TopAction{
 	    }
 	}
 	else{		
-	    getManager();
 	    if(!id.isEmpty()){
 		back = manager.doSelect();
 		if(!back.isEmpty()){
@@ -65,6 +65,7 @@ public class TermManagerAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public TermManager getManager(){
 	if(manager == null){
 	    manager = new TermManager();
@@ -73,11 +74,13 @@ public class TermManagerAction extends TopAction{
 	return manager;
 						
     }
+    @StrutsParameter(depth=2)
     public void setManager(TermManager val){
 	if(val != null){
 	    manager = val;
 	}
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();
@@ -94,7 +97,7 @@ public class TermManagerAction extends TopAction{
     public String getTermManagersTitle(){
 	return termManagersTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -103,6 +106,7 @@ public class TermManagerAction extends TopAction{
 	getManagers();
 	return managers != null && managers.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<TermManager> getManagers(){
 	if(managers == null){
 	    TermManagerList tl = new TermManagerList();

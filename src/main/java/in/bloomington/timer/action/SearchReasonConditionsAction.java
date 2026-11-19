@@ -129,7 +129,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return reason_id;
     }		
-		
+    @StrutsParameter(depth=2)		
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -145,6 +145,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<SalaryGroup> getSalaryGroups(){
 	if(salaryGroups == null){
 	    SalaryGroupList sgl = new SalaryGroupList();
@@ -159,6 +160,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	return salaryGroups;
 
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList sgl = new HourCodeList();
@@ -174,6 +176,7 @@ public class SearchReasonConditionsAction extends TopAction{
 	}
 	return hourCodes;
     }
+    @StrutsParameter(depth=2)
     public List<EarnCodeReason> getReasons(){
 	if(reasons == null){
 	    EarnCodeReasonList tl = new EarnCodeReasonList();
@@ -186,7 +189,8 @@ public class SearchReasonConditionsAction extends TopAction{
 	    }
 	}
 	return reasons;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<CodeReasonCondition> getConditions(){
 	return conditions;
     }		

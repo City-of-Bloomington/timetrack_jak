@@ -52,6 +52,7 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)      
     public List<JobTask> getJobs(){
 	if(pay_period_id.isEmpty()){
 	    getPay_period_id();
@@ -75,27 +76,32 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return jobs;
     }
+    @StrutsParameter(depth=2)      
     public void setJobTime(JobTimesChange val){
 	if(val != null)		
 	    jobTime = val;
     }
+    @StrutsParameter(depth=2)      
     public void getJobTime(){
 	if(jobTime == null){		
 	    jobTime = new JobTimesChange();
 	    jobTime.setEmployee_id(related_employee_id);
 	}
-    }		
+    }
+    @StrutsParameter(depth=1)      
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)      
     public void setRelated_employee_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    related_employee_id = val;
     }
     public String getRelated_employee_id(){
 	return related_employee_id ;
-    }		
+    }
+    @StrutsParameter(depth=1)      
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
@@ -106,6 +112,7 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return pay_period_id;
     }
+    @StrutsParameter(depth=1)      
     public void setTo_job_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    to_job_id = val;
@@ -113,6 +120,7 @@ public class JobTimesChangeAction extends TopAction{
     public String getTo_job_id(){
 	return "-1";
     }
+    @StrutsParameter(depth=1)      
     public void setFrom_job_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    from_job_id = val;
@@ -120,6 +128,7 @@ public class JobTimesChangeAction extends TopAction{
     public String getFrom_job_id(){
 	return "-1";
     }
+    @StrutsParameter(depth=2)      
     public Employee getRelatedEmployee(){
 	if(relatedEmployee == null){
 	    if(!related_employee_id.isEmpty()){
@@ -132,6 +141,7 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return relatedEmployee;
     }
+    @StrutsParameter(depth=2)      
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -150,7 +160,8 @@ public class JobTimesChangeAction extends TopAction{
 	    }
 	}
 	return currentPayPeriod;
-    }		
+    }
+    @StrutsParameter(depth=2)      
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -166,6 +177,7 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return payPeriods;
     }
+    @StrutsParameter(depth=2)      
     public PayPeriod getPreviousPayPeriod(){
 	//
 	if(previousPayPeriod == null){
@@ -183,6 +195,7 @@ public class JobTimesChangeAction extends TopAction{
 	}
 	return previousPayPeriod;
     }
+    @StrutsParameter(depth=2)      
     public PayPeriod getNextPayPeriod(){
 	//
 	if(nextPayPeriod == null){

@@ -14,6 +14,7 @@ import jakarta.servlet.ServletContext;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.action.SessionAware;
 import org.apache.struts2.action.ServletContextAware;  
+import org.apache.struts2.interceptor.parameter.StrutsParameter;
 import in.bloomington.timer.list.*;
 import in.bloomington.timer.bean.*;
 import org.apache.logging.log4j.LogManager;
@@ -64,6 +65,7 @@ public class AccrualAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public Accrual getAccrual(){
 	if(accrual == null){
 	    accrual = new Accrual();
@@ -72,6 +74,7 @@ public class AccrualAction extends TopAction{
 	return accrual;
 						
     }
+    @StrutsParameter(depth=1)    
     public void setAccrual(Accrual val){
 	if(val != null){
 	    accrual = val;
@@ -82,11 +85,12 @@ public class AccrualAction extends TopAction{
 				
 	return accrualsTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=3)    
     public List<Accrual> getAccruals(){
 	if(accruals == null){
 	    AccrualList tl = new AccrualList();

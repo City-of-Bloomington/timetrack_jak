@@ -63,10 +63,12 @@ public class ActiveEmailsAction extends TopAction{
     public String getActiveEmailsTitle(){
 	return activeEmailsTitle;
     }
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)        
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -79,9 +81,11 @@ public class ActiveEmailsAction extends TopAction{
     public boolean hasEmployees(){
 	return employees != null;
     }
+    @StrutsParameter(depth=3)        
     public List<Employee> getEmployees(){
 	return employees;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");

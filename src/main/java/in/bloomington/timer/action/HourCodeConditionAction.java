@@ -40,6 +40,7 @@ public class HourCodeConditionAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getHourcodeCondition();
 	if(action.equals("Save")){
 	    back = hourcodeCondition.doSave();
 	    if(!back.isEmpty()){
@@ -60,7 +61,6 @@ public class HourCodeConditionAction extends TopAction{
 	    }
 	}
 	else{		
-	    getHourcodeCondition();
 	    if(!id.isEmpty()){
 		back = hourcodeCondition.doSelect();
 		if(!back.isEmpty()){
@@ -70,6 +70,7 @@ public class HourCodeConditionAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public HourCodeCondition getHourcodeCondition(){
 	if(hourcodeCondition == null){
 	    hourcodeCondition = new HourCodeCondition(id);
@@ -77,6 +78,8 @@ public class HourCodeConditionAction extends TopAction{
 	return hourcodeCondition;
 						
     }
+
+    @StrutsParameter(depth=2)    
     public void setHourcodeCondition(HourCodeCondition val){
 	if(val != null){
 	    hourcodeCondition = val;
@@ -85,11 +88,12 @@ public class HourCodeConditionAction extends TopAction{
     public String getHourcodeConditionsTitle(){
 	return hourcodeConditionsTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -100,6 +104,7 @@ public class HourCodeConditionAction extends TopAction{
 	}
 	return department_id;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCodeCondition> getConditions(){
 	if(conditions == null){
 	    HourCodeConditionList tl = new HourCodeConditionList();
@@ -117,6 +122,7 @@ public class HourCodeConditionAction extends TopAction{
 	getConditions();
 	return conditions != null;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCode> getHourcodes(){
 	if(hourcodes == null){
 	    HourCodeList tl = new HourCodeList();
@@ -129,7 +135,8 @@ public class HourCodeConditionAction extends TopAction{
 	    }
 	}
 	return hourcodes;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");
@@ -143,6 +150,7 @@ public class HourCodeConditionAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getSalaryGroups(){
 	if(salaryGroups == null){
 	    TypeList tl = new TypeList("salary_groups");
@@ -156,6 +164,7 @@ public class HourCodeConditionAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)    
     public List<Group> getGroups(){
 	if(groups == null){
 	    GroupList tl = new GroupList();

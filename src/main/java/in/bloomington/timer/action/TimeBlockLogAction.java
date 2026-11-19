@@ -53,10 +53,12 @@ public class TimeBlockLogAction extends TopAction{
     public String getTimeBlockLogsTitle(){
 	return timeBlockLogsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -70,26 +72,32 @@ public class TimeBlockLogAction extends TopAction{
 	//
 	return document_id;
     }
+    @StrutsParameter(depth=1)
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setStart_date(String val){
 	if(val != null && !val.isEmpty())		
 	    start_date = val;
     }
+    @StrutsParameter(depth=1)
     public void setEnd_date(String val){
 	if(val != null && !val.isEmpty())		
 	    end_date = val;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setOther_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    other_employee_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	// ignore
     }		
@@ -105,6 +113,7 @@ public class TimeBlockLogAction extends TopAction{
     public String getSource(){
 	return source;
     }
+    @StrutsParameter(depth=2)
     public Document getDocument(){
 	if(document == null && !document_id.isEmpty()){
 	    Document one = new Document(document_id);
@@ -115,6 +124,7 @@ public class TimeBlockLogAction extends TopAction{
 	}
 	return document;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    getPayPeriod(); // so that we can initialize the list
@@ -130,7 +140,8 @@ public class TimeBlockLogAction extends TopAction{
 	    }
 	}
 	return payPeriods;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	// if pay period is not set, we look for current one
@@ -167,6 +178,7 @@ public class TimeBlockLogAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -186,6 +198,7 @@ public class TimeBlockLogAction extends TopAction{
 	}
 	return currentPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPreviousPayPeriod(){
 	//
 	if(previousPayPeriod == null){
@@ -203,6 +216,7 @@ public class TimeBlockLogAction extends TopAction{
 	}
 	return previousPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getNextPayPeriod(){
 	//
 	if(nextPayPeriod == null){
@@ -259,6 +273,7 @@ public class TimeBlockLogAction extends TopAction{
 	}
 	return back;
     }
+    @StrutsParameter(depth=2)
     public List<TimeBlockLog> getTimeBlockLogs(){
 	if(timeBlockLogs == null)
 	    findTimeBlockLogs();

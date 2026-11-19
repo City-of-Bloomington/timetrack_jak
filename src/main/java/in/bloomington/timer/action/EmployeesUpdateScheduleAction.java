@@ -126,11 +126,12 @@ public class EmployeesUpdateScheduleAction extends TopAction{
 				
 	return employeesUpdateSchedulesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
@@ -151,6 +152,7 @@ public class EmployeesUpdateScheduleAction extends TopAction{
 	getEmployeesLogs();
 	return employeesLogs != null && employeesLogs.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<EmployeesLog> getEmployeesLogs(){
 	if(employeesLogs == null){
 	    EmployeesLogList ell = new EmployeesLogList();

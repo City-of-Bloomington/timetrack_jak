@@ -38,6 +38,7 @@ public class GroupShiftAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGroupShift();
 	if(action.equals("Save")){
 	    back = groupShift.doSave();
 	    if(!back.isEmpty()){
@@ -75,7 +76,6 @@ public class GroupShiftAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getGroupShift();
 	    if(!id.isEmpty()){
 		back = groupShift.doSelect();
 		if(!back.isEmpty()){
@@ -87,6 +87,7 @@ public class GroupShiftAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)     
     public GroupShift getGroupShift(){ 
 	if(groupShift == null){
 	    groupShift = new GroupShift(id);
@@ -95,7 +96,7 @@ public class GroupShiftAction extends TopAction{
 	}		
 	return groupShift;
     }
-
+    @StrutsParameter(depth=2)     
     public void setGroupShift(GroupShift val){
 	if(val != null){
 	    groupShift = val;
@@ -110,6 +111,7 @@ public class GroupShiftAction extends TopAction{
 	}
 	return department_id;
     }
+    @StrutsParameter(depth=3)     
     public Shift getShift(){
 	if(shift == null && !shift_id.isEmpty()){
 	    Shift one = new Shift(shift_id);
@@ -120,6 +122,7 @@ public class GroupShiftAction extends TopAction{
 	}
 	return shift;
     }
+    @StrutsParameter(depth=3)     
     public Group getGroup(){
 	if(group == null && !group_id.isEmpty()){
 	    Group one = new Group(group_id);
@@ -133,23 +136,27 @@ public class GroupShiftAction extends TopAction{
     public String getGroupShiftsTitle(){
 	return groupShiftsTitle;
     }
-
+    @StrutsParameter(depth=1)     
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)     
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    group_id = val;
     }
+    @StrutsParameter(depth=1)     
     public void setShift_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    shift_id = val;
     }
+    @StrutsParameter(depth=1)     
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
-    }					
+    }
+    @StrutsParameter(depth=2)     
     public List<Group> getGroups(){
 	if(groups == null && !department_id.isEmpty()){
 	    // we are interested in the group of the shift department
@@ -172,6 +179,7 @@ public class GroupShiftAction extends TopAction{
 	getGroupShifts();
 	return groupShifts != null;
     }
+    @StrutsParameter(depth=2)     
     public List<GroupShift> getGroupShifts(){
 	if(groupShifts == null){
 	    GroupShiftList gel = new GroupShiftList();
@@ -186,6 +194,7 @@ public class GroupShiftAction extends TopAction{
 	}
 	return groupShifts;
     }
+    @StrutsParameter(depth=2)     
     public List<Shift> getShifts(){
 	if(shifts == null){
 	    ShiftList gel = new ShiftList();
@@ -199,7 +208,8 @@ public class GroupShiftAction extends TopAction{
 	    }
 	}
 	return shifts;
-    }		
+    }
+    @StrutsParameter(depth=2)     
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();

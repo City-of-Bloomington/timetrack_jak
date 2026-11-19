@@ -92,6 +92,7 @@ public class LeaveEmailLogsAction extends TopAction{
 	    getLogs();
 	return logs != null && logs.size() > 0;
     }
+    @StrutsParameter(depth=3)      
     public List<LeaveEmailLog> getLogs(){
 	if(action.isEmpty()){
 	    LeaveEmailLogList tl = new LeaveEmailLogList();

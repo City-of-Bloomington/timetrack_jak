@@ -36,6 +36,7 @@ public class AccrualContributeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getContribute();
 	if(action.equals("Save")){
 	    back = contribute.doSave();
 	    if(!back.isEmpty()){
@@ -55,7 +56,6 @@ public class AccrualContributeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getContribute();
 	    if(!id.isEmpty()){
 		back = contribute.doSelect();
 		if(!back.isEmpty()){
@@ -65,6 +65,7 @@ public class AccrualContributeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public AccrualContribute getContribute(){
 	if(contribute == null){
 	    contribute = new AccrualContribute();
@@ -73,6 +74,7 @@ public class AccrualContributeAction extends TopAction{
 	return contribute;
 						
     }
+    @StrutsParameter(depth=2)
     public void setContribute(AccrualContribute val){
 	if(val != null){
 	    contribute = val;
@@ -83,11 +85,12 @@ public class AccrualContributeAction extends TopAction{
 				
 	return contributesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<AccrualContribute> getContributes(){
 	if(contributes == null){
 	    AccrualContributeList tl = new AccrualContributeList();
@@ -101,6 +104,7 @@ public class AccrualContributeAction extends TopAction{
 	}
 	return contributes;
     }
+    @StrutsParameter(depth=2)
     public List<Accrual> getAccruals(){
 	if(accruals == null){
 	    AccrualList tl = new AccrualList();
@@ -114,7 +118,8 @@ public class AccrualContributeAction extends TopAction{
 	    }
 	}
 	return accruals;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList tl = new HourCodeList();

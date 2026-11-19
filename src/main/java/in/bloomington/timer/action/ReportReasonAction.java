@@ -40,6 +40,7 @@ public class ReportReasonAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(!action.isEmpty()){
 	    if(type.equals("Reason")){
 		back = report.findHoursByNameAndCode();
@@ -95,13 +96,14 @@ public class ReportReasonAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public ReasonReport getReport(){ 
 	if(report == null){
 	    report = new ReasonReport();
 	}		
 	return report;
     }
-
+    @StrutsParameter(depth=3)
     public void setReport(ReasonReport val){
 	if(val != null){
 	    report = val;
@@ -114,10 +116,12 @@ public class ReportReasonAction extends TopAction{
 	}
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setType(String val){
 	if(val != null && !val.isEmpty())		
 	    type = val;
@@ -125,6 +129,7 @@ public class ReportReasonAction extends TopAction{
     public String getType(){
 	return type;
     }
+    @StrutsParameter(depth=2)
     public List<Integer> getYears(){
 	if(years == null){
 	    int currentYear = Helper.getCurrentYear();

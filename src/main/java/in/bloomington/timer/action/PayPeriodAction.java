@@ -44,7 +44,7 @@ public class PayPeriodAction extends TopAction{
 	}
 	return ret;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;

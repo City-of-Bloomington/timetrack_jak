@@ -51,23 +51,27 @@ public class ReviewAction extends TopAction{
 	String back = doPrepare();
 	return ret;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty())		
 	    group_id = val;
     }
+    @StrutsParameter(depth=2)
     public void setDocument_ids(String[] vals){
 	if(vals != null)		
 	    document_ids = vals;
     }
+    @StrutsParameter(depth=1)
     public void setDocument_id(String val){
 	if(val != null)		
 	    document_id = val;
@@ -82,6 +86,7 @@ public class ReviewAction extends TopAction{
 	getManagers();
 	return managers != null && managers.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<GroupManager> getManagers(){
 	if(employee_id.isEmpty()){
 	    getEmployee_id();
@@ -108,6 +113,7 @@ public class ReviewAction extends TopAction{
 	}
 	return managers;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -123,6 +129,7 @@ public class ReviewAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(currentPayPeriod == null){
@@ -142,6 +149,7 @@ public class ReviewAction extends TopAction{
 	}
 	return currentPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getPreviousPayPeriod(){
 	//
 	if(previousPayPeriod == null){
@@ -159,6 +167,7 @@ public class ReviewAction extends TopAction{
 	}
 	return previousPayPeriod;
     }
+    @StrutsParameter(depth=2)
     public PayPeriod getNextPayPeriod(){
 	//
 	if(nextPayPeriod == null){
@@ -183,9 +192,11 @@ public class ReviewAction extends TopAction{
     public boolean hasGroups(){
 	return isGroupManager() && groups != null && groups.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<Group> getGroups(){
 	return groups;
     }
+    @StrutsParameter(depth=3)
     public Group getGroup(){
 				
 	getGroups();
@@ -212,7 +223,7 @@ public class ReviewAction extends TopAction{
 	}
 	return pay_period_id;
     }
-
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -232,6 +243,7 @@ public class ReviewAction extends TopAction{
 	getDocuments();
 	return documents != null && documents.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<Document> getDocuments(){
 	if(documents == null){
 	    if(hasGroups()){
@@ -259,6 +271,7 @@ public class ReviewAction extends TopAction{
 	}
 	return documents;
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getNonDocEmps(){
 	if(nonDocEmps == null){
 	    EmployeeList empl = new EmployeeList();
@@ -305,6 +318,7 @@ public class ReviewAction extends TopAction{
     public boolean hasNoDocNorSubmitEmps(){
 	return hasNotSubmittedEmps() || hasNonDocEmps();
     }
+    @StrutsParameter(depth=3)
     public List<Employee> getNoDocNorSubmitEmps(){
 	return noDocNorSubmitEmps;
     }
@@ -312,9 +326,11 @@ public class ReviewAction extends TopAction{
 	findNotSubmittedAndNotApprovedEmps();				
 	return notApprovedEmps != null && notApprovedEmps.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNotSubmittedEmps(){
 	return notSubmittedEmps;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNotApprovedEmps(){
 	return notApprovedEmps;
     }

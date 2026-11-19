@@ -69,6 +69,7 @@ public class ReportJobAction extends TopAction{
 	}				
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setOutputType(String val){
 	if(val != null && !val.equals("-1")){
 	    outputType = val;
@@ -81,11 +82,13 @@ public class ReportJobAction extends TopAction{
     public String getJobsTitle(){
 	return jobsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-    // 
+    //
+    @StrutsParameter(depth=3)
     public List<JobTask> getJobs(){
 	return jobs;
     }
@@ -108,21 +111,25 @@ public class ReportJobAction extends TopAction{
 	filename +="_jobs_"+Helper.getToday().replace(' ','_')+".csv";
 	return filename;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1")){
 	    dept_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1")){
 	    department_id = val;
 	}
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1")){
 	    group_id = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setSalaryGroup_id(String val){
 	if(val != null && !val.equals("-1")){
 	    salaryGroup_id = val;
@@ -160,7 +167,8 @@ public class ReportJobAction extends TopAction{
 	    return "-1";
 	}
 	return salaryGroup_id;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList gsl = new DepartmentList();
@@ -175,6 +183,7 @@ public class ReportJobAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public Department getDept(){
 	if(dept == null && !dept_id.isEmpty()){
 	    dept = new Department(dept_id);
@@ -182,6 +191,7 @@ public class ReportJobAction extends TopAction{
 	}
 	return dept;
     }
+    @StrutsParameter(depth=2)
     public Group getGroup(){
 	if(group == null && !group_id.isEmpty()){
 	    group = new Group(dept_id);
@@ -216,6 +226,7 @@ public class ReportJobAction extends TopAction{
 	}
 	return back;
     }
+    @StrutsParameter(depth=2)
     public List<SalaryGroup> getSalaryGroups(){
 	//
 	SalaryGroupList gml = new SalaryGroupList();
@@ -228,6 +239,7 @@ public class ReportJobAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null && !dept_id.isEmpty()){
 	    GroupList gl = new GroupList();

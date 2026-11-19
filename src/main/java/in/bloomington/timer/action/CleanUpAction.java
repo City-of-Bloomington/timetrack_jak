@@ -64,10 +64,12 @@ public class CleanUpAction extends TopAction{
     public String getCleanUpTitle(){
 	return cleanUpTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -103,25 +105,31 @@ public class CleanUpAction extends TopAction{
 	findDocuments();
 	return documents != null && documents.size() > 0;
     }
+    @StrutsParameter(depth=1)
     public void setPay_period_id(String val){
 	if(val != null && !val.isEmpty())		
 	    pay_period_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setJob_id(String val){
 	if(val != null && !val.isEmpty())		
 	    job_id = val;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setOther_employee_id(String val){
 	if(val != null && !val.isEmpty())		
 	    other_employee_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmployee_name(String val){
 	// ignore
     }
+    @StrutsParameter(depth=2)
     public void setCleanUp(CleanUp val){
 	if(val != null)
 	    cleanUp = val;
     }
+    @StrutsParameter(depth=2)
     public CleanUp getCleanUp(){
 	cleanUp = new CleanUp();
 	if(hasDocuments()){
@@ -143,6 +151,7 @@ public class CleanUpAction extends TopAction{
     public String getSource(){
 	return source;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    getPayPeriod(); // so that we can initialize the list
@@ -158,7 +167,8 @@ public class CleanUpAction extends TopAction{
 	    }
 	}
 	return payPeriods;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public PayPeriod getPayPeriod(){
 	//
 	// if pay period is not set, we look for current one

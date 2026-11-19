@@ -40,6 +40,7 @@ public class ReportPlanAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(!action.isEmpty()){
 	    back = report.findHoursByNameCode();
 	    back += report.findHoursByDateAndCode();	
@@ -77,13 +78,14 @@ public class ReportPlanAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public PlanReport getReport(){ 
 	if(report == null){
 	    report = new PlanReport();
 	}		
 	return report;
     }
-
+    @StrutsParameter(depth=2)
     public void setReport(PlanReport val){
 	if(val != null){
 	    report = val;
@@ -96,14 +98,17 @@ public class ReportPlanAction extends TopAction{
 	}
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
     // todo
+    @StrutsParameter(depth=3)
     public List<TimeBlock> getTimeBlocks(){
 	return timeBlocks;
     }
+    @StrutsParameter(depth=2)
     public List<Integer> getYears(){
 	if(years == null){
 	    int currentYear = Helper.getCurrentYear();

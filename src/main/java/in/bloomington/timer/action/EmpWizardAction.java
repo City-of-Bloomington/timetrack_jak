@@ -37,6 +37,7 @@ public class EmpWizardAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getEmplst();
 	if(!action.isEmpty() && effective_date.isEmpty()){
 	    addError("Start date is required ");
 	    action = "";
@@ -73,15 +74,16 @@ public class EmpWizardAction extends TopAction{
 		    department_id = val;
 	    }
 	}
-	getEmplst();
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public EmployeeList getEmplst(){ 
 	if(emplst == null){
 	    emplst = new EmployeeList();
 	}		
 	return emplst;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();
@@ -96,7 +98,8 @@ public class EmpWizardAction extends TopAction{
 	    }
 	}
 	return payPeriods;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public void setEmplst(EmployeeList val){
 	if(val != null){
 	    emplst = val;
@@ -108,6 +111,7 @@ public class EmpWizardAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null)
 	    department_id = val;
@@ -115,6 +119,7 @@ public class EmpWizardAction extends TopAction{
     public String getEffective_date(){
 	return effective_date;
     }
+    @StrutsParameter(depth=1)
     public void setEffective_date(String val){
 	if(val != null && !val.equals("-1"))
 	    effective_date = val;
@@ -122,6 +127,7 @@ public class EmpWizardAction extends TopAction{
     public String getEmployeeTitle(){
 	return employeesTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -129,10 +135,11 @@ public class EmpWizardAction extends TopAction{
     public boolean hasEmployees(){
 	return employees != null && employees.size() > 0;
     }
-
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	return employees;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

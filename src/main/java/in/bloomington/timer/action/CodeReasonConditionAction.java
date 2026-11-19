@@ -41,6 +41,7 @@ public class CodeReasonConditionAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getCondition();
 	if(action.equals("Save")){
 	    back = condition.doSave();
 	    if(!back.isEmpty()){
@@ -72,7 +73,6 @@ public class CodeReasonConditionAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getCondition();
 	    if(!id.isEmpty()){
 		back = condition.doSelect();
 		if(!back.isEmpty()){
@@ -82,6 +82,7 @@ public class CodeReasonConditionAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public CodeReasonCondition getCondition(){
 	if(condition == null){
 	    condition = new CodeReasonCondition(id);
@@ -89,6 +90,7 @@ public class CodeReasonConditionAction extends TopAction{
 	return condition;
 						
     }
+    @StrutsParameter(depth=2)
     public void setCondition(CodeReasonCondition val){
 	if(val != null){
 	    condition = val;
@@ -97,11 +99,12 @@ public class CodeReasonConditionAction extends TopAction{
     public String getconditionsTitle(){
 	return conditionsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -112,6 +115,7 @@ public class CodeReasonConditionAction extends TopAction{
 	}
 	return department_id;
     }
+    @StrutsParameter(depth=2)
     public List<CodeReasonCondition> getConditions(){
 	if(conditions == null){
 	    CodeReasonConditionList tl = new CodeReasonConditionList();
@@ -129,6 +133,7 @@ public class CodeReasonConditionAction extends TopAction{
 	getConditions();
 	return conditions != null;
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourcodes(){
 	if(hourcodes == null){
 	    HourCodeList tl = new HourCodeList();
@@ -156,7 +161,8 @@ public class CodeReasonConditionAction extends TopAction{
 	    
 	}
 	return hourcodes;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");
@@ -170,6 +176,7 @@ public class CodeReasonConditionAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getSalaryGroups(){
 	if(salaryGroups == null){
 	    TypeList tl = new TypeList("salary_groups");
@@ -183,6 +190,7 @@ public class CodeReasonConditionAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null){
 	    GroupList tl = new GroupList();
@@ -207,6 +215,7 @@ public class CodeReasonConditionAction extends TopAction{
 	getReasons();
 	return reasons != null;
     }
+    @StrutsParameter(depth=2)
     public List<EarnCodeReason> getReasons(){
 	if(reasons == null){
 	    EarnCodeReasonList tl = new EarnCodeReasonList();

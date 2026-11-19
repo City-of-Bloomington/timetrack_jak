@@ -38,6 +38,7 @@ public class EmployeeAccrualAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getEmpAccrual();
 	if(action.equals("Save")){
 	    back = empAccrual.doSave();
 	    if(!back.isEmpty()){
@@ -59,11 +60,9 @@ public class EmployeeAccrualAction extends TopAction{
 	    }
 	}
 	else if(action.equals("Next")){
-	    getEmpAccrual();
 	    empAccrual.setEmployee_id(employee_selected_id);
 	}
 	else if(!id.isEmpty()){
-	    getEmpAccrual();
 	    back = empAccrual.doSelect();
 	    if(!back.isEmpty()){
 		addActionError(back);
@@ -73,7 +72,6 @@ public class EmployeeAccrualAction extends TopAction{
 	    }
 	}
 	else if(!employee_selected_id.isEmpty()){
-	    getEmpAccrual();
 	    empAccrual.setEmployee_id(employee_selected_id);
 	}
 	else {
@@ -81,6 +79,7 @@ public class EmployeeAccrualAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public EmployeeAccrual getEmpAccrual(){
 	if(empAccrual == null){
 	    empAccrual = new EmployeeAccrual();
@@ -89,6 +88,7 @@ public class EmployeeAccrualAction extends TopAction{
 	return empAccrual;
 						
     }
+    @StrutsParameter(depth=2)
     public void setEmpAccrual(EmployeeAccrual val){
 	if(val != null){
 	    empAccrual = val;
@@ -97,11 +97,12 @@ public class EmployeeAccrualAction extends TopAction{
     public String getEmployeeAccrualsTitle(){
 	return employeeAccrualsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmployee_selected_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    employee_selected_id = val;
@@ -112,6 +113,7 @@ public class EmployeeAccrualAction extends TopAction{
 	}
 	return employee_selected_id;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getAccruals(){
 	TypeList tl = new TypeList("accruals");
 	tl.setActiveOnly();
@@ -124,6 +126,7 @@ public class EmployeeAccrualAction extends TopAction{
 	}
 	return accruals;
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	//
 	if(hourCodes == null){
@@ -140,6 +143,7 @@ public class EmployeeAccrualAction extends TopAction{
 	}
 	return hourCodes;
     }
+    @StrutsParameter(depth=2)
     public List<EmployeeAccrual> getEmpAccruals(){
 	//
 	if(empAccruals == null){

@@ -40,6 +40,7 @@ public class ReportPrimeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(!action.isEmpty()){
 	    back = report.findAggregates();
 	    back += report.find();
@@ -76,6 +77,7 @@ public class ReportPrimeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public PrimeReport getReport(){ 
 	if(report == null){
 	    report = new PrimeReport();
@@ -85,10 +87,12 @@ public class ReportPrimeAction extends TopAction{
     public String getOutputType(){
 	return outputType;
     }
+    @StrutsParameter(depth=1)
     public void setOutputType(String val){
 	if(val != null)
 	    outputType = val;
     }
+    @StrutsParameter(depth=2)
     public void setReport(PrimeReport val){
 	if(val != null){
 	    report = val;
@@ -97,12 +101,14 @@ public class ReportPrimeAction extends TopAction{
     public boolean hasAllEntries(){
 	return allEntries != null && allEntries.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<List<String>> getAllEntries(){
 	return allEntries;
     }
     public boolean hasAggregates(){
 	return aggregates != null && aggregates.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<List<String>> getAggregates(){
 	return aggregates;
     }    
@@ -112,6 +118,7 @@ public class ReportPrimeAction extends TopAction{
 	}
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;

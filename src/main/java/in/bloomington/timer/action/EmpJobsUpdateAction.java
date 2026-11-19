@@ -43,12 +43,14 @@ public class EmpJobsUpdateAction extends TopAction{
 	}				
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public EmployeeJobsHandel getHandel(){
 	if(handel == null){
 	    handel = new EmployeeJobsHandel();
 	}
 	return handel;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null)
 	    date = val;

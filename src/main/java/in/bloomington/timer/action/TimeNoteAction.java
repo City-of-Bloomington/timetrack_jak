@@ -36,6 +36,7 @@ public class TimeNoteAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getTimeNote();
 	if(action.equals("Save")){
 	    timeNote.setReported_by(user.getId());
 	    back = timeNote.doSave();
@@ -67,7 +68,6 @@ public class TimeNoteAction extends TopAction{
 						
 	}
 	else{		
-	    getTimeNote();
 	    if(!id.isEmpty()){
 		back = timeNote.doSelect();
 		if(!back.isEmpty()){
@@ -77,6 +77,7 @@ public class TimeNoteAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public TimeNote getTimeNote(){
 	if(timeNote == null){
 	    timeNote = new TimeNote();
@@ -86,6 +87,7 @@ public class TimeNoteAction extends TopAction{
 	return timeNote;
 						
     }
+    @StrutsParameter(depth=2)
     public void setTimeNote(TimeNote val){
 	if(val != null){
 	    timeNote = val;
@@ -94,18 +96,21 @@ public class TimeNoteAction extends TopAction{
     public String getTimeNotesTitle(){
 	return timeNotesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)
     public String getDocument_id(){
 	return document_id;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<TimeNote> getTimeNotes(){
 	if(timeNotes == null){
 	    TimeNoteList tl = new TimeNoteList();

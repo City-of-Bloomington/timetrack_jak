@@ -35,6 +35,7 @@ public class DepartmentEmployeeChangeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getDepartmentEmployee();
 	if(action.startsWith("Change")){ 
 	    back = departmentEmployee.doChange();
 	    if(!back.isEmpty()){
@@ -45,7 +46,6 @@ public class DepartmentEmployeeChangeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getDepartmentEmployee();
 	    if(!id.isEmpty()){
 		back = departmentEmployee.doSelect();
 		if(!back.isEmpty()){
@@ -55,6 +55,7 @@ public class DepartmentEmployeeChangeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public DepartmentEmployee getDepartmentEmployee(){ 
 	if(departmentEmployee == null){
 	    departmentEmployee = new DepartmentEmployee(id);
@@ -62,7 +63,7 @@ public class DepartmentEmployeeChangeAction extends TopAction{
 	}		
 	return departmentEmployee;
     }
-
+    @StrutsParameter(depth=2)
     public void setDepartmentEmployee(DepartmentEmployee val){
 	if(val != null){
 	    departmentEmployee = val;
@@ -72,18 +73,22 @@ public class DepartmentEmployeeChangeAction extends TopAction{
     public String getDepartmentEmployeesTitle(){
 	return departmentEmployeesTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    emp_id = val;
-    }				
+    }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -99,6 +104,7 @@ public class DepartmentEmployeeChangeAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

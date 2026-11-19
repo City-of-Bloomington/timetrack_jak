@@ -36,6 +36,7 @@ public class HandleIssueAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getTimeIssue();
 	if(action.startsWith("Close")){
 	    timeIssue.setClosed_by(user.getId());
 	    back = timeIssue.doClose();
@@ -47,7 +48,6 @@ public class HandleIssueAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getTimeIssue();
 	    if(!id.isEmpty()){
 		back = timeIssue.doSelect();
 		if(!back.isEmpty()){
@@ -58,6 +58,7 @@ public class HandleIssueAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public TimeIssue getTimeIssue(){
 	if(timeIssue == null){
 	    timeIssue = new TimeIssue();
@@ -66,6 +67,7 @@ public class HandleIssueAction extends TopAction{
 	return timeIssue;
 						
     }
+    @StrutsParameter(depth=2)    
     public void setTimeIssue(TimeIssue val){
 	if(val != null){
 	    timeIssue = val;
@@ -74,19 +76,22 @@ public class HandleIssueAction extends TopAction{
     public String getTimeIssuesTitle(){
 	return timeIssuesTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;
     }
+    @StrutsParameter(depth=1)    
     public void setTime_block_id(String val){
 	if(val != null && !val.isEmpty())		
 	    time_block_id = val;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public List<TimeIssue> getTimeIssues(){
 	if(timeIssues == null){
 	    TimeIssueList tl = new TimeIssueList();

@@ -35,6 +35,7 @@ public class SalaryGroupAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getSalaryGroup();
 	if(action.equals("Save")){
 	    back = salaryGroup.doSave();
 	    if(!back.isEmpty()){
@@ -54,7 +55,6 @@ public class SalaryGroupAction extends TopAction{
 	    }
 	}
 	else{		
-	    getSalaryGroup();
 	    if(!id.isEmpty()){
 		back = salaryGroup.doSelect();
 		if(!back.isEmpty()){
@@ -64,13 +64,14 @@ public class SalaryGroupAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public SalaryGroup getSalaryGroup(){ 
 	if(salaryGroup == null){
 	    salaryGroup = new SalaryGroup(id);
 	}		
 	return salaryGroup;
     }
-
+    @StrutsParameter(depth=2)
     public void setSalaryGroup(SalaryGroup val){
 	if(val != null){
 	    salaryGroup = val;
@@ -80,6 +81,7 @@ public class SalaryGroupAction extends TopAction{
     public String getSalaryGroupsTitle(){
 	return salaryGroupsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -89,6 +91,7 @@ public class SalaryGroupAction extends TopAction{
 	getSalaryGroups();
 	return salaryGroups != null && salaryGroups.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<SalaryGroup> getSalaryGroups(){
 	//
 	SalaryGroupList gml = new SalaryGroupList();
@@ -101,6 +104,7 @@ public class SalaryGroupAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	//
 	HourCodeList gml = new HourCodeList();
@@ -114,6 +118,7 @@ public class SalaryGroupAction extends TopAction{
 	}
 	return hourCodes;
     }
+    @StrutsParameter(depth=2)
     public String[] getExcessTypes(){
 	return excess_types;
     }

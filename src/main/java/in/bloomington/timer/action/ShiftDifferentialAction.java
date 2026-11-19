@@ -87,10 +87,12 @@ public class ShiftDifferentialAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setId(String val){
 	if(val != null)
 	    id = val;
-    }    
+    }
+    @StrutsParameter(depth=2)
     public ShiftDiffCode getCode(){
 	if(code == null)
 	    code = new ShiftDiffCode();
@@ -99,6 +101,7 @@ public class ShiftDifferentialAction extends TopAction{
 	}
 	return code;
     }
+    @StrutsParameter(depth=2)
     public void setCode(ShiftDiffCode val){
 	if(val != null)
 	    code = val;
@@ -108,13 +111,16 @@ public class ShiftDifferentialAction extends TopAction{
 	    findCodes();
 	return codes != null && codes.size() > 0;
     }
+    @StrutsParameter(depth=2)
     public List<ShiftDiffCode> getCodes(){
 	return codes;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setEffectiveDatedate(String val){
 	if(val != null && !val.isEmpty())		
 	    effective_date = val;

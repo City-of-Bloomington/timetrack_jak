@@ -36,6 +36,7 @@ public class DepartmentEmployeeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getDepartmentEmployee();
 	if(action.equals("Save")){
 	    back = departmentEmployee.doSave();
 	    if(!back.isEmpty()){
@@ -56,7 +57,6 @@ public class DepartmentEmployeeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getDepartmentEmployee();
 	    if(!id.isEmpty()){
 		back = departmentEmployee.doSelect();
 		if(!back.isEmpty()){
@@ -67,6 +67,7 @@ public class DepartmentEmployeeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public DepartmentEmployee getDepartmentEmployee(){ 
 	if(departmentEmployee == null){
 	    departmentEmployee = new DepartmentEmployee(id);
@@ -74,7 +75,7 @@ public class DepartmentEmployeeAction extends TopAction{
 	}		
 	return departmentEmployee;
     }
-
+    @StrutsParameter(depth=2)
     public void setDepartmentEmployee(DepartmentEmployee val){
 	if(val != null){
 	    departmentEmployee = val;
@@ -84,18 +85,22 @@ public class DepartmentEmployeeAction extends TopAction{
     public String getDepartmentEmployeesTitle(){
 	return departmentEmployeesTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    emp_id = val;
-    }				
+    }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();
@@ -111,6 +116,7 @@ public class DepartmentEmployeeAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

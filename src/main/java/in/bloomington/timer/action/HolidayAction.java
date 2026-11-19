@@ -36,6 +36,7 @@ public class HolidayAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getHoliday();
 	if(action.equals("Save")){
 	    back = holiday.doSave();
 	    if(!back.isEmpty()){
@@ -69,7 +70,6 @@ public class HolidayAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getHoliday();
 	    if(!id.isEmpty()){
 		back = holiday.doSelect();
 		if(!back.isEmpty()){
@@ -80,6 +80,7 @@ public class HolidayAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public Holiday getHoliday(){
 	if(holiday == null){
 	    holiday = new Holiday(debug);
@@ -88,6 +89,7 @@ public class HolidayAction extends TopAction{
 	return holiday;
 						
     }
+    @StrutsParameter(depth=2)    
     public void setHoliday(Holiday val){
 	if(val != null){
 	    holiday = val;
@@ -97,11 +99,12 @@ public class HolidayAction extends TopAction{
 				
 	return holidaysTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setYear(int val){
 	if( val > 0)		
 	    year = val;
@@ -111,6 +114,7 @@ public class HolidayAction extends TopAction{
 	    year = Helper.getCurrentYear();
 	return year;
     }
+    @StrutsParameter(depth=2)    
     public List<Holiday> getHolidays(){
 	if(holidays == null){
 	    HolidayList tl = new HolidayList(debug);
@@ -125,6 +129,7 @@ public class HolidayAction extends TopAction{
 	}
 	return holidays;
     }
+    @StrutsParameter(depth=2)    
     public List<String> getYears(){
 	List<String> years = new ArrayList<>();
 	int startYear = Helper.getCurrentYear()+1;

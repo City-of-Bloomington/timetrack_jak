@@ -115,11 +115,12 @@ public class CurrentEmployeesScheduleAction extends TopAction{
 				
 	return currentEmployeesSchedulesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;

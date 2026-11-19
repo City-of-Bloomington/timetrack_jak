@@ -40,10 +40,8 @@ public class JobTerminateAction extends TopAction{
     public String execute(){
 	String ret = SUCCESS;
 	String back = doPrepare("jobTerminate.action");
+	getTerm();
 	if(!action.isEmpty()){ // normally 'Submit'
-	    if(term == null){
-		getTerm();
-	    }
 	    term.setJob_id(job_id);
 	    term.setExpire_date(expire_date);
 	    back = term.doTerminate();
@@ -69,16 +67,15 @@ public class JobTerminateAction extends TopAction{
 	    }
 	}
 	else {
-	    getUser();
 	    if(user != null && !(user.isAdmin() || user.isHrAdmin())){
 		if(user.hasDepartment()){
 		    department_id = user.getDepartment_id();
 		}
 	    }
-	    getTerm();
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)      
     public EmpTerm getTerm(){
 	if(term == null){
 	    term = new EmpTerm();
@@ -89,6 +86,7 @@ public class JobTerminateAction extends TopAction{
 	}
 	return term;
     }
+    @StrutsParameter(depth=2)      
     public void setTerm(EmpTerm val){
 	if(val != null){
 	    term = val;
@@ -96,10 +94,12 @@ public class JobTerminateAction extends TopAction{
 	    term.setExpire_date(expire_date);
 	}
     }
+    @StrutsParameter(depth=2)      
     public void setCleanUp(CleanUp val){
 	if(val != null)
 	    cleanUp = val;
     }
+    @StrutsParameter(depth=2)      
     public CleanUp getCleanUp(){
 	cleanUp = new CleanUp();
 	if(hasDocuments()){
@@ -143,6 +143,7 @@ public class JobTerminateAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)      
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -150,11 +151,12 @@ public class JobTerminateAction extends TopAction{
     public String getJob_id(){
 	return job_id;
     }    
-				
+    @StrutsParameter(depth=1)      				
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)      
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -162,10 +164,12 @@ public class JobTerminateAction extends TopAction{
     public String getExpire_date(){
 	return expire_date;
     }
+    @StrutsParameter(depth=1)      
     public void setExpire_date(String val){
 	if(val != null && !val.equals("-1"))
 	    expire_date = val;
     }
+    @StrutsParameter(depth=2)      
     public void setJob_id(String val){
 	if(val != null && !val.isEmpty())
 	    job_id = val;
@@ -187,6 +191,7 @@ public class JobTerminateAction extends TopAction{
 	hasEmpId();
 	return emp_id;
     }
+    @StrutsParameter(depth=2)      
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

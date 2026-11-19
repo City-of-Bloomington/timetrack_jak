@@ -57,13 +57,14 @@ public class TermNotificationLogAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public TermNotificationList getTermNoteLst(){ 
 	if(termNoteLst == null){
 	    termNoteLst = new TermNotificationList();
 	}		
 	return termNoteLst;
     }
-
+    @StrutsParameter(depth=2)
     public void setTermNoteLst(TermNotificationList val){
 	if(val != null){
 	    termNoteLst = val;
@@ -73,18 +74,22 @@ public class TermNotificationLogAction extends TopAction{
     public String getTermNotificationsTitle(){
 	return termNotificationsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate_from(String val){
 	if(val != null && !val.isEmpty())		
 	   date_from = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate_to(String val){
 	if(val != null && !val.isEmpty())		
 	   date_to = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty() && !val.equals("-1"))		
 	   department_id = val;
@@ -103,10 +108,11 @@ public class TermNotificationLogAction extends TopAction{
     public boolean hasNotifications(){
 	return notifications != null && notifications.size() > 0;
     }
-
+    @StrutsParameter(depth=2)
     public List<TermNotification> getNotifications(){
 	return notifications;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	if(departments == null){
 	    DepartmentList tl = new DepartmentList();

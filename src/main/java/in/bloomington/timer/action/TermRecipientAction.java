@@ -35,6 +35,7 @@ public class TermRecipientAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getRecipient();
 	if(action.equals("Save")){
 	    back = recipient.doSave();
 	    if(!back.isEmpty()){
@@ -67,7 +68,6 @@ public class TermRecipientAction extends TopAction{
 	    }
 	}	
 	else{		
-	    getRecipient();
 	    if(!id.isEmpty()){
 		back = recipient.doSelect();
 		if(!back.isEmpty()){
@@ -77,6 +77,7 @@ public class TermRecipientAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public TermRecipient getRecipient(){
 	if(recipient == null){
 	    recipient = new TermRecipient();
@@ -85,6 +86,7 @@ public class TermRecipientAction extends TopAction{
 	return recipient;
 						
     }
+    @StrutsParameter(depth=2)
     public void setRecipient(TermRecipient val){
 	if(val != null){
 	    recipient = val;
@@ -95,11 +97,12 @@ public class TermRecipientAction extends TopAction{
 				
 	return recipientsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=3)
     public List<TermRecipient> getRecipients(){
 	if(recipients == null){
 	    TermRecipientList tl = new TermRecipientList();

@@ -295,6 +295,7 @@ public class TmwrpDailyAction extends TopAction{
 	}
 	return department;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmpsWithNoEmpNum(){
 	if(empsWithNoEmpNum == null){
 	    getDepartment();
@@ -318,6 +319,7 @@ public class TmwrpDailyAction extends TopAction{
 	}
 	return empsWithNoEmpNum;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getEmployees(){
 	if(employees == null){
 	    findEmployees();
@@ -352,9 +354,11 @@ public class TmwrpDailyAction extends TopAction{
     public boolean hasNoDataEmployees(){
 	return noDataEmployees != null;
     }
+    @StrutsParameter(depth=2)
     public List<Employee> getNoDataEmployees(){
 	return noDataEmployees;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	findGroups();
 	return groups;

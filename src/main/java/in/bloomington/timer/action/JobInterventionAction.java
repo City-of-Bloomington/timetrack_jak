@@ -101,18 +101,21 @@ public class JobInterventionAction extends TopAction{
 	return ret;
     }
     // del jobs not in NW and not used
+    @StrutsParameter(depth=2)    
     public void setDel_jobs(String[] vals){
 	if(vals != null){		
 	    del_jobs = vals;
 	}
     }
     // certain jobs are not in NW but are used
+    @StrutsParameter(depth=2)    
     public void setExp_jobs(String[] vals){
 	if(vals != null){		
 	    exp_jobs = vals;
 	}
     }
-    // emp not in NW 
+    // emp not in NW
+    @StrutsParameter(depth=2)    
     public void setExp_emps(String[] vals){
 	if(vals != null){		
 	    exp_emps = vals;
@@ -121,23 +124,27 @@ public class JobInterventionAction extends TopAction{
     public String getJobsTitle(){
 	return jobsTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)    
     public List<String> getJobTitles(){
 	return jobTitles;
     }
     public boolean hasJobTitles(){
 	return jobTitles != null && jobTitles.size() > 0;
     }
+    @StrutsParameter(depth=3)    
     public Hashtable<Employee, Set<JobTask>> getEmpJobCanDelete(){
 	return empJobCanDelete;
     }
+    @StrutsParameter(depth=3)    
     public Hashtable<Employee, Set<JobTask>> getEmpJobNeedUpdate(){
 	return empJobNeedUpdate;
-    }		
+    }
+    @StrutsParameter(depth=3)    
     public Hashtable<Employee, Set<JobTask>> getEmpNotFoundNewWorld(){
 	return empNotInNW;
     }
@@ -151,6 +158,7 @@ public class JobInterventionAction extends TopAction{
     public boolean hasEmpJobNeedUpdate(){
 	return empJobCanDelete != null && !empJobNeedUpdate.isEmpty();
     }
+    @StrutsParameter(depth=2)    
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){

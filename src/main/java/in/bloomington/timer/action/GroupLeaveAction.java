@@ -40,6 +40,7 @@ public class GroupLeaveAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGroupLeave();
 	if(action.equals("Save")){
 	    back = groupLeave.doSave();
 	    if(!back.isEmpty()){
@@ -60,7 +61,6 @@ public class GroupLeaveAction extends TopAction{
 	    }
 	}
 	else{		
-	    getGroupLeave();
 	    if(!id.isEmpty()){
 		back = groupLeave.doSelect();
 		if(!back.isEmpty()){
@@ -70,6 +70,7 @@ public class GroupLeaveAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public GroupLeave getGroupLeave(){
 	if(groupLeave == null){
 	    groupLeave = new GroupLeave(id);
@@ -77,6 +78,7 @@ public class GroupLeaveAction extends TopAction{
 	return groupLeave;
 						
     }
+    @StrutsParameter(depth=2)
     public void setGroupLeave(GroupLeave val){
 	if(val != null){
 	    groupLeave = val;
@@ -85,11 +87,12 @@ public class GroupLeaveAction extends TopAction{
     public String getGroupLeavesTitle(){
 	return groupLeavesTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    department_id = val;
@@ -100,6 +103,7 @@ public class GroupLeaveAction extends TopAction{
 	}
 	return department_id;
     }
+    @StrutsParameter(depth=2)
     public List<GroupLeave> getGroupLeaves(){
 	if(groupLeaves == null){
 	    GroupLeaveList tl = new GroupLeaveList();
@@ -117,6 +121,7 @@ public class GroupLeaveAction extends TopAction{
 	getGroupLeaves();
 	return groupLeaves != null;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList("departments");
@@ -130,6 +135,7 @@ public class GroupLeaveAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getSalaryGroups(){
 	if(salaryGroups == null){
 	    TypeList tl = new TypeList("salary_groups");
@@ -143,6 +149,7 @@ public class GroupLeaveAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null){
 	    GroupList tl = new GroupList();

@@ -80,21 +80,25 @@ public class RequestCancelAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public RequestCancel getRequst(){
 	if(requst == null){
 	    requst = new RequestCancel();
 	}
 	return requst;
     }
+    @StrutsParameter(depth=2)
     public void setRequst(RequestCancel val){
 	if(val != null){
 	    requst = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDocument_id(String val){
 	if(val != null && !val.isEmpty())		
 	    document_id = val;

@@ -32,6 +32,7 @@ public class AnnuancementAction extends TopAction{
     public String execute(){
 	String ret = SUCCESS;
 	String back = "";
+	getAnnuance();
 	if(action.equals("Save")){
 	    back = annuance.doSave();
 	    if(!back.isEmpty()){
@@ -52,7 +53,6 @@ public class AnnuancementAction extends TopAction{
 	    }
 	}
 	else{		
-	    getAnnuance();
 	    if(!id.isEmpty()){
 		back = annuance.doSelect();
 		if(!back.isEmpty()){
@@ -62,6 +62,7 @@ public class AnnuancementAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public Annuancement getAnnuance(){
 	if(annuance == null){
 	    annuance = new Annuancement();
@@ -70,6 +71,7 @@ public class AnnuancementAction extends TopAction{
 	return annuance;
 						
     }
+    @StrutsParameter(depth=2)
     public void setAnnuance(Annuancement val){
 	if(val != null){
 	    annuance = val;
@@ -80,11 +82,12 @@ public class AnnuancementAction extends TopAction{
 				
 	return annuancementsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Annuancement> getAnnuancements(){
 	if(annuancements == null){
 	    AnnuancementList tl = new AnnuancementList();

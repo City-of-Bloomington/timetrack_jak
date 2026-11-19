@@ -37,6 +37,7 @@ public class AltPayPeriodGroupAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getAltGroup();
 	if(action.equals("Save")){
 	    back = altGroup.doSave();
 	    if(!back.isEmpty()){
@@ -61,13 +62,13 @@ public class AltPayPeriodGroupAction extends TopAction{
 	}				
 	else{
 	    if(!id.isEmpty()){
-		getAltGroup();
 		altGroup.doSelect();
 	    }
 	}
 	findAltGroups();
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public AltPayPeriodGroup getAltGroup(){ 
 	if(altGroup == null){
 	    altGroup = new AltPayPeriodGroup();
@@ -76,7 +77,7 @@ public class AltPayPeriodGroupAction extends TopAction{
 	}		
 	return altGroup;
     }
-
+    @StrutsParameter(depth=2)
     public void setAltGroup(AltPayPeriodGroup val){
 	if(val != null){
 	    altGroup = val;
@@ -86,14 +87,17 @@ public class AltPayPeriodGroupAction extends TopAction{
     public String getGroupsTitle(){
 	return groupsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<Group> getGroups(){
 	if(groups == null){
 	    GroupList tl = new GroupList();
@@ -111,6 +115,7 @@ public class AltPayPeriodGroupAction extends TopAction{
 	}
 	return groups;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	TypeList tl = new TypeList("departments");
 	String back = tl.find();
@@ -122,6 +127,7 @@ public class AltPayPeriodGroupAction extends TopAction{
 	}
 	return departments;
     }
+    @StrutsParameter(depth=2)
     public List<AltPayPeriodGroup> getAltGroups(){
 	return altGroups;
     }

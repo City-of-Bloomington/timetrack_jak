@@ -44,6 +44,7 @@ public class TypeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getType();
 	if(action.equals("Save")){
 	    type.setTable_name(table_name);
 	    back = type.doSave();
@@ -66,7 +67,6 @@ public class TypeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getType();
 	    if(!id.isEmpty()){
 		back = type.doSelect();
 		if(!back.isEmpty()){
@@ -77,6 +77,7 @@ public class TypeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public Type getType(){
 	if(type == null){
 	    type = new Type();
@@ -86,11 +87,13 @@ public class TypeAction extends TopAction{
 	return type;
 						
     }
+    @StrutsParameter(depth=2)
     public void setType(Type val){
 	if(val != null){
 	    type = val;
 	}
     }
+    @StrutsParameter(depth=1)
     public void setType_name(String val){
 	if(val != null && !val.equals("-1")){
 	    type_name = val;
@@ -113,11 +116,12 @@ public class TypeAction extends TopAction{
     public String getTitle(){
 	return title;
     }		
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Type> getTypes(){
 	if(types == null){
 	    TypeList tl = new TypeList();

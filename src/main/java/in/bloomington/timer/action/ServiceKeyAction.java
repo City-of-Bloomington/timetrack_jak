@@ -31,6 +31,7 @@ public class ServiceKeyAction extends TopAction{
     public String execute(){
 	String ret = SUCCESS;
 	String back = doPrepare("serviceKey.action");
+	getKey();
 	if(action.equals("Save")){
 	    back = key.doSave();
 	    if(!back.equals("")){
@@ -52,7 +53,7 @@ public class ServiceKeyAction extends TopAction{
 	    }
 	}
 	else{		
-	    getKey();
+
 	    if(!id.equals("")){
 		back = key.doSelect();
 		if(!back.equals("")){
@@ -62,6 +63,7 @@ public class ServiceKeyAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public ServiceKey getKey(){ 
 	if(key == null){
 	    key = new ServiceKey();
@@ -69,7 +71,7 @@ public class ServiceKeyAction extends TopAction{
 	}		
 	return key;
     }
-
+    @StrutsParameter(depth=2)
     public void setKey(ServiceKey val){
 	if(val != null){
 	    key = val;
@@ -79,6 +81,7 @@ public class ServiceKeyAction extends TopAction{
     public String getKeysTitle(){
 	return keysTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.equals(""))		
 	    action = val;
@@ -87,7 +90,8 @@ public class ServiceKeyAction extends TopAction{
 	getKeys();
 	return keys != null && keys.size() > 0;
     }
-				
+
+    @StrutsParameter(depth=2)
     public List<ServiceKey> getKeys(){
 	if(keys == null){
 	    ServiceKeyList tl = new ServiceKeyList();

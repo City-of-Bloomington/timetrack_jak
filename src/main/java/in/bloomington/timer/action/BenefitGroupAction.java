@@ -35,6 +35,7 @@ public class BenefitGroupAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getBenefitGroup();
 	if(action.equals("Save")){
 	    back = benefitGroup.doSave();
 	    if(!back.isEmpty()){
@@ -68,7 +69,6 @@ public class BenefitGroupAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getBenefitGroup();
 	    if(!id.isEmpty()){
 		back = benefitGroup.doSelect();
 		if(!back.isEmpty()){
@@ -79,6 +79,7 @@ public class BenefitGroupAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public BenefitGroup getBenefitGroup(){
 	if(benefitGroup == null){
 	    benefitGroup = new BenefitGroup();
@@ -87,6 +88,7 @@ public class BenefitGroupAction extends TopAction{
 	return benefitGroup;
 						
     }
+    @StrutsParameter(depth=2)
     public void setBenefitGroup(BenefitGroup val){
 	if(val != null){
 	    benefitGroup = val;
@@ -97,10 +99,12 @@ public class BenefitGroupAction extends TopAction{
 				
 	return benefitGroupsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<BenefitGroup> getBenefitGroups(){
 	if(benefitGroups == null){
 	    BenefitGroupList tl = new BenefitGroupList();

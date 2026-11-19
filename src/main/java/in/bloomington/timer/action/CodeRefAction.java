@@ -36,6 +36,7 @@ public class CodeRefAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getCodeRef();
 	if(action.equals("Save")){
 	    back = codeRef.doSave();
 	    if(!back.isEmpty()){
@@ -67,7 +68,6 @@ public class CodeRefAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getCodeRef();
 	    if(!id.isEmpty()){
 		back = codeRef.doSelect();
 		if(!back.isEmpty()){
@@ -77,6 +77,7 @@ public class CodeRefAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public CodeRef getCodeRef(){
 	if(codeRef == null){
 	    codeRef = new CodeRef();
@@ -85,6 +86,7 @@ public class CodeRefAction extends TopAction{
 	return codeRef;
 						
     }
+    @StrutsParameter(depth=2)
     public void setCodeRef(CodeRef val){
 	if(val != null){
 	    codeRef = val;
@@ -96,11 +98,12 @@ public class CodeRefAction extends TopAction{
 	return codeRefsTitle;
     }
 
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<CodeRef> getCodeRefs(){
 	if(codeRefs == null){
 	    CodeRefList tl = new CodeRefList();
@@ -114,6 +117,7 @@ public class CodeRefAction extends TopAction{
 	}
 	return codeRefs;
     }
+    @StrutsParameter(depth=2)
     public List<HourCode> getHourCodes(){
 	if(hourCodes == null){
 	    HourCodeList tl = new HourCodeList();

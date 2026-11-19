@@ -105,15 +105,17 @@ public class EmpPayRateScheduleAction extends TopAction{
 	return rateSchedulesTitle;
     }
 
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setRate_date(String val){
 	if(val != null && !val.isEmpty())		
 	    rate_date = val;
     }
+    @StrutsParameter(depth=1)
     public void setDept_ref_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    dept_ref_id = val;
@@ -130,7 +132,8 @@ public class EmpPayRateScheduleAction extends TopAction{
 	    return "-1";
 	}
 	return dept_ref_id;
-    }	    
+    }
+    @StrutsParameter(depth=2)
     public List<Department> getDepts(){
 	if(depts == null){
 	    DepartmentList dl = new DepartmentList();

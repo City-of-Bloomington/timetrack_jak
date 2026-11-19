@@ -90,23 +90,27 @@ public class ExcessAccrualAction extends TopAction{
 	}
 	return date;
     }
-	
+    @StrutsParameter(depth=1)	
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setDate(String val){
 	if(val != null && !val.isEmpty())		
 	    date = val;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setAccrual_id(String val){
 	if(val != null && !val.isEmpty())		
 	    accrual_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setTresholdValue(String val){
 	if(val != null && !val.isEmpty())		
 	    threshold_value = val;
-    }    
+    }
+    @StrutsParameter(depth=2)
     public List<ExcessAccrual> getExcesses(){
 	if(excesses == null){
 	    ExcessAccrualList tl = new ExcessAccrualList();
@@ -128,7 +132,8 @@ public class ExcessAccrualAction extends TopAction{
 	    msg = quartzMisc.doClean("excess_accrual"); // job group
 	}
 	return msg;
-    }    
+    }
+    @StrutsParameter(depth=3)
     public List<Accrual> getAccruals(){
 	if(accruals == null){
 	    AccrualList tl = new AccrualList();
@@ -146,6 +151,7 @@ public class ExcessAccrualAction extends TopAction{
 	getLogs();
 	return logs != null && logs.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<ExcessAccrualEmailLog> getLogs(){
 	if(logs == null){
 	    ExcessAccrualEmailLogList el = new ExcessAccrualEmailLogList();

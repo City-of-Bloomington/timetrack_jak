@@ -56,15 +56,18 @@ public class TimeActiveAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public TimeActiveAudit getAudit(){
 	if(audit == null)
 	    audit = new TimeActiveAudit();
 	return audit;
     }
+    @StrutsParameter(depth=2)
     public void setAudit(TimeActiveAudit val){
 	if(val != null)
 	    audit = val;
@@ -72,6 +75,7 @@ public class TimeActiveAction extends TopAction{
     public boolean hasEntries(){
 	return entries != null && entries.size() > 0;
     }
+    @StrutsParameter(depth=3)
     public List<List<String>> getEntries(){
 	return entries;
     }		

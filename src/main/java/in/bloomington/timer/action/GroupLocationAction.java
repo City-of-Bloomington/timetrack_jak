@@ -37,6 +37,7 @@ public class GroupLocationAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getGroupLocation();
 	if(action.equals("Save")){
 	    back = groupLocation.doSave();
 	    if(!back.isEmpty()){
@@ -67,7 +68,6 @@ public class GroupLocationAction extends TopAction{
 	    }
 	}				
 	else{		
-	    getGroupLocation();
 	    groupLocation.setGroup_id(group_id);
 	    if(!id.isEmpty()){
 		back = groupLocation.doSelect();
@@ -78,6 +78,7 @@ public class GroupLocationAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public GroupLocation getGroupLocation(){
 	if(groupLocation == null){
 	    groupLocation = new GroupLocation(id);
@@ -85,6 +86,7 @@ public class GroupLocationAction extends TopAction{
 	return groupLocation;
 						
     }
+    @StrutsParameter(depth=2)
     public void setGroupLocation(GroupLocation val){
 	if(val != null){
 	    groupLocation = val;
@@ -95,18 +97,21 @@ public class GroupLocationAction extends TopAction{
 				
 	return groupLocationsTitle;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    group_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setDepartment_id(String val){
 	// not needed
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<GroupLocation> getGroupLocations(){
 	if(groupLocations == null){
 	    GroupLocationList tl = new GroupLocationList();
@@ -121,6 +126,7 @@ public class GroupLocationAction extends TopAction{
 	}
 	return groupLocations;
     }
+    @StrutsParameter(depth=2)
     public List<Location> getLocations(){
 	if(locations == null){
 	    LocationList tl = new LocationList();
@@ -133,7 +139,8 @@ public class GroupLocationAction extends TopAction{
 	    }
 	}
 	return locations;
-    }		
+    }
+    @StrutsParameter(depth=2)
     public List<Type> getDepartments(){
 	if(departments == null){
 	    TypeList tl = new TypeList();

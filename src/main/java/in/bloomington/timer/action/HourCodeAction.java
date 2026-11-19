@@ -36,6 +36,7 @@ public class HourCodeAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getHourcode();
 	if(action.equals("Save")){
 	    back = hourcode.doSave();
 	    if(!back.isEmpty()){
@@ -55,7 +56,6 @@ public class HourCodeAction extends TopAction{
 	    }
 	}
 	else{		
-	    getHourcode();
 	    if(!id.isEmpty()){
 		back = hourcode.doSelect();
 		if(!back.isEmpty()){
@@ -65,6 +65,7 @@ public class HourCodeAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public HourCode getHourcode(){
 	if(hourcode == null){
 	    hourcode = new HourCode(id);
@@ -72,6 +73,7 @@ public class HourCodeAction extends TopAction{
 	return hourcode;
 						
     }
+    @StrutsParameter(depth=2)    
     public void setHourcode(HourCode val){
 	if(val != null){
 	    hourcode = val;
@@ -80,7 +82,7 @@ public class HourCodeAction extends TopAction{
     public String getHourcodesTitle(){
 	return hourcodesTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -89,6 +91,7 @@ public class HourCodeAction extends TopAction{
 	getHourcodes();
 	return hourcodes != null;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCode> getHourcodes(){
 	if(hourcodes == null){
 	    HourCodeList tl = new HourCodeList();
@@ -102,6 +105,7 @@ public class HourCodeAction extends TopAction{
 	}
 	return hourcodes;
     }
+    @StrutsParameter(depth=2)    
     public List<Type> getAccruals(){
 	if(accruals == null){
 	    TypeList tl = new TypeList("accruals");
@@ -115,6 +119,7 @@ public class HourCodeAction extends TopAction{
 	}
 	return accruals;
     }
+    @StrutsParameter(depth=2)    
     public String[] getTypes(){
 	return types;
     }

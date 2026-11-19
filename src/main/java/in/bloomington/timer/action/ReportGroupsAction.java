@@ -59,6 +59,7 @@ public class ReportGroupsAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=1)
     public void setDept_id(String val){
 	if(val != null && !val.equals("-1")){
 	    dept_id = val;
@@ -70,15 +71,18 @@ public class ReportGroupsAction extends TopAction{
 	}
 	return dept_id;
     }
+    @StrutsParameter(depth=3)
     public List<List<String>> getEntries(){
 	return entries;
     }
+    @StrutsParameter(depth=3)
     public List<List<String>> getEntries2(){
 	return entries2;
     }    
     public boolean hasData(){
 	return entries != null;
     }
+    @StrutsParameter(depth=2)
     public List<Department> getDepartments(){
 	DepartmentList dl = new DepartmentList();
 	String back = dl.find();
@@ -95,7 +99,8 @@ public class ReportGroupsAction extends TopAction{
     }
     public String getFileName(){
 	return fileName;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setOutputType(String val){
 	if(val != null)
 	    outputType = val;

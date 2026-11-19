@@ -39,6 +39,7 @@ public class HourCodeExtraAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getExtra();
 	if(action.equals("Save")){
 	    back = extra.doSave();
 	    if(!back.isEmpty()){
@@ -68,7 +69,6 @@ public class HourCodeExtraAction extends TopAction{
 	    }
 	}	
 	else{		
-	    getExtra();
 	    if(!id.isEmpty()){
 		back = extra.doSelect();
 		if(!back.isEmpty()){
@@ -78,6 +78,7 @@ public class HourCodeExtraAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public HourCodeExtra getExtra(){
 	if(extra == null){
 	    extra = new HourCodeExtra(id);
@@ -85,6 +86,7 @@ public class HourCodeExtraAction extends TopAction{
 	return extra;
 						
     }
+    @StrutsParameter(depth=2)    
     public void setExtra(HourCodeExtra val){
 	if(val != null){
 	    extra = val;
@@ -93,11 +95,12 @@ public class HourCodeExtraAction extends TopAction{
     public String getExtrasTitle(){
 	return extrasTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCodeExtra> getExtras(){
 	if(extras == null){
 	    HourCodeExtraList tl = new HourCodeExtraList();
@@ -115,6 +118,7 @@ public class HourCodeExtraAction extends TopAction{
 	getExtras();
 	return extras != null;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCode> getHourCodes(){
 	if(hourcodes == null){
 	    HourCodeList tl = new HourCodeList();
@@ -127,7 +131,8 @@ public class HourCodeExtraAction extends TopAction{
 	    }
 	}
 	return hourcodes;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public List<SalaryGroup> getSalaryGroups(){
 	if(salaryGroups == null){
 	    SalaryGroupList tl = new SalaryGroupList();
@@ -141,6 +146,7 @@ public class HourCodeExtraAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)    
     public String[] getTypes(){
 	return types;
     }

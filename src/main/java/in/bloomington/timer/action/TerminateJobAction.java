@@ -272,7 +272,7 @@ public class TerminateJobAction extends TopAction{
 	}
 	return back;
     }
-    
+    @StrutsParameter(depth=2)
     public EmpTerminate getTerm(){
 	if(term == null){
 	    term = new EmpTerminate();
@@ -282,6 +282,7 @@ public class TerminateJobAction extends TopAction{
 	}
 	return term;
     }
+    @StrutsParameter(depth=2)
     public void setTerm(EmpTerminate val){
 	if(val != null){
 	    term = val;
@@ -355,9 +356,11 @@ public class TerminateJobAction extends TopAction{
 	    findAllJobs();
 	return jobs != null && jobs.size() > 1;	
     }
+    @StrutsParameter(depth=2)
     public List<JobTask> getJobs(){
 	return jobs;
     }
+    @StrutsParameter(depth=2)
     public JobTask getJob(){
 	if(job == null && jobs != null){
 	    job = jobs.get(0); // we need one
@@ -405,6 +408,7 @@ public class TerminateJobAction extends TopAction{
 	}
 	return group;
     }
+    @StrutsParameter(depth=2)
     public void setSelected_job_id(String[] vals){
 	if(vals != null){
 	    selected_job_ids = vals;
@@ -416,15 +420,17 @@ public class TerminateJobAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
-
+    @StrutsParameter(depth=1)
     public void setJob_id(String val){
 	if(val != null && !val.isEmpty())		
 	    job_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setGroup_id(String val){
 	if(val != null && !val.isEmpty())		
 	    group_id = val;
@@ -435,6 +441,7 @@ public class TerminateJobAction extends TopAction{
     public String getGroup_id(){
 	return group_id;
     }
+    @StrutsParameter(depth=2)
     public Employee getEmp(){
 	if(emp == null){
 	    if(emp_id.isEmpty()){
@@ -453,6 +460,7 @@ public class TerminateJobAction extends TopAction{
 	}
 	return emp;
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.isEmpty())		
 	    emp_id = val;
@@ -460,6 +468,7 @@ public class TerminateJobAction extends TopAction{
     public String getEmp_id(){
 	return emp_id;
     }
+    @StrutsParameter(depth=1)
     public void setLast_pay_period_date(String val){
 	if(val != null && !val.isEmpty() && !val.equals("-1")){
 	    if(val.indexOf("-") > 0){
@@ -470,10 +479,12 @@ public class TerminateJobAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=1)
     public void setLast_day_of_work(String val){
 	if(val != null && !val.isEmpty())		
 	    last_day_of_work = val;
-    }    
+    }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -484,6 +495,7 @@ public class TerminateJobAction extends TopAction{
     public String getLast_pay_period_date(){
 	return last_pay_period_date;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

@@ -33,6 +33,7 @@ public class ReportUnscheduledAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getReport();
 	if(!action.isEmpty()){
 	    back = report.find();
 	    if(!back.isEmpty()){
@@ -49,13 +50,14 @@ public class ReportUnscheduledAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=3)
     public UnscheduledReport getReport(){ 
 	if(report == null){
 	    report = new UnscheduledReport();
 	}		
 	return report;
     }
-
+    @StrutsParameter(depth=3)
     public void setReport(UnscheduledReport val){
 	if(val != null){
 	    report = val;
@@ -65,6 +67,7 @@ public class ReportUnscheduledAction extends TopAction{
     public String getReportTitle(){
 	return reportTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;

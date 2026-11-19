@@ -88,12 +88,14 @@ public class TerminateAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public EmpTerm getTerm(){
 	if(term == null){
 	    term = new EmpTerm(emp_id, expire_date);
 	}
 	return term;
     }
+    @StrutsParameter(depth=2)
     public void setTerm(EmpTerm val){
 	if(val != null){
 	    term = val;
@@ -101,10 +103,12 @@ public class TerminateAction extends TopAction{
 	    term.setExpire_date(expire_date);
 	}
     }
+    @StrutsParameter(depth=2)
     public void setCleanUp(CleanUp val){
 	if(val != null)
 	    cleanUp = val;
     }
+    @StrutsParameter(depth=2)
     public CleanUp getCleanUp(){
 	cleanUp = new CleanUp();
 	if(hasDocuments()){
@@ -148,6 +152,7 @@ public class TerminateAction extends TopAction{
     public String getDepartment_id(){
 	return department_id;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
@@ -155,15 +160,18 @@ public class TerminateAction extends TopAction{
     public boolean hasEmpId(){
 	return !emp_id.isEmpty();
     }
+    @StrutsParameter(depth=1)
     public void setEmp_id(String val){
 	if(val != null && !val.isEmpty())		
 	    emp_id = val;
     }
+    @StrutsParameter(depth=1)
     public void setFull_name(String val){
 	// for auto complete
 	if(val != null)
 	    full_name = val;
     }
+    @StrutsParameter(depth=2)
     public Employee getEmp(){
 	if(emp == null && !emp_id.isEmpty()){
 	    Employee one = new Employee(emp_id);
@@ -184,11 +192,12 @@ public class TerminateAction extends TopAction{
 	getEmp();
 	return emp != null;
     }
-				
+    @StrutsParameter(depth=1)				
     public void setDepartment_id(String val){
 	if(val != null && !val.isEmpty())		
 	    department_id = val;
-    }		
+    }
+    @StrutsParameter(depth=1)
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
@@ -205,10 +214,12 @@ public class TerminateAction extends TopAction{
     public String getExpire_date(){
 	return expire_date;
     }
+    @StrutsParameter(depth=1)
     public void setExpire_date(String val){
 	if(val != null && !val.equals("-1"))
 	    expire_date = val;
     }
+    @StrutsParameter(depth=2)
     public List<PayPeriod> getPayPeriods(){
 	if(payPeriods == null){
 	    PayPeriodList tl = new PayPeriodList();

@@ -35,13 +35,14 @@ public class WelcomeAction extends TopAction{
 	}
 	return ret;
     }
-
+    @StrutsParameter(depth=1)
     public void setAction(String val){
 	action = val;
     }
     public String getAction(){
 	return action;
     }
+    @StrutsParameter(depth=1)
     public void setId(String val){
 	id = val;
     }

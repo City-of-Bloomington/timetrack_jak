@@ -34,6 +34,7 @@ public class ShiftAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getShift();
 	if(action.equals("Save")){
 	    back = shift.doSave();
 	    if(!back.isEmpty()){
@@ -54,7 +55,7 @@ public class ShiftAction extends TopAction{
 	    }
 	}
 	else{		
-	    getShift();
+	    // getShift();
 	    if(!id.isEmpty()){
 		back = shift.doSelect();
 		if(!back.isEmpty()){
@@ -64,6 +65,7 @@ public class ShiftAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)
     public Shift getShift(){ 
 	if(shift == null){
 	    shift = new Shift();
@@ -71,7 +73,7 @@ public class ShiftAction extends TopAction{
 	}		
 	return shift;
     }
-
+    @StrutsParameter(depth=2)
     public void setShift(Shift val){
 	if(val != null){
 	    shift = val;
@@ -81,10 +83,12 @@ public class ShiftAction extends TopAction{
     public String getShiftsTitle(){
 	return shiftsTitle;
     }
+    @StrutsParameter(depth=1)
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)
     public List<Shift> getShifts(){
 	if(shifts == null){
 	    ShiftList tl = new ShiftList();
@@ -100,6 +104,7 @@ public class ShiftAction extends TopAction{
 	return shifts;
     }
     //
+    @StrutsParameter(depth=2)
     public List<GroupShift> getGroupShifts(){
 	if(groupShifts == null){
 	    getShift();

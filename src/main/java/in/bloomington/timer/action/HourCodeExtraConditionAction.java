@@ -39,6 +39,7 @@ public class HourCodeExtraConditionAction extends TopAction{
 	if(!back.isEmpty()){
 	    return back;
 	}
+	getHourcodeCondition();
 	if(action.equals("Save")){
 	    back = hourcodeCondition.doSave();
 	    if(!back.isEmpty()){
@@ -59,7 +60,6 @@ public class HourCodeExtraConditionAction extends TopAction{
 	    }
 	}
 	else{		
-	    getHourcodeCondition();
 	    if(!id.isEmpty()){
 		back = hourcodeCondition.doSelect();
 		if(!back.isEmpty()){
@@ -69,6 +69,7 @@ public class HourCodeExtraConditionAction extends TopAction{
 	}
 	return ret;
     }
+    @StrutsParameter(depth=2)    
     public HourCodeExtraCondition getHourcodeCondition(){
 	if(hourcodeCondition == null){
 	    hourcodeCondition = new HourCodeExtraCondition(id);
@@ -76,6 +77,7 @@ public class HourCodeExtraConditionAction extends TopAction{
 	return hourcodeCondition;
 						
     }
+    @StrutsParameter(depth=2)    
     public void setHourcodeExtraCondition(HourCodeExtraCondition val){
 	if(val != null){
 	    hourcodeCondition = val;
@@ -84,11 +86,12 @@ public class HourCodeExtraConditionAction extends TopAction{
     public String getHourcodeConditionsTitle(){
 	return hourcodeConditionsTitle;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCodeExtraCondition> getConditions(){
 	if(conditions == null){
 	    HourCodeExtraConditionList tl = new HourCodeExtraConditionList();
@@ -106,6 +109,7 @@ public class HourCodeExtraConditionAction extends TopAction{
 	getConditions();
 	return conditions != null;
     }
+    @StrutsParameter(depth=2)    
     public List<HourCode> getHourcodes(){
 	if(hourcodes == null){
 	    HourCodeList tl = new HourCodeList();
@@ -118,7 +122,8 @@ public class HourCodeExtraConditionAction extends TopAction{
 	    }
 	}
 	return hourcodes;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public List<SalaryGroup> getSalaryGroups(){
 	if(salaryGroups == null){
 	    SalaryGroupList tl = new SalaryGroupList();
@@ -132,6 +137,7 @@ public class HourCodeExtraConditionAction extends TopAction{
 	}
 	return salaryGroups;
     }
+    @StrutsParameter(depth=2)    
     public String[] getTypes(){
 	return types;
     }

@@ -161,20 +161,23 @@ public class InformAction extends TopAction{
 	}
 	return ret;
     }
-
+    @StrutsParameter(depth=1)    
     public void setAction2(String val){
 	if(val != null && !val.isEmpty())		
 	    action = val;
     }
+    @StrutsParameter(depth=1)    
     public void setEmployee_ids(String val){
 	if(val != null && !val.isEmpty()){		
 	    employee_ids = val;
 	}
     }
+    @StrutsParameter(depth=1)    
     public void setGroup_ids(String val){
 	if(val != null && !val.isEmpty())		
 	    group_ids = val;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setType(String val){
 	if(val != null && !val.isEmpty()){		
 	    type = val;
@@ -183,31 +186,38 @@ public class InformAction extends TopAction{
 	    }
 	}
     }
+    @StrutsParameter(depth=1)    
     public void setInform_type(String val){
 	if(val != null && !val.isEmpty()){
 	    inform_type = val;
 	}
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setEmail_cc(String val){
 	if(val != null && !val.equals("-1"))		
 	    email_cc = val;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setSubject(String val){
 	if(val != null && !val.isEmpty())		
 	    subject = val;
     }
+    @StrutsParameter(depth=1)    
     public void setSource(String val){
 	if(val != null && !val.isEmpty())		
 	    source = val;
     }
+    @StrutsParameter(depth=1)    
     public void setDate_from(String val){
 	if(val != null && !val.isEmpty())		
 	    date_from = val;
     }
+    @StrutsParameter(depth=1)    
     public void setDate_to(String val){
 	if(val != null && !val.isEmpty())		
 	    date_to = val;
     }
+    @StrutsParameter(depth=1)    
     public void setPageSize(String val){
 	if(val != null && !val.isEmpty())		
 	    pageSize = val;
@@ -220,14 +230,17 @@ public class InformAction extends TopAction{
     }
     public String getDate_to(){
 	return date_to;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setApprove(String val){
 	// ignore
     }
+    @StrutsParameter(depth=1)    
     public void setText_message(String val){
 	if(val != null && !val.isEmpty())		
 	    text_message = val;
-    }		
+    }
+    @StrutsParameter(depth=1)    
     public void setPay_period_id(String val){
 	if(val != null && !val.equals("-1"))		
 	    pay_period_id = val;
@@ -309,9 +322,11 @@ public class InformAction extends TopAction{
 	findManagers();
 	return managers != null && managers.size() > 0;
     }
+    @StrutsParameter(depth=2)    
     public List<GroupManager> getManagers(){
 	return managers;
     }
+    @StrutsParameter(depth=3)    
     public Map<Employee, List<Group>> getManagerMap(){
 	return managerMap;
     }
@@ -331,7 +346,8 @@ public class InformAction extends TopAction{
 	    text_message += "Thank you\n\n";
 	}
 	return text_message;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public PayPeriod getPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -346,7 +362,8 @@ public class InformAction extends TopAction{
 	    }
 	}
 	return payPeriod;
-    }		
+    }
+    @StrutsParameter(depth=2)    
     public PayPeriod getCurrentPayPeriod(){
 	//
 	if(payPeriod == null){
@@ -365,6 +382,7 @@ public class InformAction extends TopAction{
 	}
 	return payPeriod;
     }
+    @StrutsParameter(depth=2)    
     public List<Employee> getEmployees(){
 	if(employees == null &&
 	   employee_ids != null &&
@@ -406,6 +424,7 @@ public class InformAction extends TopAction{
 	getEmployees();
 	return employees != null && employees.size() > 0; 
     }
+    @StrutsParameter(depth=3)    
     public List<EmailLog> getEmailLogs(){
 	if(emailLogs == null){
 	    EmailLogList ell = new EmailLogList(debug);

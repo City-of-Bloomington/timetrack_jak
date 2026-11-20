@@ -127,7 +127,7 @@ public class LeaveRequestList{
 	    " join jobs j on j.id=t.job_id "+
 	    " left join leave_reviews r on r.leave_id=t.id ";
 	if(!department_id.isEmpty()){
-	    qq += " join groups g on j.group_id=g.id ";
+	    qq += " join `groups` g on j.group_id=g.id ";
 	}	
 	if(!pay_period_id.isEmpty()){
 	    qq += ", pay_periods p ";

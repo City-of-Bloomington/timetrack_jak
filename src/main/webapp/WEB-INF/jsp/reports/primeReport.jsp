@@ -20,7 +20,7 @@
 	    <%@ include file="../messages.jsp" %>
 	</s:elseif>
 	<ul>
-	    <li>You can prime rate pays by choosing either the year and quarter or by entering date range.</li>
+	    <li>You can choose either the year and quarter or by entering date range.</li>
 	    <li> You can run the report by Department</li>
 	    <li> For output type, we suggest that you run the 'Web page HTML' type first so that you get an idea about the numbers. If you are OK with these numbers then you choose the 'CSV' type.</li>
 	</ul>
@@ -28,7 +28,7 @@
 	    <s:if test="hasDepts()">
 		<div class="form-group">
 		    <label>Department</label>
-		    <s:select name="report.department_id" value="%{report.department_id}" list="depts" listKey="id" listValue="name" headerKey="-1" headerValue="All" id="department_id_change" />
+		    <s:select name="dept_id" value="%{dept_id}" list="depts" listKey="id" listValue="name" headerKey="-1" headerValue="All" id="department_id_change" />
 		</div>
 	    </s:if>
 	    <div class="form-group">

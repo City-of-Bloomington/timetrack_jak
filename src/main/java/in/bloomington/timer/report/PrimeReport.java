@@ -210,6 +210,10 @@ public class PrimeReport{
 	    "join employees e on e.id=d.employee_id "+
 	    "join hour_codes c on c.id=t.hour_code_id "+
 	    "join employee_pay_rates w on w.employee_id=e.id ";
+	if(!department_id.isEmpty()){
+	    qq += " join department_employees de on de.employee_id = e.id and ";
+	    qq += " de.expire_date is null ";
+	}
 	String qw = "where w.rate_date = (select max(w2.rate_date) from employee_pay_rates w2 where "+
 	    "w2.rate_date < if(t.week_no = 1,date_add(p.start_date, INTERVAL 6 DAY),p.end_date) and w2.employee_id=e.id) ";
 	if(!start_date.isEmpty()){
@@ -217,6 +221,9 @@ public class PrimeReport{
 	}
 	if(!end_date.isEmpty()){
 	    qw += " and p.start_date <= ? ";
+	}
+	if(!department_id.isEmpty()){
+	    qw += " and de.department_id = ? ";
 	}
 	con = Helper.getConnection();
 	if(con == null){
@@ -237,6 +244,9 @@ public class PrimeReport{
 		java.util.Date date_tmp = dateFormat.parse(end_date);
 		pstmt.setDate(j++, new java.sql.Date(date_tmp.getTime()));
 	    }
+	    if(!department_id.isEmpty()){
+		pstmt.setString(j++, department_id);
+	    }	    
 	    rs = pstmt.executeQuery();
 	    while(rs.next()){
 		if(allEntries == null){
@@ -286,6 +296,10 @@ public class PrimeReport{
 	    " join employees e on e.id=d.employee_id "+ 
 	    " join hour_codes c on c.id=t.hour_code_id "+
 	    " join employee_pay_rates w on w.employee_id=e.id ";
+	if(!department_id.isEmpty()){
+	    qq += " join department_employees de on de.employee_id = e.id and ";
+	    qq += " de.expire_date is null ";
+	}	
 	String qw = " where w.rate_date = (select max(w2.rate_date) from employee_pay_rates w2 where "+
 	    " w2.rate_date < if(t.week_no = 1,date_add(p.start_date, INTERVAL 6 DAY),p.end_date) and w2.employee_id=e.id) ";
 	if(!start_date.isEmpty()){
@@ -293,6 +307,9 @@ public class PrimeReport{
 	}
 	if(!end_date.isEmpty()){
 	    qw += " and p.start_date <= ? ";
+	}
+	if(!department_id.isEmpty()){
+	    qw += " and de.department_id = ? ";
 	}	
 	String qg = " ) gg group by gg.employee_name,gg.employee_number,gg.earn_code; ";
 	qq = qq + qw +qg;
@@ -314,6 +331,9 @@ public class PrimeReport{
 		java.util.Date date_tmp = dateFormat.parse(end_date);
 		pstmt.setDate(j++, new java.sql.Date(date_tmp.getTime()));
 	    }
+	    if(!department_id.isEmpty()){
+		pstmt.setString(j++, department_id);
+	    }	
 	    rs = pstmt.executeQuery();
 	    if(aggregates == null)
 		aggregates = new ArrayList<>();

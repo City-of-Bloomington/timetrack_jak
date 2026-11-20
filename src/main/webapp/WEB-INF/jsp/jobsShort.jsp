@@ -17,7 +17,7 @@
 	    <s:iterator var="one" value="#jobs">
 		<tr>
 		    <td><s:property value="id" /></td>
-		    <td><s:property value="employee.nameLastFirst" /></td>
+		    <td><s:property value="employee" /></td>
 		    <td><s:property value="position" /></td>
 		    <td><s:property value="salaryGroup" /></td>
 		    <td><s:property value="group" /></a></td>

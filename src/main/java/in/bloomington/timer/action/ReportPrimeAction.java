@@ -32,6 +32,8 @@ public class ReportPrimeAction extends TopAction{
     List<List<String>> aggregates = null;    
     PrimeReport report = null;
     List<Integer> years = null;
+    List<Department> depts = null;
+    String dept_id="";
     String outputType = "html";
     String reportTitle = "Prime Report ";
     public String execute(){
@@ -42,6 +44,8 @@ public class ReportPrimeAction extends TopAction{
 	}
 	getReport();
 	if(!action.isEmpty()){
+	    if(!dept_id.isEmpty())
+		report.setDepartment_id(dept_id);
 	    back = report.findAggregates();
 	    back += report.find();
 	    if(!back.isEmpty()){
@@ -92,11 +96,40 @@ public class ReportPrimeAction extends TopAction{
 	if(val != null)
 	    outputType = val;
     }
+    @StrutsParameter(depth=1)
+    public void setDept_id(String val){
+	if(val != null)
+	    dept_id = val;
+    }
+    public String getDept_id(){
+	if(dept_id.isEmpty())
+	    return "-1";
+	return dept_id;
+    }
     @StrutsParameter(depth=2)
     public void setReport(PrimeReport val){
 	if(val != null){
 	    report = val;
 	}
+    }
+    public boolean hasDepts(){
+	getDepts();
+	return depts != null && depts.size() > 0;
+    }
+    @StrutsParameter(depth=2)
+    public List<Department> getDepts(){
+	if(depts == null){
+	    DepartmentList gsl = new DepartmentList();
+	    gsl.ignoreSpecialDepts();
+	    String back = gsl.find();
+	    if(back.isEmpty()){
+		List<Department> ones = gsl.getDepartments();
+		if(ones != null && ones.size() > 0){
+		    depts = ones;
+		}
+	    }
+	}
+	return depts;
     }
     public boolean hasAllEntries(){
 	return allEntries != null && allEntries.size() > 0;

@@ -34,11 +34,7 @@ public class SwitchAction extends TopAction{
     public String execute(){
 	String ret = SUCCESS;
 	String back = doPrepare("switch.action");
-	if(!action.isEmpty()){ // normally 'Change'
-	    if(!new_employee_id.isEmpty()){
-		setEmployee_id(new_employee_id);
-		getEmployee();
-	    }
+	if(!action.isEmpty() && !new_employee_id.isEmpty()){ 
 	    try{
 		HttpServletResponse res = ServletActionContext.getResponse();
 		// we do not need the url here
@@ -49,25 +45,29 @@ public class SwitchAction extends TopAction{
 		    found = true;
 		}
 		else{
-		    if(working_date.isEmpty()){
-			working_date = Helper.getToday();
+		    if(!working_date.isEmpty()){
+			document_id = findDocument(working_date, new_employee_id);
+			if(!document_id.isEmpty()){
+			    str += "document_id="+document_id;
+			    found = true;
+			}
 		    }
-		    document_id = findDocument(working_date, new_employee_id);
-		    if(!document_id.isEmpty()){
-			str += "document_id="+document_id;
+		    else if(hasCurrentJob(new_employee_id)){
 			found = true;
+			if(!source.isEmpty()){
+			    str += "&source="+source;
+			}
 		    }
-		}
-		if(!source.isEmpty()){
-		    str += "&source="+source;
 		}
 		if(found){
-		    res.sendRedirect(str);
+		    setEmployee_id(new_employee_id);
+		    getEmployee();
+		    if(employee != null){
+			res.sendRedirect(str);
+		    }
 		}
-		else{
-		    back = "could not get employee info ";
-		    addError(back);
-		}
+		back = "could not get employee info ";
+		addError(back);
 	    }catch(Exception ex){
 		System.err.println(ex);
 	    }
